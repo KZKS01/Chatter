@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -32,3 +33,11 @@ def signup(request):
         'form': form, # passing form data
         'error': error_message
     })
+
+# Google OAuth
+def signup_redirect(request):
+    messages.error(request, 'This account already exist. Try sign in instead.')
+    return redirect('login')
+    # return render(request, 'home', {
+    #     'messages': messages
+    # })

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load socialaccount %}
+
 {% block title %}
 <title>Login</title>
 {% endblock %}
@@ -11,10 +13,24 @@
 <p>{{ error }}</p>
 {% endif %}
 
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+   {% endfor %}
+</ul>
+{% endif %}
+
 <form method="POST">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="Login">
+    <button>
+        <a href="{% provider_login_url 'google'%}?next=/">
+            <i class="fab fa-google"></i>
+            Login with Google
+        </a>
+    </button>
 </form>
 
 {% endblock %}
