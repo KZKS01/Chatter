@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
-
 
 # SIGNUP 
 def signup(request):
@@ -36,8 +36,8 @@ def signup(request):
 
 # Google OAuth
 def signup_redirect(request):
-    messages.error(request, 'This account already exist. Try sign in instead.')
+    messages.error(request, 'This account already exist. Try login instead.')
     return redirect('login')
-    # return render(request, 'home', {
-    #     'messages': messages
-    # })
+
+# @login_required
+# def posts_index(request):
