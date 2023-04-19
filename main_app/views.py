@@ -3,6 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
+from .models import Post
+
 
 # Create your views here.
 def home(request):
@@ -39,5 +43,37 @@ def signup_redirect(request):
     messages.error(request, 'This account already exist. Try login instead.')
     return redirect('login')
 
-# @login_required
-# def posts_index(request):
+
+# POSTS
+class PostCompose(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ('content',)
+    template_name = 'posts/post_form.html' 
+
+    # take validated inputs to create a model instance
+    def form_valid(self, form):
+        form.instance.user = self.request.user # associate the new post with the user that created it
+        # calls the parent class method form_valid and returns its result
+        # the parent method saves the form data to the db & redirects to the success URL specified in the view
+        return super().form_valid(form)
+
+
+@login_required
+def posts_index(request):
+    posts = Post.objects.filter(user=request.user) # to be used in the html
+    username = request.user.username
+    user_id = request.user.id
+    return render(request, 'posts/posts_index.html', {
+        'posts': posts, 
+        'username' : username,
+        'user_id': user_id,
+        })
+
+@login_required
+def post_detail(request, post_id):
+    post = Post.objects.get(id=post_id)
+    user = request.user
+    return render(request, 'posts/post_detail.html', {
+        'post': post,
+        'user': user,
+        })

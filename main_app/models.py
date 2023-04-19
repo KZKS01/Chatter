@@ -8,3 +8,6 @@ class Post(models.Model):
    content = models.TextField(max_length=300)
    created_at = models.DateTimeField(auto_now_add=True)
    likes = models.ManyToManyField(User, 'liked_posts')
+
+   def get_absolute_url(self):
+      return reverse('posts_index')

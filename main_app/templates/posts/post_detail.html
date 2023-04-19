@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{ user.username }}@({{ user_id }}) / Chatter</title>
+{% endblock %}
+
+{% for post in posts %}
+{% block content %}
+<div>
+        <p>{{ post.content }}</p>
+</div>
+
+{% endblock %}
+{% endfor %} 
+
