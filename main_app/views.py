@@ -5,8 +5,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Photo
+import boto3
+import uuid
 
+S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
+BUCKET = 'k-chatter'
 
 # Create your views here.
 def home(request):
@@ -91,3 +95,31 @@ def post_detail(request, post_id):
         'user': user,
         })
 
+
+# AWS - Photo Upload
+def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer param
+    # attempt to collect photo submission from req
+    # if file not found, None is returned and assigned to the var photo-file
+    photo_file = request.FILES.get('photo-file', None)
+
+    # if photo file present
+    if photo_file:
+        # set up a s3 client obj for working with AMZN s3
+        s3 = boto3.client('s3')
+
+    # create a UNIQUE name for the file with uuid
+    # uuid.uuid4() fn generates a random UUID
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+
+    # try upload file to aws s3 via s3.upload_fileobj() method
+    try: 
+        s3.upload_fileobj(photo_file, BUCKET, key)
+        # generate a unique url for the img using the 3 var
+        url = f"{S3_BASE_URL}{BUCKET}/{key}"
+        Photo.objects.create(url=url, post_id=post_id)
+
+    except Exception as error:
+        # print err to debug
+        print(f'Photo upload failed: {error}')
+    # redirect to the detail pg
+    return redirect('post_detail', post_id=post_id)

@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('accounts/signup/', views.signup, name='signup'),
     path('chatter/compose/', views.PostCompose.as_view(), name='post_compose'),
+    path('chatter/<int:post_id>/add_photo', views.add_photo, name='add_photo'),
     path('chatter/', views.posts_index, name='posts_index'),
     path('chatter/<int:post_id>/', views.post_detail, name='post_detail'),
     path('chatter/<int:pk>/edit/', views.PostEdit.as_view(), name='post_edit'),
