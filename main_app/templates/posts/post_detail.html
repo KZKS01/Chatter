@@ -7,12 +7,16 @@
 {% for post in posts %}
 {% block content %}
 <div>
+    <p>{{ post.user.username }}</p>
     <p>{{ post.content }}</p>
+    <p>{{ post.created_at }}</p>
 </div>
+{% if user.is_authenticated and user == post.user %}
 <div>
     <a href="{% url 'post_edit' post.id %}">Edit</a>
     <a href="{% url 'post_delete' post.id %}">Delete</a>
 </div>
+{% endif %}
 
 {% endblock %}
 {% endfor %} 

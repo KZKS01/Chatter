@@ -10,7 +10,8 @@ from .models import Post
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    posts = Post.objects.all() # to be used in the html
+    return render(request, 'home.html', {'posts': posts})
 
 # SIGNUP 
 def signup(request):
@@ -72,11 +73,13 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 def posts_index(request):
     posts = Post.objects.filter(user=request.user) # to be used in the html
     username = request.user.username
+    user = request.user
     user_id = request.user.id
     return render(request, 'posts/posts_index.html', {
         'posts': posts, 
         'username' : username,
         'user_id': user_id,
+        'user': user,
         })
 
 @login_required

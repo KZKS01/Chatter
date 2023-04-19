@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block content %}
-{% for post in posts %}
-<div>
+  {% for post in posts %}
+  <div>
     <a href="{% url 'post_detail' post.id %}">
-        <span>{{ post.content }}</span>
-        <span>{{ post.created_at }}</span>
+        <p>{{ post.user.username }}</p>
+        <p>{{ post.content }}</p>
+        <p>{{ post.created_at }}</p>
     </a>
-</div>
-{% endfor %}
-
+    <br>
+  </div>
+  {% endfor %}
 {% endblock %}
-

@@ -6,4 +6,16 @@
     <input type="text" placeholder="Search Chatter">
     <button type="submit">Search</button>
 </form>
+
+{% for post in posts %}
+<div>
+    <a href="{% url 'post_detail' post.id %}">
+        <p>{{ post.user.username }}</p>
+        <p>{{ post.content }}</p>
+        <p>{{ post.created_at }}</p>
+    </a>
+    <br>
+</div>
+{% endfor %}
+
 {% endblock %}
