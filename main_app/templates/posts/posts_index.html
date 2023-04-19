@@ -9,6 +9,7 @@
 <div>
     <a href="{% url 'post_detail' post.id %}">
         <span>{{ post.content }}</span>
+        <span>{{ post.created_at }}</span>
     </a>
 </div>
 {% endfor %}

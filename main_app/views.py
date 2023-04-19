@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post
 
 
@@ -57,6 +57,16 @@ class PostCompose(LoginRequiredMixin, CreateView):
         # the parent method saves the form data to the db & redirects to the success URL specified in the view
         return super().form_valid(form)
 
+class PostEdit(LoginRequiredMixin, UpdateView):
+    model = Post
+    fields = ('content', )
+    template_name = 'posts/post_form.html'
+
+class PostDelete(LoginRequiredMixin, DeleteView):
+    model = Post
+    success_url = '/chatter/'
+    template_name = 'posts/post_confirm_delete.html'
+
 
 @login_required
 def posts_index(request):
@@ -77,3 +87,4 @@ def post_detail(request, post_id):
         'post': post,
         'user': user,
         })
+

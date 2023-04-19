@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Delete Post?</title> 
+{% endblock %}
+
+{% block content %}
+<p>This can’t be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Chatter search results. </p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+    <a href="{% url 'post_detail' object.id %}">Cancel</a>
+</form>
+
+{% endblock %}

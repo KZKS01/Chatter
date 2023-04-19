@@ -7,7 +7,11 @@
 {% for post in posts %}
 {% block content %}
 <div>
-        <p>{{ post.content }}</p>
+    <p>{{ post.content }}</p>
+</div>
+<div>
+    <a href="{% url 'post_edit' post.id %}">Edit</a>
+    <a href="{% url 'post_delete' post.id %}">Delete</a>
 </div>
 
 {% endblock %}
