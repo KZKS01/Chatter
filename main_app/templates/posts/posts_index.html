@@ -5,14 +5,21 @@
 {% endblock %}
 
 {% block content %}
-  {% for post in posts %}
-  <div>
-    <a href="{% url 'post_detail' post.id %}">
-        <p>{{ post.user.username }}</p>
-        <p>{{ post.content }}</p>
-        <p>{{ post.created_at }}</p>
-    </a>
-    <br>
-  </div>
-  {% endfor %}
+{% for post in posts %}
+<div>
+  <p>{{ post.user.username }}</p>
+  <a href="{% url 'post_detail' post.id %}">
+    <p>{{ post.content }}</p>
+  </a>
+</div>
+
+<!-- Display photos -->
+{% for photo in post.photo_set.all %}
+<img src="{{ photo.url }}">
+{% endfor %}
+
+<p>{{ post.created_at }}</p>
+<br>
+{% endfor %}
+
 {% endblock %}

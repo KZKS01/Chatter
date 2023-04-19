@@ -90,9 +90,11 @@ def posts_index(request):
 def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     user = request.user
+    user_id = request.user.id
     return render(request, 'posts/post_detail.html', {
         'post': post,
         'user': user,
+        'user_id': user_id,
         })
 
 
