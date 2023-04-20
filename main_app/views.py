@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post, Photo
+from django.db.models import Q # search fn: allows for complex queries using logical operators like &, |, and ~ (not)
 import boto3
 import uuid
 
@@ -76,7 +77,7 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def posts_index(request):
     posts = Post.objects.filter(user=request.user) # to be used in the html
-    username = request.user.username
+    
     user = request.user
     user_id = request.user.id
     return render(request, 'posts/posts_index.html', {
@@ -97,6 +98,20 @@ def post_detail(request, post_id):
         'user_id': user_id,
         })
 
+# search function
+def search(request):
+
+    if request.method == 'GET':
+        searching = request.GET.get('searching', None)
+        if searching:
+            results = Post.objects.filter(Q(user__username__icontains=searching) | Q(content__icontains=searching))
+        else:
+            results = []
+
+    return render(request, 'posts/search.html', {
+        'results': results,
+        'searching': searching,
+    })
 
 # AWS - Photo Upload
 def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer param

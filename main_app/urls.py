@@ -10,4 +10,5 @@ urlpatterns = [
     path('chatter/<int:post_id>/', views.post_detail, name='post_detail'),
     path('chatter/<int:pk>/edit/', views.PostEdit.as_view(), name='post_edit'),
     path('chatter/<int:pk>/delete/', views.PostDelete.as_view(), name='post_delete'),
+    path('search/', views.search, name='search'),
 ]

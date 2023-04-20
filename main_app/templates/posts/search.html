@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Searched results</title>
+{% endblock %}
+
+{% block content %}
+{% if results %}
+<ul>
+    {% for result in results %}
+    <li>
+        <a href="{% url 'post_detail' result.id %}">{{result.content}}</a>
+    </li>
+
+    <!-- Display photos -->
+    {% for photo in result.photo_set.all %}
+    <img src="{{ photo.url }}">
+    {% endfor %}
+
+    <p>{{ result.created_at }}</p>
+    {% endfor %}
+</ul>
+<br>
+{% elif searching %}
+    <p>No results found.</p>
+{% endif %}
+
+{% endblock %}
