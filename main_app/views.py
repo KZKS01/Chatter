@@ -77,7 +77,7 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def posts_index(request):
     posts = Post.objects.filter(user=request.user) # to be used in the html
-    
+    username = request.user.username
     user = request.user
     user_id = request.user.id
     return render(request, 'posts/posts_index.html', {

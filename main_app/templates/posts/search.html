@@ -2,9 +2,14 @@
 
 {% block title %}
 <title>Searched results</title>
-{% endblock %}
+{% endblock %}i
 
 {% block content %}
+<form method="GET">
+    <input type="text" name="searching" value="{{searching}}">
+    <button type="submit">Search</button>
+</form>
+
 {% if results %}
 <ul>
     {% for result in results %}
@@ -18,7 +23,16 @@
     {% endfor %}
 
     <p>{{ result.created_at }}</p>
+    <br>
     {% endfor %}
+
+{% if user.is_authenticated and user == post.user %}
+<div>
+   <a href="{% url 'post_edit' post.id %}">Edit</a>
+   <a href="{% url 'post_delete' post.id %}">Delete</a>
+</div>
+{% endif %}
+
 </ul>
 <br>
 {% elif searching %}
