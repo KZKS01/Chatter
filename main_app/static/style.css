@@ -65,3 +65,33 @@
   font-size: 16px;
   width: 500px;
 }
+
+.bold {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 30vh;
+}
+
+/* home pg */
+.search-form {
+    float: right;
+    display: flex;
+    align-items: center;
+  }
+
+  .sidenav-right {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+  }
+
+#homeCard{
+    width: 70%;
+}
+
+#homeA{
+    text-decoration: none;
+    color: black;
+}

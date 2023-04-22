@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,30 +15,27 @@
     <title>Chatter</title>
     {% endblock %}
 </head>
+
 <body>
-    <header>
-        <nav>
-            <ul id="nav-mobile" class="sidenav sidenav-fixed">
-                {% if user.is_authenticated %}
-                <li class="bold">
-                    <a class="waves-effect waves-teal" href="{% url 'logout' %}">Logout</a>
-                    <a class="waves-effect waves-teal" href="{% url 'home' %}">Home</a>
-                    <a class="waves-effect waves-teal" href="{% url 'post_compose' %}">New Post</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a href="{% url 'signup' %}">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'login' %}">Login</a>
-                </li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
-    
+    <ul id="nav-mobile" class="sidenav sidenav-fixed center-align">
+        {% if user.is_authenticated %}
+        <li class="bold">
+            <a class="waves-effect waves-teal" href="{% url 'logout' %}">Logout</a>
+            <a class="waves-effect waves-teal" href="{% url 'home' %}">Home</a>
+            <a class="waves-effect waves-teal" href="{% url 'post_compose' %}">New Post</a>
+        </li>
+        {% else %}
+        <li class="bold">
+            <a href="{% url 'signup' %}">Sign Up</a>
+        </li>
+        <li class="bold">
+            <a href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+    </ul>
     {% block content %}
     {% endblock %}
 
 </body>
+
 </html>
