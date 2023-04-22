@@ -7,30 +7,48 @@
 {% endblock %}
 
 {% block content %}
-<h1>Login</h1>
+<div class="container">
+    <h1>Login</h1>
 
-{% if error %}
-<p>{{ error }}</p>
-{% endif %}
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
 
-{% if messages %}
-<ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-   {% endfor %}
-</ul>
-{% endif %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Login">
-    <button>
-        <a href="{% provider_login_url 'google'%}?next=/">
-            <i class="fab fa-google"></i>
-            Login with Google
-        </a>
-    </button>
-</form>
-
+    <div class="valign-wrapper row login-box center-align">
+        <div class="col card hoverable s10 m6 l4">
+            <form method="POST" class="col s12">
+                <div class="card-content">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {{ form.password.label_tag }}
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <div class="d-grid gap-4 d-md-flex">
+                        <input type="submit" value="Login">
+                        <button>
+                            <a href="{% provider_login_url 'google'%}?next=/">
+                                Login with Google
+                            </a>
+                    </div>
+                    </button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

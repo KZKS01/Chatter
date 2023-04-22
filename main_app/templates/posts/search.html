@@ -19,7 +19,7 @@
 
     <!-- Display photos -->
     {% for photo in result.photo_set.all %}
-    <img src="{{ photo.url }}">
+    <img src="{{ photo.url }}" class="rounded">
     {% endfor %}
 
     <p>{{ result.created_at }}</p>

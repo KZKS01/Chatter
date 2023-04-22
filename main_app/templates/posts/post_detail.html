@@ -13,7 +13,7 @@
    
    <!-- Display photos -->
    {% for photo in post.photo_set.all %}
-   <img src="{{ photo.url }}">
+   <img src="{{ photo.url }}" class="rounded">
    {% endfor %}
    
    <!-- Upload photos -->
