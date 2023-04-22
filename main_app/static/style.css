@@ -30,21 +30,38 @@
 }
 
 /* login pg */
-#googleBtn {
-    width: 100%; 
+#gBtn {
     text-align: center; 
-    border-bottom: 1px solid #000; 
-    line-height: 0.1em;
     margin: 10px 0 20px; 
+    border-radius: 50px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    width: 500px;
  } 
- 
- #googleBtn span { 
-     background:#fff; 
-     padding:0 10px; 
- }
 
-#signin{
+#sForms{
     width: 60%;
     margin: auto;
     margin-top: 100px;
  }
+
+ #card-content{
+    padding: 80px;
+ }
+
+ #bigger{
+    font-size: 0.9em;
+ }
+
+.input-field{
+    text-align: left;
+}
+
+#login-btn, #submit-btn{
+  border-radius: 50px;
+  background-color: black;
+  color: #fff;
+  font-size: 16px;
+  width: 500px;
+}
