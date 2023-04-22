@@ -8,27 +8,36 @@
 
 {% block content %}
 <div class="container">
-    <h1>Login</h1>
+    <div class="col card hoverable s10 m6 l4 mx-auto center-align" id="signin">
+        <div class="col card hoverable s10 m6 1">
+            <h4><strong>Sign in to Chatter</strong></h4>
 
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
+            {% if error %}
+            <p>{{ error }}</p>
+            {% endif %}
 
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
-    <div class="valign-wrapper row login-box center-align">
-        <div class="col card hoverable s10 m6 l4">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-light rounded-pill">
+                    <a href="{% provider_login_url 'google'%}?next=/">
+                        <i class="fa fa-google left"></i>Sign in with Google
+                    </a>
+                </button>
+            </div>
+            <br>
+            <hr>
             <form method="POST" class="col s12">
                 <div class="card-content">
                     {% csrf_token %}
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s12" id="login-form">
                             {{ form.username.label_tag }}
                             {{ form.username }}
                         </div>
@@ -37,18 +46,14 @@
                         <div class="input-field col s12">
                             {{ form.password.label_tag }}
                             {{ form.password }}
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <input type="submit" value="Next" class="btn btn-dark rounded-pill" id="login-btn">
+                            </div>
                         </div>
                     </div>
-                    <div class="d-grid gap-4 d-md-flex">
-                        <input type="submit" value="Login">
-                        <button>
-                            <a href="{% provider_login_url 'google'%}?next=/">
-                                Login with Google
-                            </a>
-                    </div>
-                    </button>
             </form>
         </div>
     </div>
 </div>
+
 {% endblock %}
