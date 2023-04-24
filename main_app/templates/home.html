@@ -11,18 +11,18 @@
     {% for post in posts %}
     <a href="{% url 'post_detail' post.id %}" id="homeA">
         <div class="card" id="postCard">
-            <div class="card-content">
-                <p>{{ post.user.username }} @{{post.user.id}} · {{ post.created_at }}</p>
+            <div class="card-content"> 
+                <p>{{ post.user.username }} @{{post.user.id}} · {{ post.created_at }}
                 {% if user.is_authenticated and user == post.user %}
                 <!-- Dropdown Trigger -->
-                <a class="dropdown-trigger" data-target="dropdown">⋯</a>
+                <a class="dropdown-trigger" data-target="dropdown">⋯</a></p>
                 <!-- Dropdown Structure -->
                 <ul id="dropdown" class="dropdown-content">
                     <li>
-                        <a href="{% url 'post_edit' post.id %}">Edit</a>
+                        <a class="black-text text-darken-2" href="{% url 'post_edit' post.id %}"><b>Edit</b></a>
                     </li>
                     <li>
-                        <a href="{% url 'post_delete' post.id %}">Delete</a>
+                        <a class="black-text text-darken-2" href="{% url 'post_delete' post.id %}"><b>Delete</b></a>
                     </li>
                 </ul>
                 {% endif %}

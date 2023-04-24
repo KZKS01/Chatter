@@ -5,28 +5,30 @@
 {% endblock %}
 
 {% block content %}
-{% for post in posts %}
-<div>
-  <p>{{ post.user.username }}</p>
-  <a href="{% url 'post_detail' post.id %}">
-    <p>{{ post.content }}</p>
-  </a>
-</div>
+<main id="mainBase">
+  {% for post in posts %}
+  <div class="card" id="postCard">
+    <div class="card-content">
+      <p>{{ post.user.username }}</p>
+      <a href="{% url 'post_detail' post.id %}">
+        <p>{{ post.content }}</p>
+      </a>
 
-<!-- Display photos -->
-{% for photo in post.photo_set.all %}
-<img src="{{ photo.url }}" class="rounded">
-{% endfor %}
+      <!-- Display photos -->
+      {% for photo in post.photo_set.all %}
+      <img src="{{ photo.url }}" class="rounded">
+      {% endfor %}
 
-<p>{{ post.created_at }}</p>
+      <p>{{ post.created_at }}</p>
 
-{% if user.is_authenticated and user == post.user %}
-<div>
-   <a href="{% url 'post_edit' post.id %}">Edit</a>
-   <a href="{% url 'post_delete' post.id %}">Delete</a>
-</div>
-{% endif %}
-<br>
-{% endfor %}
-
+      {% if user.is_authenticated and user == post.user %}
+      <div>
+        <a href="{% url 'post_edit' post.id %}">Edit</a>
+        <a href="{% url 'post_delete' post.id %}">Delete</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</main>
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib import messages
@@ -16,7 +16,9 @@ BUCKET = 'k-chatter'
 # Create your views here.
 def home(request):
     posts = Post.objects.all() # to be used in the html
-    return render(request, 'home.html', {'posts': posts})
+    return render(request, 'home.html', {
+        'posts': posts
+    })
 
 # SIGNUP 
 def signup(request):
@@ -100,7 +102,6 @@ def post_detail(request, post_id):
 
 # search function
 def search(request):
-
     if request.method == 'GET':
         searching = request.GET.get('searching', None)
         if searching:
@@ -140,3 +141,26 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
         print(f'Photo upload failed: {error}')
     # redirect to the detail pg
     return redirect('post_detail', post_id=post_id)
+
+# # AWS - Photo DELETE
+# def delete_photo(request, post_id):
+#     # retrieve img
+#     post= get_object_or_404(Post, id=post_id)
+#     photo = get_object_or_404(Photo, id=post.photo_id)
+
+#     # set up a s3 client obj for working with AMZN s3
+#     s3 = boto3.client('s3')
+#     # retrieve file name
+#     key = photo.url.split('/')[-1]
+#     # delete img from AWS S3
+#     try:
+#         s3.delete_object(Bucket=BUCKET, Key=key)
+#     except Exception as error:
+#         print(f'Photo delete failed:{error}')
+
+#     post_id = post.id
+
+#     # delete from my db
+#     photo.delete()
+
+#     return redirect('post_detail', post_id=post_id)

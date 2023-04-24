@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<main id="mainBase">
 <p>This can’t be undone and it will be removed from your profile, the timeline of any accounts that follow you, and from Chatter search results. </p>
 
 <form method="POST">
@@ -12,5 +13,5 @@
     <input type="submit" value="Delete">
     <a href="{% url 'post_detail' object.id %}">Cancel</a>
 </form>
-
+</main>
 {% endblock %}

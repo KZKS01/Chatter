@@ -6,40 +6,42 @@
 
 {% for post in posts %}
 {% block content %}
-<div>
+<main id="mainBase">
+   <div class="card" id="postCard">
+      <div class="card-content">
     <p>{{ post.user.username }}</p>
     <p>{{ post.content }}</p>
-   </div>
+    <!-- Display photos -->
+    {% for photo in post.photo_set.all %}
+    <img src="{{ photo.url }}" class="rounded">
+    {% endfor %}
+    
+    <!-- Upload photos -->
+    {% if user.is_authenticated and user == post.user %}
+    <form 
+    action="{% url 'add_photo' post.id %}" 
+    method="POST" 
+    enctype="multipart/form-data"
+    >
+    {% csrf_token %}
+    <input type="file" name="photo-file">
+    <input type="submit" value="Upload Photo">
+   </form>
+   {% endif %}
    
-   <!-- Display photos -->
-   {% for photo in post.photo_set.all %}
-   <img src="{{ photo.url }}" class="rounded">
-   {% endfor %}
+   <p>{{ post.created_at }}</p>
    
-   <!-- Upload photos -->
    {% if user.is_authenticated and user == post.user %}
-   <form 
-   action="{% url 'add_photo' post.id %}" 
-   method="POST" 
-   enctype="multipart/form-data"
-   >
-   {% csrf_token %}
-   <input type="file" name="photo-file">
-   <input type="submit" value="Upload Photo">
-</form>
+   <div>
+      <a href="{% url 'post_edit' post.id %}">Edit</a>
+      <a href="{% url 'post_delete' post.id %}">Delete</a>
+   </div>
 </div>
 {% endif %}
-
-<p>{{ post.created_at }}</p>
-
-{% if user.is_authenticated and user == post.user %}
-<div>
-   <a href="{% url 'post_edit' post.id %}">Edit</a>
-   <a href="{% url 'post_delete' post.id %}">Delete</a>
 </div>
-{% endif %}
+</div>
 
-
+</main>
 {% endblock %}
 {% endfor %} 
 
