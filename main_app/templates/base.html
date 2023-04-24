@@ -20,19 +20,28 @@
     <ul id="nav-mobile" class="sidenav sidenav-fixed center-align">
         {% if user.is_authenticated %}
         <li class="bold">
-            <a class="waves-effect waves-teal" href="{% url 'logout' %}">Logout</a>
-            <a class="waves-effect waves-teal" href="{% url 'home' %}">Home</a>
-            <a class="waves-effect waves-teal" href="{% url 'post_compose' %}">New Post</a>
+            <a id="navContent" href="{% url 'logout' %}">Logout</a>
+            <a id="navContent" href="{% url 'home' %}">Home</a>
+            <a id="navContent" href="{% url 'post_compose' %}">New Post</a>
         </li>
         {% else %}
         <li class="bold">
-            <a href="{% url 'signup' %}">Sign Up</a>
+            <a id="navContent" href="{% url 'signup' %}">Sign Up</a>
         </li>
         <li class="bold">
-            <a href="{% url 'login' %}">Login</a>
+            <a id="navContent" href="{% url 'login' %}">Sign in</a>
         </li>
         {% endif %}
     </ul>
+    </div>
+
+    <div id="nav-right" class="sidenav sidenav-fixed right-align">
+        <form method="GET" action="{% url 'search' %}" class="search-form">
+            <input type="text" placeholder="Search Chatter" name="searching">
+            <button type="submit" id="searchBtn">Search</button>
+        </form>
+    </div>
+
     {% block content %}
     {% endblock %}
 

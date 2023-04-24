@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block title %}
+<br>
+<main id="mainBase">
 <title>Searched results</title>
 {% endblock %}i
 
 {% block content %}
-<form method="GET">
-    <input type="text" name="searching" value="{{searching}}">
-    <button type="submit">Search</button>
-</form>
 
 {% if results %}
+<div class="card" id="postCard">
+    <div class="card-content">
 <ul>
     {% for result in results %}
     <li>
@@ -38,5 +38,7 @@
 {% elif searching %}
     <p>No results found.</p>
 {% endif %}
-
+</div>
+</div>
+</main>
 {% endblock %}
