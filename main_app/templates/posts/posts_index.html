@@ -6,29 +6,41 @@
 
 {% block content %}
 <main id="mainBase">
-  {% for post in posts %}
-  <div class="card" id="postCard">
-    <div class="card-content">
-      <p>{{ post.user.username }}</p>
-      <a href="{% url 'post_detail' post.id %}">
-        <p>{{ post.content }}</p>
-      </a>
-
-      <!-- Display photos -->
-      {% for photo in post.photo_set.all %}
-      <img src="{{ photo.url }}" class="rounded">
-      {% endfor %}
-
-      <p>{{ post.created_at }}</p>
-
-      {% if user.is_authenticated and user == post.user %}
-      <div>
-        <a href="{% url 'post_edit' post.id %}">Edit</a>
-        <a href="{% url 'post_delete' post.id %}">Delete</a>
-      </div>
-      {% endif %}
-    </div>
-  </div>
-  {% endfor %}
+{% for post in posts %}
+    <a href="{% url 'post_detail' post.id %}" id="homeA">
+    <div class="card" id="postCard">
+            <div class="card-content"> 
+                <p><img class="user_avatar" src="{{ user_profile.avatar.url }}"> 
+                    <span class="post_user_bar"><strong>{{ post.user.username }}</strong>
+                        <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
+                        {% if user.is_authenticated and user == post.user %}
+                        <!-- Dropdown Trigger -->
+                        <span class="dropdown-trigger" data-target="dropdown"><b class="black-text text-darken-2">⋯</b></span></p></span>
+                        {% endif %}
+                        <div class="postContent">
+                            <p>{{ post.content }}</p>
+                            <!-- Display photos -->
+                            {% for photo in post.photo_set.all %}
+                            <img src="{{ photo.url }}" class="rounded">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Dropdown Structure -->
+            <ul id="dropdown" class="dropdown-content">
+                <li>
+                    <a class="black-text text-darken-2 edit_btn" href="{% url 'post_edit' post.id %}"><b>Edit</b></a>
+                </li>
+                <li>
+                    <a class="red-text text-darken-2 delete_btn" href="{% url 'post_delete' post.id %}"><b>Delete</b></a>
+                </li>
+            </ul>
+    {% endfor %}
 </main>
+<script>
+  $(document).ready(function() {
+      $(".dropdown-trigger").dropdown();
+  });
+</script>
 {% endblock %}

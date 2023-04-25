@@ -46,11 +46,23 @@
 
 /* home pg */
 .user_avatar{
-    width: 40px; 
-    padding-top: 20px;
+    width: 45px; 
+    padding-right: 10px;
 }
+
+.post_user_bar {
+    position: relative;
+    top: -20px; 
+}
+
+.post_bar{
+    padding-left: 2px;
+    color: grey
+}
+
 .dropdown-trigger {
-    float: right
+    float: right;
+    margin-top: 10px;
 }
 
 .dropdown-content {
@@ -73,6 +85,17 @@
 
 .postContent .rounded{
     border-radius: 10px;  
+}
+
+.edit_btn, .delete_btn{
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.dropdown-content li {
+    display: flex;
+    align-items: flex-start;
 }
 
 /* new/edit pg */
