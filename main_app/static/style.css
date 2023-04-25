@@ -45,6 +45,10 @@
 
 
 /* home pg */
+.user_avatar{
+    width: 40px; 
+    padding-top: 20px;
+}
 .dropdown-trigger {
     float: right
 }

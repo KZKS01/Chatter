@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('accounts/signup/', views.signup, name='signup'),
+    # posts
     path('chatter/compose/', views.PostCompose.as_view(), name='post_compose'),
     path('chatter/<int:post_id>/add_photo', views.add_photo, name='add_photo'),
     # path('chatter/<int:post_id>/delete_photo', views.delete_photo, name='delete_photo'),
@@ -12,6 +13,8 @@ urlpatterns = [
     path('chatter/<int:pk>/edit/', views.PostEdit.as_view(), name='post_edit'),
     path('chatter/<int:pk>/delete/', views.PostDelete.as_view(), name='post_delete'),
     path('search/', views.search, name='search'),
+    # user
+    path('profile/', views.user_profile, name='user_profile'),
 ]
 
 

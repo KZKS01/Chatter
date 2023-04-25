@@ -17,7 +17,8 @@ BUCKET = 'k-chatter'
 def home(request):
     posts = Post.objects.all() # to be used in the html
     return render(request, 'home.html', {
-        'posts': posts
+        'posts': posts,
+        'user_profile': request.user.userprofile,
     })
 
 # SIGNUP 
@@ -45,6 +46,12 @@ def signup(request):
         'form': form, # passing form data
         'error': error_message
     })
+
+
+def user_profile(request):
+    return render(request, 'users/user_profile.html')
+
+
 
 # Google OAuth
 def signup_redirect(request):
