@@ -32,7 +32,6 @@ jmespath==1.0.1
 msgpack==1.0.5
 oauthlib==3.2.2
 Pillow==9.5.0
-pkg_resources==0.0.0
 proto-plus==1.22.2
 protobuf==4.22.3
 psycopg2-binary==2.9.6
