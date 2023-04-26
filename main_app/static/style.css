@@ -129,10 +129,34 @@
     float: right;
 }
 
-#editCreateForm{
-    width: 70%;
+div#edit_form_input textarea {
+    border: none;
+    outline: none;
 }
 
+#img_container{
+    position: relative;
+    display: inline-block;
+}
+
+.img_delete_btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(22, 22, 22);
+    color: white;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.img_delete_btn:hover{
+    background-color: rgb(121, 119, 119);
+}
+
+#img_warp{
+    position: relative;
+    display: inline-block;
+}
 /* login pg */
 #gBtn {
     text-align: center; 
@@ -188,3 +212,6 @@
 .btn-light a {
     color: black;
 }    
+
+
+/* post_detail */

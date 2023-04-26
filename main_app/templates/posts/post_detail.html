@@ -20,29 +20,6 @@
                       <p>{{ post.content }}</p><br>
                       
                   </div>
-                  {% if post.photo_set and user == post.user %}
-                     <!-- Display photos -->
-                     {% for photo in post.photo_set.all %}
-                     <img src="{{ photo.url }}" class="rounded">
-                     <form method="POST" action="{% url 'delete_photo' post.id photo.id%}">
-                     {% csrf_token %}
-                     <input type="submit" value="Delete">
-                     <a href="{% url 'post_detail' post.id %}">Cancel</a>
-                     </form>
-                     {% endfor %}
-                 {% endif %}
-                      <!-- Upload photos -->
-                     {% if user.is_authenticated and user == post.user %}
-                     <form 
-                     action="{% url 'add_photo' post.id %}" 
-                     method="POST" 
-                     enctype="multipart/form-data"
-                     >
-                     {% csrf_token %}
-                     <input type="file" name="photo-file">
-                     <input type="submit" value="Upload Photo">
-                     </form>
-                     {% endif %}
               </div>
           </div>
     <!-- Dropdown Structure -->

@@ -19,7 +19,6 @@ def home(request):
     posts = Post.objects.all() # to be used in the html
     return render(request, 'home.html', {
         'posts': posts,
-        'user_profile': request.user.userprofile,
 })
 
 
@@ -131,6 +130,7 @@ def search(request):
         'user_profile': request.user.userprofile,
     })
 
+@login_required
 # AWS - Photo Upload
 def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer param
     # attempt to collect photo submission from req
@@ -159,6 +159,7 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
     # redirect to the detail pg
     return redirect('post_detail', post_id=post_id)
 
+@login_required
 # # AWS - Photo DELETE
 def delete_photo(request, post_id, photo_id):
     # retrieve img
