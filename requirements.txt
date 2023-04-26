@@ -1,5 +1,4 @@
 asgiref==3.6.0
-backports.zoneinfo==0.2.1
 boto3==1.26.115
 botocore==1.29.115
 CacheControl==0.12.11
@@ -35,7 +34,6 @@ jmespath==1.0.1
 msgpack==1.0.5
 oauthlib==3.2.2
 Pillow==9.5.0
-pkg_resources==0.0.0
 proto-plus==1.22.2
 protobuf==4.22.3
 psycopg2==2.9.6
