@@ -29,9 +29,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '/home/kathy/Chatter/main_app/media/') # dir
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['k-chatter.herokuapp.com'] # for set up CORS
+ALLOWED_HOSTS = ['k-chatter.herokuapp.com', '127.0.0.1'] # for set up CORS
 
 
 # Application definition
@@ -94,11 +94,7 @@ WSGI_APPLICATION = 'Chatter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'KZKS01/k-chatter',
-        'USER': os.environ['USER'],
-        'PASSWORD': os.environ['PASSWORD'],
-        'HOST': 'db.bit.io',
-        'PORT': '5432',
+        'NAME': 'Chatter',
     }
 }
 
