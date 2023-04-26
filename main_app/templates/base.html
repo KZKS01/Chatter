@@ -37,11 +37,9 @@
 
     <div id="nav-right" class="sidenav sidenav-fixed right-align">
         <form method="GET" action="{% url 'search' %}" class="search-form">
-            <input type="text" placeholder="Search Chatter" name="searching">
-            <button type="submit" id="searchBtn">Search</button>
+            <input type="text" class="black-text" placeholder="Search Chatter" name="searching" id="pill">
         </form>
     </div>
-
     {% block content %}
     {% endblock %}
 

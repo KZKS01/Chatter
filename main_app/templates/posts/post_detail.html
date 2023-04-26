@@ -23,6 +23,18 @@
                       <img src="{{ photo.url }}" class="rounded">
                       {% endfor %}
                   </div>
+                      <!-- Upload photos -->
+                     {% if user.is_authenticated and user == post.user %}
+                     <form 
+                     action="{% url 'add_photo' post.id %}" 
+                     method="POST" 
+                     enctype="multipart/form-data"
+                     >
+                     {% csrf_token %}
+                     <input type="file" name="photo-file">
+                     <input type="submit" value="Upload Photo">
+                     </form>
+                     {% endif %}
               </div>
           </div>
     <!-- Dropdown Structure -->
@@ -34,18 +46,7 @@
           <a class="red-text text-darken-2 delete_btn" href="{% url 'post_delete' post.id %}"><b>Delete</b></a>
       </li>
   </ul>
-    <!-- Upload photos -->
-    {% if user.is_authenticated and user == post.user %}
-    <form 
-    action="{% url 'add_photo' post.id %}" 
-    method="POST" 
-    enctype="multipart/form-data"
-    >
-    {% csrf_token %}
-    <input type="file" name="photo-file">
-    <input type="submit" value="Upload Photo">
-   </form>
-   {% endif %}
+
    <script>
       $(document).ready(function() {
           $(".dropdown-trigger").dropdown();

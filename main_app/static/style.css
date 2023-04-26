@@ -36,6 +36,16 @@
     margin-top: 22px;
 }
 
+#pill {
+    border-block: 1px transparent;
+    border-radius: 30px;
+    background-color: rgb(243, 241, 241);
+    padding-left: 10px;
+}
+
+#pill::placeholder {
+    color: rgb(88, 87, 87);
+}
  #nav-right{
     right: 0;
     left: auto;

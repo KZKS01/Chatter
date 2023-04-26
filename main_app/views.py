@@ -111,6 +111,7 @@ def post_detail(request, post_id):
 
 # search function
 def search(request):
+    user = request.user
     if request.method == 'GET':
         searching = request.GET.get('searching', None)
         if searching:
@@ -121,6 +122,8 @@ def search(request):
     return render(request, 'posts/search.html', {
         'results': results,
         'searching': searching,
+        'user': user,
+        'user_profile': request.user.userprofile,
     })
 
 # AWS - Photo Upload
