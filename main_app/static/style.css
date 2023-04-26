@@ -32,8 +32,19 @@
     padding-left: 35px;
 }
 
-#searchBtn{
-    margin-top: 22px;
+.search_btn{
+    margin-left: 5px;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #69bbee;
+    font-size: 30px;
+    color: #fff;
+}
+
+.search_btn:hover{
+    background-color: #5a99c0;
 }
 
 #pill {

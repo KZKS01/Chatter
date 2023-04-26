@@ -14,12 +14,14 @@ S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'k-chatter'
 
 # Create your views here.
+
 def home(request):
     posts = Post.objects.all() # to be used in the html
     return render(request, 'home.html', {
         'posts': posts,
         'user_profile': request.user.userprofile,
-    })
+})
+
 
 # SIGNUP 
 def signup(request):
@@ -109,13 +111,16 @@ def post_detail(request, post_id):
         'user_profile': request.user.userprofile,
         })
 
+
 # search function
 def search(request):
     user = request.user
+    predicted_results = []
     if request.method == 'GET':
         searching = request.GET.get('searching', None)
         if searching:
             results = Post.objects.filter(Q(user__username__icontains=searching) | Q(content__icontains=searching))
+
         else:
             results = []
 
@@ -155,24 +160,30 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
     return redirect('post_detail', post_id=post_id)
 
 # # AWS - Photo DELETE
-# def delete_photo(request, post_id):
-#     # retrieve img
-#     post= get_object_or_404(Post, id=post_id)
-#     photo = get_object_or_404(Photo, id=post.photo_id)
+def delete_photo(request, post_id, photo_id):
+    # retrieve img
+    post= get_object_or_404(Post, id=post_id)
+    # photos = post.photo_set.all() # get the imgs related to this post
+    photo = get_object_or_404(Photo, id=photo_id)
 
-#     # set up a s3 client obj for working with AMZN s3
-#     s3 = boto3.client('s3')
-#     # retrieve file name
-#     key = photo.url.split('/')[-1]
-#     # delete img from AWS S3
-#     try:
-#         s3.delete_object(Bucket=BUCKET, Key=key)
-#     except Exception as error:
-#         print(f'Photo delete failed:{error}')
+    # set up a s3 client obj for working with AMZN s3
+    s3 = boto3.client('s3')
 
-#     post_id = post.id
+    # retrieve file name
+    # for photo in photos:
+    #     key = photo.url.split('/')[-1]
 
-#     # delete from my db
-#     photo.delete()
+    key = photo.url.split('/')[-1]
 
-#     return redirect('post_detail', post_id=post_id)
+    # delete img from AWS S3
+    try:
+        s3.delete_object(Bucket=BUCKET, Key=key)
+    except Exception as error:
+        print(f'Photo delete failed:{error}')
+
+    post_id = post.id
+
+    # delete from my db
+    photo.delete()
+
+    return redirect('post_detail', post_id=post_id)

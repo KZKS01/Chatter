@@ -17,12 +17,20 @@
                   <span class="dropdown-trigger" data-target="dropdown"><b class="black-text text-darken-2">⋯</b></span></p></span>
                   {% endif %}
                   <div class="postContent">
-                      <p>{{ post.content }}</p>
-                      <!-- Display photos -->
-                      {% for photo in post.photo_set.all %}
-                      <img src="{{ photo.url }}" class="rounded">
-                      {% endfor %}
+                      <p>{{ post.content }}</p><br>
+                      
                   </div>
+                  {% if post.photo_set and user == post.user %}
+                     <!-- Display photos -->
+                     {% for photo in post.photo_set.all %}
+                     <img src="{{ photo.url }}" class="rounded">
+                     <form method="POST" action="{% url 'delete_photo' post.id photo.id%}">
+                     {% csrf_token %}
+                     <input type="submit" value="Delete">
+                     <a href="{% url 'post_detail' post.id %}">Cancel</a>
+                     </form>
+                     {% endfor %}
+                 {% endif %}
                       <!-- Upload photos -->
                      {% if user.is_authenticated and user == post.user %}
                      <form 

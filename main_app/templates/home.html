@@ -20,7 +20,7 @@
                         <span class="dropdown-trigger" data-target="dropdown"><b class="black-text text-darken-2">⋯</b></span></p></span>
                         {% endif %}
                         <div class="postContent">
-                            <p>{{ post.content }}</p>
+                            <p>{{ post.content }}</p><br>
                             <!-- Display photos -->
                             {% for photo in post.photo_set.all %}
                             <img src="{{ photo.url }}" class="rounded">
