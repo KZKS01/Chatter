@@ -29,7 +29,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '/home/kathy/Chatter/main_app/media/') # dir
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
