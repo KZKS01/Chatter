@@ -19,7 +19,6 @@ def home(request):
     posts = Post.objects.all() # to be used in the html
     return render(request, 'home.html', {
         'posts': posts,
-        'user_profile': request.user.userprofile,
 })
 
 
@@ -48,11 +47,6 @@ def signup(request):
         'form': form, # passing form data
         'error': error_message
     })
-
-
-def user_profile(request):
-    return render(request, 'users/user_profile.html')
-
 
 
 # Google OAuth
@@ -96,7 +90,6 @@ def posts_index(request):
         'username' : username,
         'user_id': user_id,
         'user': user,
-        'user_profile': request.user.userprofile,
         })
 
 @login_required
@@ -108,7 +101,6 @@ def post_detail(request, post_id):
         'post': post,
         'user': user,
         'user_id': user_id,
-        'user_profile': request.user.userprofile,
         })
 
 
@@ -128,7 +120,6 @@ def search(request):
         'results': results,
         'searching': searching,
         'user': user,
-        'user_profile': request.user.userprofile,
     })
 
 # AWS - Photo Upload
