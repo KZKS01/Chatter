@@ -13,8 +13,6 @@ urlpatterns = [
     path('chatter/<int:pk>/edit/', views.PostEdit.as_view(), name='post_edit'),
     path('chatter/<int:pk>/delete/', views.PostDelete.as_view(), name='post_delete'),
     path('search/', views.search, name='search'),
-    # user
-    path('profile/', views.user_profile, name='user_profile'),
 ]
 
 

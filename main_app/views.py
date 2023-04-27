@@ -95,7 +95,6 @@ def posts_index(request):
         'username' : username,
         'user_id': user_id,
         'user': user,
-        'user_profile': request.user.userprofile,
         })
 
 @login_required
@@ -107,7 +106,6 @@ def post_detail(request, post_id):
         'post': post,
         'user': user,
         'user_id': user_id,
-        'user_profile': request.user.userprofile,
         })
 
 
@@ -127,7 +125,6 @@ def search(request):
         'results': results,
         'searching': searching,
         'user': user,
-        'user_profile': request.user.userprofile,
     })
 
 @login_required

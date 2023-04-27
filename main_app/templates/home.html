@@ -17,7 +17,7 @@
                         <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
                         {% if user.is_authenticated and user == post.user %}
                         <!-- Dropdown Trigger -->
-                        <span class="dropdown-trigger" data-target="dropdown"><b class="black-text text-darken-2">⋯</b></span></p></span>
+                        <span class="dropdown-trigger" data-target="dropdown{{ post.id }}"><b class="black-text text-darken-2">⋯</b></span></p></span>
                         {% endif %}
                         <div class="postContent">
                             <p>{{ post.content }}</p><br>
@@ -29,16 +29,18 @@
                     </div>
                 </div>
             </a>
-            <!-- Dropdown Structure -->
-            <ul id="dropdown" class="dropdown-content">
-                <li>
-                    <a class="black-text text-darken-2 edit_btn" href="{% url 'post_edit' post.id %}"><b>Edit</b></a>
-                </li>
-                <li>
-                    <a class="red-text text-darken-2 delete_btn" href="{% url 'post_delete' post.id %}"><b>Delete</b></a>
-                </li>
-            </ul>
     {% endfor %}
+{% for post in posts %}
+<!-- Dropdown Structure -->
+<ul id="dropdown{{ post.id }}" class="dropdown-content">
+    <li>
+        <a class="black-text text-darken-2 edit_btn" href="{% url 'post_edit' post.id %}"><b>Edit</b></a>
+    </li>
+    <li>
+        <a class="red-text text-darken-2 delete_btn" href="{% url 'post_delete' post.id %}"><b>Delete</b></a>
+    </li>
+</ul>
+{% endfor %}
 </main>
 <script>
     $(document).ready(function() {
