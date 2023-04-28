@@ -18,13 +18,13 @@
         <h1>New Post</h1>
         {% endif %}
 
-        <form method="POST"  class="col s12">
+        <form method="POST" class="col s12">
             {% csrf_token %}
             <div class="card-content">
-            <div class="row">
-                <div class="input-field col s12" id="edit_form_input">
-                    {{ form.content}}
-                </div>
+                <div class="row">
+                    <div class="input-field col s12" id="edit_form_input">
+                        <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10" cols="40"></textarea>
+                    </div>
                 <div id="img_container"> 
                     {% if post.photo_set and user == post.user %}
                        <!-- Display photos -->
