@@ -112,14 +112,20 @@ def post_detail(request, post_id):
 # search function
 def search(request):
     user = request.user
-    predicted_results = []
+
     if request.method == 'GET':
         searching = request.GET.get('searching', None)
-        if searching:
-            results = Post.objects.filter(Q(user__username__icontains=searching) | Q(content__icontains=searching))
 
-        else:
-            results = []
+        if not searching:
+            return redirect('home')
+
+        results = Post.objects.filter(
+            Q(user__username__icontains=searching) |
+            Q(content__icontains=searching)
+        )
+
+    else:
+        results = []
 
     return render(request, 'posts/search.html', {
         'results': results,
