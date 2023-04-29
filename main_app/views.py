@@ -83,6 +83,26 @@ class PostEdit(LoginRequiredMixin, UpdateView):
     fields = ('content', )
     template_name = 'posts/post_form.html'
 
+    # parent class of the UpdateView
+    # handling the incoming request and deciding which HTTP method (GET, etc.) to call depending on the req
+    def dispatch(self, request, *args, **kwargs):
+            # check if the user is allowed to edit the post
+            if not self.edit_permission():
+                return redirect('home')
+
+            # if allow, all the parent class's dispatch method
+            return super().dispatch(request, *args, **kwargs) # ensure that all the arguments are properly passed to the parent class's dispatch method
+
+    def edit_permission(self):
+        # get the object that this view is displaying.
+        post = self.get_object()
+
+        # check if the current user is the owner of the post.
+        if not post.user == self.request.user:
+            return False
+
+        return True
+
 class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = '/chatter/'
@@ -169,6 +189,7 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
 
 
 # AWS - Avatar Upload
+@login_required
 def add_avatar(request, user_id):
     avatar_file = request.FILES.get('avatar-file', None)
 

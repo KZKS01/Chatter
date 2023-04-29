@@ -18,5 +18,3 @@ urlpatterns = [
     path('userprofile/<int:user_id>/', views.user_profile, name='user_profile'),
 ]
 
-
-# TODO: USER IMG; ADDS COMMENT FUNCTION

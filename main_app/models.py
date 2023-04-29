@@ -13,6 +13,7 @@ class Post(models.Model):
 
    def get_absolute_url(self):
       return reverse('posts_index')
+
    
 class Photo(models.Model):
    url = models.CharField(max_length=200)

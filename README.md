@@ -1,6 +1,6 @@
 # **Chatter**
 
-# description: this is a CRUD app
+# Description: this is a CRUD app
 This is an app for users to create, view and edit their posts and share within the app community. The app also includes features such as searching for users and posts
 <br><br>
 
@@ -24,6 +24,7 @@ This is an app for users to create, view and edit their posts and share within t
 * Django
 * HTML
 * CSS
+* Materialize CSS
 * JavaScript
 * AWS S3
 * Heroku
@@ -35,7 +36,7 @@ Click [here](https://chatter-k.herokuapp.com/) to see the deployed app
 
 ## Next Steps:
 * More features: 
-  * comment other users' posts
+  * comment on other users' posts
   * react to a post using different emojis
   * follow other users
   * share someone's posts on my feed to my account
