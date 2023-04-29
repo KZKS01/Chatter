@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('allauth.urls')),
+    # path('', include('allauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     # need to be before line 24 so that it doesn't get overwritten
     path('social/signup/', views.signup_redirect, name='signup_redirect'), 
