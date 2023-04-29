@@ -1,0 +1,217 @@
+/* base */
+#nav-mobile{
+    width: 500px;
+}
+
+#mainBase{
+    padding-left: 500px;
+    padding-right: 500px;
+}
+
+#mainBase h1{
+    margin-top: 0;
+}
+
+.bold{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+#navContent{
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.search-form {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 5px;
+    padding-left: 35px;
+}
+
+.search_btn{
+    margin-left: 5px;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    border-radius: 45% / 45%;
+    border: none;
+    background-color: #69bbee;
+    font-size: 30px;
+    color: #fff;
+}
+
+.search_btn:hover{
+    background-color: #5a99c0;
+}
+
+#pill {
+    border-block: 1px transparent;
+    border-radius: 30px;
+    background-color: rgb(243, 241, 241);
+    padding-left: 10px;
+}
+
+#pill::placeholder {
+    color: rgb(88, 87, 87);
+}
+ #nav-right{
+    right: 0;
+    left: auto;
+    padding-right: 200px;
+    width: 500px;
+ }
+
+
+/* home pg */
+.user_avatar{
+    width: 45px; 
+    padding-right: 10px;
+}
+
+.post_user_bar {
+    position: relative;
+    top: -20px; 
+}
+
+.post_bar{
+    padding-left: 2px;
+    color: grey
+}
+
+.dropdown-trigger {
+    float: right;
+    margin-top: 10px;
+}
+
+.dropdown-content {
+    border-radius: 10px;
+}
+
+#postCard{
+    margin-bottom: 0;
+    margin-top: 0;
+} 
+
+#homeA{
+    text-decoration: none;
+    color: black;
+}
+
+.postContent{
+    margin-left: 50px;
+}
+
+.postContent .rounded{
+    border-radius: 10px;  
+}
+
+.edit_btn, .delete_btn{
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.dropdown-content li {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* new/edit pg */
+#share-btn{
+    border-radius: 50px;
+    background-color: rgb(87, 189, 230);
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    float: right;
+}
+
+div#edit_form_input textarea {
+    border: none;
+    outline: none;
+}
+
+#img_container{
+    position: relative;
+    display: inline-block;
+}
+
+.img_delete_btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(22, 22, 22);
+    color: white;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.img_delete_btn:hover{
+    background-color: rgb(121, 119, 119);
+}
+
+#img_warp{
+    position: relative;
+    display: inline-block;
+}
+/* login pg */
+#gBtn {
+    text-align: center; 
+    margin: 10px 0 20px; 
+    border-radius: 50px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    width: 500px;
+ }    
+
+#sForms{
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+ }   
+
+ #bigger{
+    font-size: 0.9em; 
+ }   
+
+.input-field{
+    text-align: left;
+}    
+
+#login-btn, #submit-btn{
+    border-radius: 50px;  
+    background-color: black;
+    color: #fff;
+    font-size: 16px;
+    width: 500px;
+}  
+
+
+/* signup pg */
+.btn-dark {
+    background-color: black;
+    color: white;
+}    
+
+.btn-dark:hover {
+    background-color: rgb(39, 39, 39);
+}    
+
+.btn-light {
+    background-color: white;
+}    
+
+.btn-light:hover {
+    background-color: rgb(240, 245, 250);
+}    
+
+.btn-light a {
+    color: black;
+}    
+
+
+/* post_detail */
