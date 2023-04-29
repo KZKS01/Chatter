@@ -43,16 +43,18 @@
                           {% endfor %}
                     {% endif %}
                 </div>
-                       <!-- Upload photos -->
-                       {% if user.is_authenticated and user == post.user %}
-                       <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
-                       {% csrf_token %}
-                       <input type="file" name="photo-file">
-                       <input type="submit" value="Upload Photo">
-                       </form>
-                       {% endif %}
-             </div>
+            </div>
             <input type="submit" value="Share"> 
-        </form>
+        </div>
+    </form>
+    <!-- Upload photos -->
+    {% if user.is_authenticated and user == post.user %}
+    <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="photo-file">
+    <input type="submit" value="Upload Photo">
+    </form>
+    {% endif %}
+    </div>
 </main>
 {% endblock %}

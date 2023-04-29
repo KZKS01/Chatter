@@ -11,7 +11,7 @@ import boto3
 import uuid
 
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
-BUCKET = 'catcollector-k'
+BUCKET = 'k-chatter'
 
 # Create your views here.
 
@@ -161,7 +161,7 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
 
     except Exception as error:
         # print err to debug
-        messages.error(request, f'Photo upload failed: {error}')
+        print(f'Photo upload failed: {error}')
     # redirect to the detail pg
     return redirect('post_detail', post_id=post_id)
 
