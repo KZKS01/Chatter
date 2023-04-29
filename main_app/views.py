@@ -11,7 +11,7 @@ import boto3
 import uuid
 
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
-BUCKET = 'k-chatter'
+BUCKET = 'catcollector-k'
 
 # Create your views here.
 
