@@ -17,8 +17,10 @@ BUCKET = 'k-chatter'
 
 def home(request):
     posts = Post.objects.all() # to be used in the html
+    user = request.user
     return render(request, 'home.html', {
         'posts': posts,
+        'user': user,
 })
 
 

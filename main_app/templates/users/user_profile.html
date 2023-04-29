@@ -6,7 +6,16 @@
 
 {% block content %}
 <main id="mainBase">
-<h3>{{ user.username }}'s Profile</h3>
+<h3>Edit {{ user.username }} profile</h3>
+
+<!-- display avatar -->
+{% if user.userprofile.avatar_url %}
+<img src="{{ user.userprofile.avatar_url }}" class="rounded" id="avatar_file">
+{% else %}
+<p>No avatar uploaded yet.</p>
+{% endif %}
+
+<p>{{user.userprofile.bio}} </p>
 
 <!-- Upload avatar -->
 {% if user.is_authenticated %}

@@ -84,6 +84,7 @@
 .dropdown-trigger {
     float: right;
     margin-top: 10px;
+    width: 200px; 
 }
 
 .dropdown-content {
@@ -214,4 +215,9 @@ div#edit_form_input textarea {
 }    
 
 
-/* post_detail */
+/* user_profile */
+
+#avatar_file{
+    width: 100px; 
+    height: 100px;
+}
