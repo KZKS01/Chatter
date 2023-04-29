@@ -13,7 +13,10 @@ urlpatterns = [
     path('chatter/<int:pk>/edit/', views.PostEdit.as_view(), name='post_edit'),
     path('chatter/<int:pk>/delete/', views.PostDelete.as_view(), name='post_delete'),
     path('search/', views.search, name='search'),
+    #user
+    path('userprofile/<int:user_id>/add_avatar/', views.add_avatar, name='add_avatar'),
+    path('userprofile/<int:user_id>/', views.user_profile, name='user_profile'),
 ]
 
 
-# TODO: DELETE FN; USER IMG; ADDS COMMENT FUNCTION
+# TODO: USER IMG; ADDS COMMENT FUNCTION

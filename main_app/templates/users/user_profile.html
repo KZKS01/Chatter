@@ -5,5 +5,18 @@
 {% endblock %}
 
 {% block content %}
-<h3>{{ user.username }} Profile Page</h3>
+<main id="mainBase">
+<h3>{{ user.username }}'s Profile</h3>
+
+<!-- Upload avatar -->
+{% if user.is_authenticated %}
+<form action="{% url 'add_avatar' user.id %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<input type="file" name="avatar-file">
+<input type="submit" value="Upload Avatar">
+</form>
+{% endif %}
+
+</main>
 {% endblock %}
+ 

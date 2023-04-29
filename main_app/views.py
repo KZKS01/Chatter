@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Post, Photo
+from .models import Post, Photo, User, UserProfile
 from django.db.models import Q # search fn: allows for complex queries using logical operators like &, |, and ~ (not)
 import boto3
 import uuid
@@ -49,10 +49,13 @@ def signup(request):
     })
 
 
-def user_profile(request):
-    return render(request, 'users/user_profile.html')
-
-
+def user_profile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user_profile = UserProfile.objects.get(user=user)
+    return render(request, 'users/user_profile.html', {
+        'user': user,
+        'user_profile': user_profile,
+    })
 
 # Google OAuth
 def signup_redirect(request):
@@ -116,7 +119,7 @@ def search(request):
     if request.method == 'GET':
         searching = request.GET.get('searching', None)
 
-        if not searching:
+        if not searching: # if empty string
             return redirect('home')
 
         results = Post.objects.filter(
@@ -145,9 +148,9 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
         # set up a s3 client obj for working with AMZN s3
         s3 = boto3.client('s3')
 
-    # create a UNIQUE name for the file with uuid
-    # uuid.uuid4() fn generates a random UUID
-    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # create a UNIQUE name for the file with uuid
+        # uuid.uuid4() fn generates a random UUID
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
 
     # try upload file to aws s3 via s3.upload_fileobj() method
     try: 
@@ -158,9 +161,29 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
 
     except Exception as error:
         # print err to debug
-        print(f'Photo upload failed: {error}')
+        messages.error(request, f'Photo upload failed: {error}')
     # redirect to the detail pg
     return redirect('post_detail', post_id=post_id)
+
+
+# AWS - Avatar Upload
+def add_avatar(request, user_id):
+    avatar_file = request.FILES.get('avatar-file', None)
+
+    if avatar_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + avatar_file.name[avatar_file.name.rfind('.'):]
+
+    try:
+        s3.upload_fileobj(avatar_file, BUCKET, key)
+        url = f"{S3_BASE_URL}{BUCKET}/{key}"
+        UserProfile.objects.create(url=url, user_id=user_id)
+
+    except Exception as error:
+        messages.error(request, f'Avatar upload failed: {error}')
+
+    return redirect('user_profile', user_id=user_id)
+
 
 @login_required
 # # AWS - Photo DELETE

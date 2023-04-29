@@ -21,3 +21,10 @@ class Photo(models.Model):
    def __str__(self):
       return f'photo for post_id: {self.post_id} @{self.url}'
    
+class UserProfile(models.Model):
+   user = models.OneToOneField(User, on_delete=models.CASCADE)
+   avatar_url = models.CharField(max_length=200)
+   bio = models.TextField(max_length=100)
+
+   def __str__(self):
+      return self.user.username
