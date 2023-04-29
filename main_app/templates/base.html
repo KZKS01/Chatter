@@ -28,7 +28,7 @@
             <div class="user-info">
             <img class="user_avatar" src="https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG">
             <p>{{user.username}} @{{user.id}} </p> 
-            <span class="dropdown-trigger" data-target="dropdown{{user.id}}"><b class="black-text text-darken-2 nav_dropdown">⋯</b></span></p></span>
+            <span class="dropdown-trigger" data-target="dropdown_logout"><b class="black-text text-darken-2 nav_dropdown">⋯</b></span></p></span>
             </div>
             {% endif %}
         </li>
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Dropdown Structure -->
-    <ul id="dropdown{{user.id}}" class="dropdown-content">
+    <ul id="dropdown_logout" class="dropdown-content">
         <li>
             <a id="nav_dropdown_content" href="{% url 'logout' %}">Logout</a>
         </li>
