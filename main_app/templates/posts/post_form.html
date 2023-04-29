@@ -23,7 +23,11 @@
             <div class="card-content">
                 <div class="row">
                     <div class="input-field col s12" id="edit_form_input">
+                        {% if object %}
+                        {{ form.content }}
+                        {% else %}
                         <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10" cols="40"></textarea>
+                        {% endif %}
                     </div>
                 <div id="img_container"> 
                     {% if post.photo_set and user == post.user %}
