@@ -1,7 +1,7 @@
 # **Chatter**
 
 # description: this is a CRUD app
-This is an app for users to create, view and edit their posts and share within the app community. 
+This is an app for users to create, view and edit their posts and share within the app community. The app also includes features such as searching for users and posts
 <br><br>
 
 ## Screenshot:
