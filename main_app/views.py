@@ -177,7 +177,8 @@ def add_avatar(request, user_id):
     try:
         s3.upload_fileobj(avatar_file, BUCKET, key)
         url = f"{S3_BASE_URL}{BUCKET}/{key}"
-        UserProfile.objects.create(url=url, user_id=user_id)
+        request.user.userprofile.avatar_url = url
+        request.user.userprofile.save()
 
     except Exception as error:
         messages.error(request, f'Avatar upload failed: {error}')
