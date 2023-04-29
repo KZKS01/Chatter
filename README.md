@@ -14,6 +14,7 @@ This is an app for users to create, view and edit their posts and share within t
 * Django
 * HTML
 * CSS
+* JavaScript
 * AWS S3
 * Heroku
 <br><br>
