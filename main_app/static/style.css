@@ -23,6 +23,21 @@
     font-weight: normal;
 }
 
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+    position: relative; /* make this element a positioned ancestor */
+  }
+  
+.nav_dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+    align-self: flex-end;
+  }
+
+
 .search-form {
     display: flex;
     align-items: flex-start;
@@ -84,7 +99,7 @@
 .dropdown-trigger {
     float: right;
     margin-top: 10px;
-    width: 200px; 
+    margin-right: 0px;
 }
 
 .dropdown-content {

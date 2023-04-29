@@ -5,7 +5,7 @@ This is an app for users to create, view and edit their posts and share within t
 <br><br>
 
 ## Screenshot:
-![home](https://user-images.githubusercontent.com/109245976/235284156-e898bc95-0f14-41fc-9692-b9e68839eb62.PNG)
+![home](https://user-images.githubusercontent.com/109245976/235306776-168c157f-aa66-4a6c-905e-41570831b8eb.png)
 ![signin](https://user-images.githubusercontent.com/109245976/235284164-27ed3971-097a-489a-aaf6-5f274be9adcb.PNG)
 ![edit](https://user-images.githubusercontent.com/109245976/235284712-11f05bef-a83e-42e1-a945-0c849d4515e9.png)
 <br><br>

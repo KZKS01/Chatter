@@ -6,25 +6,29 @@
 
 {% block content %}
 <main id="mainBase">
-<h3>Edit {{ user.username }} profile</h3>
+    <div class="card" id="postCard">
+        <div class="card-content"> 
+        <h3>Edit {{ user.username }} profile</h3>
 
-<!-- display avatar -->
-{% if user.userprofile.avatar_url %}
-<img src="{{ user.userprofile.avatar_url }}" class="rounded" id="avatar_file">
-{% else %}
-<p>No avatar uploaded yet.</p>
-{% endif %}
+        <!-- display avatar -->
+        {% if user.userprofile.avatar_url %}
+        <img src="{{ user.userprofile.avatar_url }}" class="rounded" id="avatar_file">
+        {% else %}
+        <p>No avatar uploaded yet.</p>
+        {% endif %}
 
-<p>{{user.userprofile.bio}} </p>
-
-<!-- Upload avatar -->
-{% if user.is_authenticated %}
-<form action="{% url 'add_avatar' user.id %}" method="POST" enctype="multipart/form-data">
-{% csrf_token %}
-<input type="file" name="avatar-file">
-<input type="submit" value="Upload Avatar">
-</form>
-{% endif %}
+        <!-- Upload avatar -->
+        {% if user.is_authenticated %}
+        <form action="{% url 'add_avatar' user.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="avatar-file">
+            <input type="submit" value="Upload Avatar">
+        </form>
+        {% endif %}
+        <br>
+        <p>{{user.userprofile.bio}} </p>
+    </div>
+    </div>
 
 </main>
 {% endblock %}
