@@ -18,49 +18,81 @@
             <h5>New Post</h5>
             {% endif %}
 
-            {% if object and user == post.user %}
             <form method="POST" class="col s12">
                 {% csrf_token %}
                 <div class="card-content">
                     <div class="row">
                         <div class="input-field col s12" id="edit_form_input">
+                            {% if object %}
                             {{ form.content }}
-                        </div>
-                        <div id="img_container">
-                            <!-- Display photos -->
-                            {% for photo in post.photo_set.all %}
-                            <div id="img_warp">
-                                <img src="{{ photo.url }}" class="rounded">
-                                <form method="POST" action="{% url 'delete_photo' post.id photo.id%}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="img_delete_btn">X</button>
-                                </form>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <input type="submit" value="Share">
-                </div>
-            </form>
-            {% else %}
-            <form method="POST" class="col s12">
-                {% csrf_token %}
-                <div class="card-content">
-                    <div class="row">
-                        <div class="input-field col s12" id="edit_form_input">
-                            <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10"
-                                cols="40"></textarea>
-                            <input type="submit" value="Share">
-
+                            {% else %}
+                            <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10" cols="40"></textarea>
                             {% endif %}
                         </div>
-
-</main>
+                    <div id="img_container"> 
+                        {% if post.photo_set and user == post.user %}
+                           <!-- Display photos -->
+                              {% for photo in post.photo_set.all %}
+                              <div id="img_warp">
+                                 <img src="{{ photo.url }}" class="rounded">
+                                 <form method="POST" action="{% url 'delete_photo' post.id photo.id%}">
+                                 {% csrf_token %}
+                                 <button type="submit" class="img_delete_btn">X</button>
+                                 </form>
+                              </div>
+                              {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <input type="submit" value="Share"> 
+            </div>
+        </form>
+        <!-- Upload photos -->
+        {% if user.is_authenticated and user == post.user %}
+        <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="photo-file">
+        <input type="submit" value="Upload Photo">
+        </form>
+        {% endif %}
+        </div>
+    </main>
 {% endblock %}
 
-                                <!-- Upload photos -->
-                            <!-- <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
+
+        {% if object and user == post.user %}
+        <form method="POST" class="col s12">
+            {% csrf_token %}
+            <div class="card-content">
+                <div class="row">
+                    <div class="input-field col s12" id="edit_form_input">
+                        {{ form.content }}
+                    </div>
+                    <div id="img_container">
+                        <!-- Display photos -->
+                        {% for photo in post.photo_set.all %}
+                        <div id="img_warp">
+                            <img src="{{ photo.url }}" class="rounded">
+                            <form method="POST" action="{% url 'delete_photo' post.id photo.id%}">
                                 {% csrf_token %}
-                                <input type="file" name="photo-file">
-                                <input type="submit" value="Upload Photo">
-                            </form> -->
+                                <button type="submit" class="img_delete_btn">X</button>
+                            </form>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <input type="submit" value="Share">
+            </div>
+        </form>
+        {% else %}
+        <form method="POST" class="col s12">
+            {% csrf_token %}
+            <div class="card-content">
+                <div class="row">
+                    <div class="input-field col s12" id="edit_form_input">
+                        <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10"
+                            cols="40"></textarea>
+                        <input type="submit" value="Share">
+
+                        {% endif %}
+                    </div>
