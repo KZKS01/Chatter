@@ -48,14 +48,19 @@
                 <div class="card-content">
                     <div class="row">
                         <div class="input-field col s12" id="edit_form_input">
-                            <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10" cols="40"></textarea>
-                            <!-- Upload photos -->
-                            <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
+                            <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10"
+                                cols="40"></textarea>
+                            <input type="submit" value="Share">
+
+                            {% endif %}
+                        </div>
+
+</main>
+{% endblock %}
+
+                                <!-- Upload photos -->
+                            <!-- <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <input type="file" name="photo-file">
                                 <input type="submit" value="Upload Photo">
-                            </form>
-            {% endif %}
-        </div>
-</main>
-{% endblock %}
+                            </form> -->

@@ -73,10 +73,20 @@ class PostCompose(LoginRequiredMixin, CreateView):
 
     # take validated inputs to create a model instance
     def form_valid(self, form):
-        form.instance.user = self.request.user # associate the new post with the user that created it
+        form.instance.user = self.request.user # associate the new post with the post creater
         # calls the parent class method form_valid and returns its result
         # the parent method saves the form data to the db & redirects to the success URL specified in the view
+        super().form_valid(form)
+
+        # call add_photo to create photos
+        photo_file = self.request.FILES.get('photo-file')
+        if photo_file:
+            photo = add_photo(photo_file, self.object.pk)
+            photo.post = self.get_object
+            photo.save()
+
         return super().form_valid(form)
+
 
 class PostEdit(LoginRequiredMixin, UpdateView):
     model = Post
