@@ -23,20 +23,46 @@
     font-weight: normal;
 }
 
-.user-info {
+.user_avatar_nav {
+    width: 10%; 
+    height: 10%;
+    padding-right: 5px;
+}
+
+#username_id span{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    align-items: flex-start;
+}
+
+.user-block {
     display: flex;
     align-items: center;
-    margin-right: 60px;
-    position: relative; /* make this element a positioned ancestor */
+    /* margin-right: 60px; */
+    position: relative;
   }
   
-.nav_dropdown {
+#user-info {
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 30px;
+}
+  
+#nav_dropdown {
     position: absolute;
     top: 0;
     right: 0;
-    align-self: flex-end;
-  }
+    padding-right: 10px;
+}
 
+.dropdown-trigger {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid black;
+  }
 
 .search-form {
     display: flex;
