@@ -23,6 +23,14 @@ def home(request):
         'user': user,
 })
 
+def user_profile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user_profile = UserProfile.objects.get(user=user)
+
+    return render(request, 'users/user_profile.html', {
+        'user': user,
+        'user_profile': user_profile,
+    })
 
 # SIGNUP 
 def signup(request):
@@ -37,6 +45,8 @@ def signup(request):
             user = form.save()
             # login the new user
             login(request, user)
+            # Create a user profile for the newly signed up user
+            user_profile = UserProfile.objects.create(user=user, avatar='https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG')
             # redirect user to home pg
             return redirect('home')
         # if not valid: generate an err msg
@@ -47,22 +57,7 @@ def signup(request):
     form = UserCreationForm() # send an empty form to client
     return render(request, 'registration/signup.html', {
         'form': form, # passing form data
-        'error': error_message
-    })
-
-
-def user_profile(request, user_id):
-    user = get_object_or_404(User, id=user_id)
-    user_profile = UserProfile.objects.get(user=user)
-
-    # get avatar url
-    if not user_profile.avatar:
-        user_profile.avatar = 'https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG'
-        user_profile.save()
-
-    return render(request, 'users/user_profile.html', {
-        'user': user,
-        'user_profile': user_profile,
+        'error': error_message,
     })
 
 

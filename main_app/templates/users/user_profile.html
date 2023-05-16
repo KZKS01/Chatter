@@ -18,7 +18,7 @@
         {% endif %}
 
         <!-- Upload avatar -->
-        {% if user.is_authenticated %}
+        {% if request.user.is_authenticated and request.user == user%}
         <form action="{% url 'add_avatar' user.id %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="file" name="avatar-file">
