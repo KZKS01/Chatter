@@ -32,6 +32,26 @@ def user_profile(request, user_id):
         'user_profile': user_profile,
     })
 
+# AWS - Avatar Upload
+@login_required
+def add_avatar(request, user_id):
+    avatar_file = request.FILES.get('avatar-file', None)
+
+    if avatar_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + avatar_file.name[avatar_file.name.rfind('.'):]
+
+    try:
+        s3.upload_fileobj(avatar_file, BUCKET, key)
+        url = f"{S3_BASE_URL}{BUCKET}/{key}"
+        request.user.userprofile.avatar = url
+        request.user.userprofile.save()
+
+    except Exception as error:
+        messages.error(request, f'Avatar upload failed: {error}')
+
+    return redirect('user_profile', user_id=user_id)
+
 # SIGNUP 
 def signup(request):
     # POST req: save users in db
@@ -46,7 +66,7 @@ def signup(request):
             # login the new user
             login(request, user)
             # Create a user profile for the newly signed up user
-            user_profile = UserProfile.objects.create(user=user, avatar='https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG')
+            UserProfile.objects.create(user=user, avatar='https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG')
             # redirect user to home pg
             return redirect('home')
         # if not valid: generate an err msg
@@ -201,25 +221,6 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
     return redirect('post_detail', post_id=post_id)
 
 
-# AWS - Avatar Upload
-@login_required
-def add_avatar(request, user_id):
-    avatar_file = request.FILES.get('avatar-file', None)
-
-    if avatar_file:
-        s3 = boto3.client('s3')
-        key = uuid.uuid4().hex[:6] + avatar_file.name[avatar_file.name.rfind('.'):]
-
-    try:
-        s3.upload_fileobj(avatar_file, BUCKET, key)
-        url = f"{S3_BASE_URL}{BUCKET}/{key}"
-        request.user.userprofile.avatar_url = url
-        request.user.userprofile.save()
-
-    except Exception as error:
-        messages.error(request, f'Avatar upload failed: {error}')
-
-    return redirect('user_profile', user_id=user_id)
 
 
 @login_required
