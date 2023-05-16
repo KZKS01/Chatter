@@ -23,23 +23,24 @@
             <a id="navContent" href="{% url 'home' %}">Home</a>
             <a id="navContent" href="{% url 'user_profile' user.id %}">Profile</a>
             <a id="navContent" href="{% url 'post_compose' %}">New Post</a>
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
             <div class="user-block">
                 <div id="user-info">
-                <img class="user_avatar_nav" src="https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG">
-                <p id="username_id">
-                    <span>{{user.username}}</span> 
-                    <span>@{{user.id}}</span>
-                </p> 
+                    <img class="user_avatar_nav" src="{{ request.user.userprofile.avatar }}">
+                    <p id="username_id">
+                        <span>{{ request.user.username }}</span> 
+                        <span>@{{ request.user.id }}</span>
+                    </p> 
                 </div>
                 <!-- Dropdown Trigger -->
-                <span class="dropdown-trigger" data-target="dropdown_logout"><b class="black-text text-darken-2" id="nav_dropdown">⋯</b></span></p></span>
+                <span class="dropdown-trigger" data-target="dropdown_logout"><b class="black-text text-darken-2" id="nav_dropdown">⋯</b></span>
             </div>
-            {% endif %}
+        {% endif %}
+        
         </li>
         {% else %}
         <li class="bold">
-            <a id="navContent" href="{% url 'signup' %}">Sign Up</a>
+            <a id="navContent" href="{% url 'signup' %}">Sign up</a>
         </li>
         <li class="bold">
             <a id="navContent" href="{% url 'login' %}">Sign in</a>

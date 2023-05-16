@@ -24,7 +24,7 @@ class Photo(models.Model):
    
 class UserProfile(models.Model):
    user = models.OneToOneField(User, on_delete=models.CASCADE)
-   avatar_url = models.CharField(max_length=200, default='https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG')
+   avatar = models.CharField(max_length=200, default='https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG')
    bio = models.TextField(max_length=100)
 
    def __str__(self):
