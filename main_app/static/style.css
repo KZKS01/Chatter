@@ -24,9 +24,9 @@
 }
 
 .user_avatar_nav {
-    width: 10%; 
-    height: 10%;
+    width: 45px; 
     padding-right: 5px;
+    border-radius: 50%
 }
 
 #username_id span{
@@ -109,6 +109,7 @@
 .user_avatar{
     width: 45px; 
     padding-right: 10px;
+    border-radius: 50%
 }
 
 .post_user_bar {

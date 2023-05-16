@@ -23,7 +23,6 @@
             <a id="navContent" href="{% url 'home' %}">Home</a>
             <a id="navContent" href="{% url 'user_profile' user.id %}">Profile</a>
             <a id="navContent" href="{% url 'post_compose' %}">New Post</a>
-            {% if request.user.is_authenticated %}
             <div class="user-block">
                 <div id="user-info">
                     <img class="user_avatar_nav" src="{{ request.user.userprofile.avatar }}">
@@ -35,7 +34,6 @@
                 <!-- Dropdown Trigger -->
                 <span class="dropdown-trigger" data-target="dropdown_logout"><b class="black-text text-darken-2" id="nav_dropdown">⋯</b></span>
             </div>
-        {% endif %}
         
         </li>
         {% else %}
