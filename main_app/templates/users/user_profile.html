@@ -11,8 +11,8 @@
         <h3>Edit {{ user.username }} profile</h3>
 
         <!-- display avatar -->
-        {% if user.userprofile.avatar_url %}
-        <img src="{{ user.userprofile.avatar_url }}" class="rounded" id="avatar_file">
+        {% if avatar %}
+        <img src="{{ avatar }}" class="rounded" id="avatar_file">
         {% else %}
         <p>No avatar uploaded yet.</p>
         {% endif %}
