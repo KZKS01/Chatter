@@ -5,15 +5,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Post, Photo, User, UserProfile
+from .models import Post, Photo, User, UserProfile, Comment
 from django.db.models import Q # search fn: allows for complex queries using logical operators like &, |, and ~ (not)
 import boto3
 import uuid
 
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'k-chatter'
-
-# Create your views here.
 
 def home(request):
     posts = Post.objects.all() # to be used in the html
@@ -30,7 +28,7 @@ def user_profile(request, user_id):
     return render(request, 'users/user_profile.html', {
         'user': user,
         'user_profile': user_profile,
-    })
+})
 
 # AWS - Avatar Upload
 @login_required
@@ -45,7 +43,7 @@ def add_avatar(request, user_id):
         s3.upload_fileobj(avatar_file, BUCKET, key)
         url = f"{S3_BASE_URL}{BUCKET}/{key}"
         request.user.userprofile.avatar = url
-        request.user.userprofile.save()
+        request.user.userprofile.save() # save the updated user profile
 
     except Exception as error:
         messages.error(request, f'Avatar upload failed: {error}')
@@ -160,10 +158,12 @@ def post_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     user = request.user
     user_id = request.user.id
+    comments = Comment.objects.filter(post=post_id)
     return render(request, 'posts/post_detail.html', {
         'post': post,
         'user': user,
         'user_id': user_id,
+        'comments': comments,
         })
 
 
@@ -221,10 +221,8 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
     return redirect('post_detail', post_id=post_id)
 
 
-
-
 @login_required
-# # AWS - Photo DELETE
+# # AWS - Post Photo DELETE
 def delete_photo(request, post_id, photo_id):
     # retrieve img
     post= get_object_or_404(Post, id=post_id)
@@ -252,3 +250,15 @@ def delete_photo(request, post_id, photo_id):
     photo.delete()
 
     return redirect('post_detail', post_id=post_id)
+
+
+# Comments
+class add_comment(LoginRequiredMixin, CreateView):
+    model = Comment
+    fields = ('content',)
+    template_name = 'posts/comment.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.post_id = self.kwargs['post_id']
+        return super().form_valid(form)

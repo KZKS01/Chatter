@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>comment</title>
+{% endblock %}
+
+{% block content %}
+<main id="mainBase">
+    <div class="card" id="postCard">
+        <div class="card-content">
+            <h3>comment</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                <input type="submit" value="comment">
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}
