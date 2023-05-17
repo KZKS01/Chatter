@@ -24,11 +24,18 @@
                 <img src="{{ photo.url }}" class="rounded">
                 {% endfor %}
             </div>
+            <div class="postIcons">
+                <a href="{% url 'add_comment' post.id %}">
+                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/comment+icon.png" alt="comment icon">
+                </a>
+                <img src="https://k-chatter.s3.us-east-2.amazonaws.com/retweet+icon.png" alt="repost icon">
+                <img src="https://k-chatter.s3.us-east-2.amazonaws.com/like+icon.png" alt="like icon">
+            </div>
             {% for comment in comments %}
             <div class="card-action">
-                <p><img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
-                    <span class="post_user_bar"><strong>{{ post.user.username }}</strong>
-                        <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
+                <p><img class="user_avatar" src="{{ request.user.userprofile.avatar}}">
+                    <span class="post_user_bar"><strong>{{ request.user.username }}</strong>
+                        <span class="post_bar">@{{request.user.id}} · {{ comment.created_at }}</span>
                         <p> {{ comment.content }} </p>
             </div>
             {% endfor %}

@@ -106,6 +106,76 @@
  }
 
 
+
+/* login pg */
+#gBtn {
+    text-align: center; 
+    margin: 10px 0 20px; 
+    border-radius: 50px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    width: 500px;
+ }    
+
+#sForms{
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+ }   
+
+ #bigger{
+    font-size: 0.9em; 
+ }   
+
+.input-field{
+    text-align: left;
+}    
+
+#login-btn, #submit-btn{
+    border-radius: 50px;  
+    background-color: black;
+    color: #fff;
+    font-size: 16px;
+    width: 500px;
+}  
+
+
+
+/* signup pg */
+.btn-dark {
+    background-color: black;
+    color: white;
+}    
+
+.btn-dark:hover {
+    background-color: rgb(39, 39, 39);
+}    
+
+.btn-light {
+    background-color: white;
+}    
+
+.btn-light:hover {
+    background-color: rgb(240, 245, 250);
+}    
+
+.btn-light a {
+    color: black;
+}    
+
+
+
+/* user_profile */
+
+#avatar_file{
+    width: 100px; 
+    height: 100px;
+    border-radius: 50px;
+}
+
+
+
 /* home pg */
 .user_avatar{
     border-radius: 50%;
@@ -163,6 +233,7 @@
     align-items: flex-start;
 }
 
+
 /* new/edit pg */
 #share-btn{
     border-radius: 50px;
@@ -201,67 +272,16 @@ div#edit_form_input textarea {
     position: relative;
     display: inline-block;
 }
-/* login pg */
-#gBtn {
-    text-align: center; 
-    margin: 10px 0 20px; 
-    border-radius: 50px;
-    background-color: white;
-    color: black;
-    font-size: 16px;
-    width: 500px;
- }    
-
-#sForms{
-    width: 60%;
-    margin: auto;
-    margin-top: 100px;
- }   
-
- #bigger{
-    font-size: 0.9em; 
- }   
-
-.input-field{
-    text-align: left;
-}    
-
-#login-btn, #submit-btn{
-    border-radius: 50px;  
-    background-color: black;
-    color: #fff;
-    font-size: 16px;
-    width: 500px;
-}  
 
 
-/* signup pg */
-.btn-dark {
-    background-color: black;
-    color: white;
-}    
 
-.btn-dark:hover {
-    background-color: rgb(39, 39, 39);
-}    
-
-.btn-light {
-    background-color: white;
-}    
-
-.btn-light:hover {
-    background-color: rgb(240, 245, 250);
-}    
-
-.btn-light a {
-    color: black;
-}    
-
-
-/* user_profile */
-
-#avatar_file{
-    width: 100px; 
-    height: 100px;
-    border-radius: 50px;
+/* post_detail pg */
+.postIcons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.postIcons img{
+    width: 1.5rem;
+    height: 1.5rem;
 }
