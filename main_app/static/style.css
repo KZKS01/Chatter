@@ -105,6 +105,25 @@
     width: 500px;
  }
 
+ #dropdown_logout {
+    display: block;
+    width: 100px;
+    left: 0; 
+    top: 5rem; 
+    height: auto; 
+    transform-origin: initial; 
+    opacity: 1;
+    transform: none; 
+}
+
+
+
+ /* .postMinusAvatar{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 2rem;
+ } */
 
 
 /* login pg */
@@ -187,10 +206,11 @@
 .post_user_bar {
     position: relative;
     top: -20px; 
+    margin-left: -0.3rem;
 }
 
 .post_bar{
-    padding-left: 2px;
+    padding-left: 1px;
     color: grey
 }
 
@@ -202,6 +222,7 @@
 
 .dropdown-content {
     border-radius: 10px;
+    
 }
 
 #postCard{
@@ -219,7 +240,8 @@
 }
 
 .postContent .rounded{
-    border-radius: 10px;  
+    border-radius: 10px; 
+    margin-bottom: 1rem; 
 }
 
 .edit_btn, .delete_btn{
@@ -229,8 +251,7 @@
 }
 
 .dropdown-content li {
-    display: flex;
-    align-items: flex-start;
+    z-index: 9999; 
 }
 
 
@@ -279,9 +300,11 @@ div#edit_form_input textarea {
 .postIcons{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    margin-left: 2rem;
 }
 .postIcons img{
     width: 1.5rem;
     height: 1.5rem;
+    margin-right: 10rem;
+    margin-left: 1.3rem;
 }
