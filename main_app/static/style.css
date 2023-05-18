@@ -74,14 +74,21 @@
 }
 
 .search_btn{
-    margin-left: 5px;
+    /* margin-left: 5px;
+    margin-top: 0px;
+    padding-bottom: 10px; */
+    width: 3.5rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(to right, #08c8fb, #3aa4ff);
+}
+.search_btn p{
     margin-top: 0px;
     padding-bottom: 10px;
-    border-radius: 45% / 45%;
-    border: none;
-    background-color: #69bbee;
     font-size: 30px;
     color: #fff;
+    text-align: center;
 }
 
 .search_btn:hover{
@@ -104,19 +111,6 @@
     padding-right: 200px;
     width: 500px;
  }
-
- #dropdown_logout {
-    display: block;
-    width: 100px;
-    left: 0; 
-    top: 5rem; 
-    height: auto; 
-    transform-origin: initial; 
-    opacity: 1;
-    transform: none; 
-}
-
-
 
  /* .postMinusAvatar{
     display: flex;
@@ -214,17 +208,6 @@
     color: grey
 }
 
-.dropdown-trigger {
-    float: right;
-    margin-top: 10px;
-    margin-right: 0px;
-}
-
-.dropdown-content {
-    border-radius: 10px;
-    
-}
-
 #postCard{
     margin-bottom: 0;
     margin-top: 0;
@@ -250,10 +233,39 @@
     outline: none;
 }
 
-.dropdown-content li {
-    z-index: 9999; 
+.dropdown-trigger {
+    float: right;
+    margin-top: 10px;
+    margin-right: 0px;
 }
 
+.dropdown-content {
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+}
+
+.dropdown-content ul{
+    z-index: 9999; 
+    top: 0;
+}
+
+/* override Materializecss */
+#dropdown_logout {
+    left: auto !important;
+    top: auto !important;
+    height: auto !important;
+}
+#dropdown_logout {
+    display: block;
+    width: 100px;
+    left: 0;  
+    top: 5rem; 
+    height: auto; 
+    transform-origin: initial; 
+    opacity: 1;
+    transform: none; 
+}
 
 /* new/edit pg */
 #share-btn{

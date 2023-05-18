@@ -32,9 +32,8 @@
                     </p> 
                 </div>
                 <!-- Dropdown Trigger -->
-                <span class="dropdown-trigger" data-target="dropdown_logout"><b class="black-text text-darken-2" id="nav_dropdown">⋯</b></span>
+                <a class="dropdown-trigger" data-target="dropdown_logout"><b class="black-text text-darken-2" id="nav_dropdown">⋯</b></a>
             </div>
-        
         </li>
         {% else %}
         <li class="bold">
@@ -45,11 +44,10 @@
         </li>
         {% endif %}
     </ul>
-    </div>
 
     <!-- Dropdown Structure -->
     <ul id="dropdown_logout" class="dropdown-content">
-        <li tabindex="0">
+        <li>
             <a id="nav_dropdown_content" href="{% url 'logout' %}">Logout</a>
         </li>
     </ul>
@@ -57,7 +55,7 @@
     <div id="nav-right" class="sidenav sidenav-fixed right-align">
         <form method="GET" action="{% url 'search' %}" class="search-form">
             <input type="text" class="black-text" placeholder="Search Chatter" name="searching" id="pill" autocomplete="off">
-            <button type="submit" class="search_btn">→</button>
+            <button type="submit" class="search_btn"><p>→</p></button>
         </form>
     </div>
 
