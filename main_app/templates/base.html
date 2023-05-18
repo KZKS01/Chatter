@@ -25,12 +25,12 @@
             <a id="navContent" href="{% url 'post_compose' %}">New Post</a>
             <div class="user-block">
                 <div id="user-info">
-                    <a href="{% url 'user_profile' request.user.id %}"><img class="user_avatar_nav" src="{{ request.user.userprofile.avatar }}">
+                    <a id="logInUserBlock" href="{% url 'user_profile' request.user.id %}"><img class="user_avatar_nav" src="{{ request.user.userprofile.avatar }}">
                     <p id="username_id">
                         <span>{{ request.user.username }}</span> 
                         <span>@{{ request.user.id }}</span>
-                    </a>
                     </p> 
+                </a>
                 </div>
                 <!-- Dropdown Trigger -->
                 <a class="dropdown-trigger" data-target="dropdown_logout"><b class="black-text text-darken-2" id="nav_dropdown">⋯</b></a>
