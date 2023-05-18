@@ -252,19 +252,13 @@
 
 /* override Materializecss */
 #dropdown_logout {
+    display: block;
+    width: 100px;
     left: auto !important;
     top: auto !important;
     height: auto !important;
-}
-#dropdown_logout {
-    display: block;
-    width: 100px;
-    left: 0;  
-    top: 5rem; 
-    height: auto; 
-    transform-origin: initial; 
     opacity: 1;
-    transform: none; 
+    display: none;
 }
 
 /* new/edit pg */
