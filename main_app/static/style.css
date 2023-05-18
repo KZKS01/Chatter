@@ -50,6 +50,8 @@
     display: flex;
     align-items: center;
     position: relative;
+    position: fixed;
+    bottom: 7%;
 }
 
 .user-block:hover {
@@ -58,6 +60,7 @@
 }
 
 #user-info {
+    top: 80%;
     display: flex;
     margin-left: auto;
     justify-content: flex-end;
