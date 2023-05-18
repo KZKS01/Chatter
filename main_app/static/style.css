@@ -120,6 +120,7 @@
  } */
 
 
+
 /* login pg */
 #gBtn {
     text-align: center; 
@@ -311,6 +312,16 @@ div#edit_form_input textarea {
 .postIcons img{
     width: 1.5rem;
     height: 1.5rem;
-    margin-right: 10rem;
     margin-left: 1.3rem;
+}
+
+#commentSection, #repostSection, #likeSection{
+    display: flex;
+    flex-direction: row;
+    margin-right: 10rem;
+}
+
+#commentSection p{
+    color: black;
+    padding-left: 0.5rem;
 }

@@ -9,11 +9,19 @@ class Post(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE)
    content = models.TextField(max_length=300)
    created_at = models.DateTimeField(auto_now_add=True)
+   comment_num = models.IntegerField(default=0)
    likes = models.ManyToManyField(User, 'liked_posts')
 
    def get_absolute_url(self):
       return reverse('posts_index')
 
+   def increment_comment_num(self):
+      self.comment_num += 1
+      self.save(update_fields=['comment_num'])
+   
+   def decrement_comment_num(self):
+      self.comment_num -= 1
+      self.save(update_fields=['comment_num'])
    
 class Photo(models.Model):
    url = models.CharField(max_length=200)

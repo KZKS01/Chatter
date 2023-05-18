@@ -253,7 +253,7 @@ def delete_photo(request, post_id, photo_id):
 
 
 # Comments
-class add_comment(LoginRequiredMixin, CreateView):
+class AddComment(LoginRequiredMixin, CreateView):
     model = Comment
     fields = ('content',)
     template_name = 'posts/comment.html'
@@ -261,4 +261,13 @@ class add_comment(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         form.instance.post_id = self.kwargs['post_id']
+        post = get_object_or_404(Post, pk=self.kwargs['post_id'])
+        post.increment_comment_num()
+
         return super().form_valid(form)
+    
+class DeleteComment(LoginRequiredMixin, DeleteView):
+    model = Comment
+    success_url = '/chatter/<int:post_id>/'
+    template_name = 'posts/comment_confirm_delete.html'
+

@@ -28,9 +28,10 @@
                     {% endfor %}
                 </div>
                 <div class="postIcons">
-                    <a href="{% url 'add_comment' post.id %}">
+                    <a href="{% url 'add_comment' post.id %}" id="commentSection">
                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.png"
-                            alt="comment icon">
+                            alt="comment icon"> 
+                            <p>{{ post.comment_num }}</p>
                     </a>
                     <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png" alt="repost icon">
                     <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png" alt="like icon">
