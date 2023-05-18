@@ -25,10 +25,11 @@
             <a id="navContent" href="{% url 'post_compose' %}">New Post</a>
             <div class="user-block">
                 <div id="user-info">
-                    <img class="user_avatar_nav" src="{{ request.user.userprofile.avatar }}">
+                    <a href="{% url 'user_profile' request.user.id %}"><img class="user_avatar_nav" src="{{ request.user.userprofile.avatar }}">
                     <p id="username_id">
                         <span>{{ request.user.username }}</span> 
                         <span>@{{ request.user.id }}</span>
+                    </a>
                     </p> 
                 </div>
                 <!-- Dropdown Trigger -->

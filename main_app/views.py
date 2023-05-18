@@ -256,7 +256,7 @@ def delete_photo(request, post_id, photo_id):
 class AddComment(LoginRequiredMixin, CreateView):
     model = Comment
     fields = ('content',)
-    template_name = 'posts/comment.html'
+    template_name = 'posts/comment_form.html'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -266,8 +266,3 @@ class AddComment(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
     
-class DeleteComment(LoginRequiredMixin, DeleteView):
-    model = Comment
-    success_url = '/chatter/<int:post_id>/'
-    template_name = 'posts/comment_confirm_delete.html'
-

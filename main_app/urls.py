@@ -15,7 +15,7 @@ urlpatterns = [
     path('chatter/<int:pk>/delete/', views.PostDelete.as_view(), name='post_delete'),
     # comments
     path('chatter/<int:post_id>/add_comment/', views.AddComment.as_view(), name='add_comment'),
-    path('chatter/<int:post_id>/delete_comment/<int:comment_id>/', views.DeleteComment.as_view(), name='delete_comment'),
+    # path('chatter/<int:post_id>/delete_comment/<int:comment_id>/', views.DeleteComment.as_view(), name='comment_delete'),
     #user
     path('userprofile/<int:user_id>/add_avatar/', views.add_avatar, name='add_avatar'),
     path('userprofile/<int:user_id>/', views.user_profile, name='user_profile'),
