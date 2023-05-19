@@ -381,7 +381,7 @@ div#edit_form_input textarea {
     margin-right: 10rem;
 }
 
-#commentSection p {
+#commentSection p, #repostSection p, #likeSection p{
     color: black;
     padding-left: 0.5rem;
 }
