@@ -5,6 +5,10 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('accounts/signup/', views.signup, name='signup'),
     path('search/', views.search, name='search'),
+    #user
+    path('userprofile/<int:user_id>/add_avatar/', views.add_avatar, name='add_avatar'),
+    path('userprofile/<int:user_id>/delete_avatar/', views.delete_avatar, name='delete_avatar'),
+    path('userprofile/<int:user_id>/', views.user_profile, name='user_profile'),
     # posts
     path('chatter/compose/', views.PostCompose.as_view(), name='post_compose'),
     path('chatter/<int:post_id>/add_photo', views.add_photo, name='add_photo'),
@@ -16,10 +20,7 @@ urlpatterns = [
     # comments
     path('chatter/<int:post_id>/add_comment/', views.AddComment.as_view(), name='add_comment'),
     path('chatter/<int:post_id>/delete_comment/<int:pk>/', views.DeleteComment.as_view(), name='comment_delete'),
-    #user
-    path('userprofile/<int:user_id>/add_avatar/', views.add_avatar, name='add_avatar'),
-    path('userprofile/<int:user_id>/delete_avatar/', views.delete_avatar, name='delete_avatar'),
-    path('userprofile/<int:user_id>/', views.user_profile, name='user_profile'),
-
+    # likes
+    path('chatter/<int:post_id>/add_like/', views.add_like, name='add_like'),
 ]
 

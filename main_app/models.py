@@ -10,11 +10,12 @@ class Post(models.Model):
    content = models.TextField(max_length=300)
    created_at = models.DateTimeField(auto_now_add=True)
    comment_num = models.IntegerField(default=0)
-   likes = models.ManyToManyField(User, 'liked_posts')
+   like_num = models.IntegerField(default=0)
 
    def get_absolute_url(self):
       return reverse('posts_index')
 
+   #comments
    def increment_comment_num(self):
       self.comment_num += 1
       self.save(update_fields=['comment_num'])
@@ -22,6 +23,15 @@ class Post(models.Model):
    def decrement_comment_num(self):
       self.comment_num -= 1
       self.save(update_fields=['comment_num'])
+
+   # likes
+   def increment_like_num(self):
+      self.like_num += 1
+      self.save(update_fields=['like_num'])
+   
+   def decrement_like_num(self):
+      self.like_num -= 1
+      self.save(update_fields=['like_num'])
    
 class Photo(models.Model):
    url = models.CharField(max_length=200)
@@ -43,6 +53,13 @@ class Comment(models.Model):
    post = models.ForeignKey(Post, on_delete=models.CASCADE)
    content = models.TextField(max_length=300)
    created_at = models.DateTimeField(auto_now_add=True)
+
+   def get_absolute_url(self):
+      return reverse('post_detail', kwargs={'post_id': self.post_id})
+   
+class Like(models.Model):
+   user = models.ForeignKey(User, on_delete=models.CASCADE)
+   post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
    def get_absolute_url(self):
       return reverse('post_detail', kwargs={'post_id': self.post_id})

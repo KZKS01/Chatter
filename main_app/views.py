@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Post, Photo, User, UserProfile, Comment
+from .models import Post, Photo, User, UserProfile, Comment, Like
 from django.db.models import Q # search fn: allows for complex queries using logical operators like &, |, and ~ (not)
 import boto3
 import uuid
@@ -309,3 +309,23 @@ class DeleteComment(LoginRequiredMixin, DeleteView):
         comment.delete()
 
         return super().form_valid(form)
+    
+
+# Likes
+@login_required
+def add_like(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+
+    try:
+        Like.objects.get(user=user, post=post)
+    except Like.DoesNotExist:
+        Like.objects.create(user=user, post=post)
+        post.increment_like_num()
+
+        if 'HTTP_REFERER' in request.META:
+            # Redirect the user back to the current pg
+            return redirect(request.META['HTTP_REFERER'])
+        else:
+            return redirect('post_detail', post_id=post_id)
+        
