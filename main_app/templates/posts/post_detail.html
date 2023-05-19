@@ -57,7 +57,7 @@
                                 {% if user.is_authenticated and user == comment.user %}
                                     <!-- Dropdown Trigger -->
                                     <span class="dropdown-trigger" data-target="dropdown_comment{{ comment.id }}">
-                                        <b class="black-text text-darken-2">⋯</b>
+                                        <b class="black-text text-darken-2" id="comment-dropdown">⋯</b>
                                     </span>
                                 {% endif %}
                             </p>
@@ -83,7 +83,7 @@
                 </li>
                 <li>
                     <a class="red-text text-darken-2 delete_btn" href="{% url 'post_delete' post.id %}">
-                        <b>Delete</b>
+                        <b>DELETE</b>
                     </a>
                 </li>
             </ul>

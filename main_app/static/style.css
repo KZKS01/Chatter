@@ -385,3 +385,10 @@ div#edit_form_input textarea {
     color: black;
     padding-left: 0.5rem;
 }
+
+#comment-dropdown{
+    margin-top: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
