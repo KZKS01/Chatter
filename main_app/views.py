@@ -284,6 +284,10 @@ class AddComment(LoginRequiredMixin, CreateView):
         post.increment_comment_num()
 
         return super().form_valid(form)
+    
+    def get_success_url(self):
+        post_id = self.kwargs['post_id']
+        return reverse('post_detail', kwargs={'post_id': post_id})
 
 class DeleteComment(LoginRequiredMixin, DeleteView):
     model = Comment
