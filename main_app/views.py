@@ -313,19 +313,21 @@ class DeleteComment(LoginRequiredMixin, DeleteView):
 
 # Likes
 @login_required
-def add_like(request, post_id):
+def update_like(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     user = request.user
 
     try:
-        Like.objects.get(user=user, post=post)
+        like = Like.objects.get(user=user, post=post)
+        like.delete()
+        post.decrement_like_num()
     except Like.DoesNotExist:
         Like.objects.create(user=user, post=post)
         post.increment_like_num()
 
-        if 'HTTP_REFERER' in request.META:
-            # Redirect the user back to the current pg
-            return redirect(request.META['HTTP_REFERER'])
-        else:
-            return redirect('post_detail', post_id=post_id)
+    if 'HTTP_REFERER' in request.META:
+        # Redirect the user back to the current pg
+        return redirect(request.META['HTTP_REFERER'])
+    else:
+        return redirect('post_detail', post_id=post_id)
         

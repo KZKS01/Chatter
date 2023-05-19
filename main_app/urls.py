@@ -21,6 +21,6 @@ urlpatterns = [
     path('chatter/<int:post_id>/add_comment/', views.AddComment.as_view(), name='add_comment'),
     path('chatter/<int:post_id>/delete_comment/<int:pk>/', views.DeleteComment.as_view(), name='comment_delete'),
     # likes
-    path('chatter/<int:post_id>/add_like/', views.add_like, name='add_like'),
+    path('chatter/<int:post_id>/update_like/', views.update_like, name='update_like'),
 ]
 

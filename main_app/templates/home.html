@@ -37,12 +37,10 @@
                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
                             alt="repost icon">
                     </span>
-                    <span id="likeSection">
-                        <a href="{% url 'add_like' post.id %}" id="LikeSection">
-                            <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png" alt="like icon">
-                            <p>{{ post.like_num }}</p>
-                        </a>
-                    </span>
+                    <a href="{% url 'update_like' post.id %}" id="likeSection">
+                        <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png" alt="like icon">
+                        <p>{{ post.like_num }}</p>
+                    </a>
                 </div>
             </div>
         </div>
