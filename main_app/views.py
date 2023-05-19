@@ -9,6 +9,7 @@ from .models import Post, Photo, User, UserProfile, Comment
 from django.db.models import Q # search fn: allows for complex queries using logical operators like &, |, and ~ (not)
 import boto3
 import uuid
+from django.urls import reverse
 
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'k-chatter'
@@ -288,12 +289,19 @@ class DeleteComment(LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = 'posts/comment_confirm_delete.html'
 
-    def delete(self, request, *args, **kwargs):
+    # override the get_success_url() method to dynamically retrieve the success URL 
+    # based on the Comment model's get_absolute_url() method which includes the necessary URL param
+    def get_success_url(self):
         post_id = self.kwargs['post_id']
-        comment_id = self.kwargs['pk'] 
+        return reverse('post_detail', kwargs={'post_id': post_id})
+
+    def form_valid(self, form):
+        post_id = self.kwargs['post_id']
         post = get_object_or_404(Post, id=post_id)
+        comment_id = self.kwargs['pk']
         comment = get_object_or_404(Comment, id=comment_id)
+
         post.decrement_comment_num()
         comment.delete()
 
-        return redirect('post_detail', post_id=post_id)
+        return super().form_valid(form)
