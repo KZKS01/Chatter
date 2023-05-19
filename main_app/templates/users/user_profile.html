@@ -13,6 +13,12 @@
         <!-- display avatar -->
         {% if user.userprofile.avatar %}
         <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
+        {% if request.user.is_authenticated and request.user == user%}
+        <form method="POST" action="{% url 'delete_avatar' user.id %}">
+            {% csrf_token %}
+            <button type="submit" class="img_delete_btn">X</button>
+        </form>
+        {% endif %}
         {% else %}
         <p>No avatar uploaded yet.</p>
         {% endif %}

@@ -50,6 +50,24 @@ def add_avatar(request, user_id):
 
     return redirect('user_profile', user_id=user_id)
 
+def delete_avatar(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user_profile = get_object_or_404(UserProfile, user=user)
+
+    s3 = boto3.client('s3')
+    key = user_profile.avatar.split('/')[-1]
+
+    try:
+        s3.delete_object(Bucket=BUCKET, Key=key)
+    except Exception as error:
+        print(f'Avatar delete failed:{error}')
+
+
+    user_profile.avatar = 'https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG'
+    user_profile.save()
+    return redirect('user_profile', user_id=user_id)
+
+
 # SIGNUP 
 def signup(request):
     # POST req: save users in db
@@ -265,4 +283,17 @@ class AddComment(LoginRequiredMixin, CreateView):
         post.increment_comment_num()
 
         return super().form_valid(form)
-    
+
+class DeleteComment(LoginRequiredMixin, DeleteView):
+    model = Comment
+    template_name = 'posts/comment_confirm_delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        post_id = self.kwargs['post_id']
+        comment_id = self.kwargs['pk'] 
+        post = get_object_or_404(Post, id=post_id)
+        comment = get_object_or_404(Comment, id=comment_id)
+        post.decrement_comment_num()
+        comment.delete()
+
+        return redirect('post_detail', post_id=post_id)

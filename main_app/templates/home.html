@@ -12,7 +12,7 @@
     <a href="{% url 'post_detail' post.id %}" id="homeA">
         <div class="card" id="postCard">
             <div class="card-content">
-                <p><a href="{% url 'user_profile' post.user.id %}"><img class="user_avatar" src="{{ post.user.userprofile.avatar}}"></a>
+                <p><img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
                     <span class="post_user_bar"><strong>{{ post.user.username }}</strong>
                         <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
                         {% if user.is_authenticated and user == post.user %}
@@ -29,7 +29,7 @@
                 </div>
                 <div class="postIcons">
                     <a href="{% url 'add_comment' post.id %}" id="commentSection">
-                        <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.png"
+                        <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.svg"
                             alt="comment icon">
                         <p>{{ post.comment_num }}</p>
                     </a>
