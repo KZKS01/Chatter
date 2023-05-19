@@ -362,9 +362,9 @@ div#edit_form_input textarea {
     margin-left: 2rem;
 }
 
-#commentSection:hover {
-    background: #e7f3f7;
-    border-radius: 30%;
+.postIcons img:hover {
+    background: rgb(230, 230, 230);
+    border-radius: 50%;
 }
 
 .postIcons img {
