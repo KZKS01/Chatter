@@ -23,7 +23,7 @@
             <a id="navContent" href="{% url 'home' %}"><img id="home-icon"
                     src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/home+icon.png" alt="home-icon"
                     width="30px" height="30px"> Home</a>
-            <a id="navContent" href="{% url 'user_profile' user.id %}"><img id="profile-icon"
+            <a id="navContent" href="{% url 'user_profile' request.user.id %}"><img id="profile-icon"
                     src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/profile+icon.png" alt="pofile-icon"
                     width="30px" height="30px">
                 Profile</a>

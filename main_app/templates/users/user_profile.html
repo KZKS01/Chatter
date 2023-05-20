@@ -15,9 +15,20 @@
             <!-- display avatar -->
             {% if user.userprofile.avatar %}
             <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
+            {% if request.user.is_authenticated and request.user == user and user.userprofile.avatar != 'https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG'%}
+            <form method="POST" action="{% url 'delete_avatar' user.id %}">
+                {% csrf_token %}
+                <button type="submit" class="avatar_delete_btn">X</button>
+            </form>
             {% endif %}
-            {% if request.user.is_authenticated and request.user == user %}
-            <a href="{% url 'user_profile_edit' user.id %}">Edit Profile</a>
+            {% endif %}
+            <!-- Upload avatar -->
+            {% if request.user.is_authenticated and request.user == user%}
+            <form action="{% url 'add_avatar' user.id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="avatar-file">
+                <input type="submit" value="Upload Avatar">
+            </form>
             {% endif %}
             <p>{{user.userprofile.bio}} </p>
         </div>
@@ -25,3 +36,11 @@
 
 </main>
 {% endblock %}
+
+<!-- display avatar -->
+<!-- {% if user.userprofile.avatar %}
+<img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
+{% endif %}
+{% if request.user.is_authenticated and request.user == user %}
+<a href="{% url 'user_profile_edit' user.id %}">Edit Profile</a>
+{% endif %} -->

@@ -44,7 +44,7 @@ class UserProfile(models.Model):
    user = models.OneToOneField(User, on_delete=models.CASCADE)
    avatar = models.CharField(max_length=200, default='https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG')
    bio = models.TextField(max_length=100)
-   # followers = models.ManyToManyField(User, related_name='follower')
+   followers = models.ManyToManyField(User, related_name='follower')
 
    def __str__(self):
       return self.user.username
