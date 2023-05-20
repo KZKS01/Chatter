@@ -8,10 +8,6 @@
 <main id="mainBase">
     <div class="card" id="postCard">
         <div class="card-content">
-            <h3>{{ user.username }} profile</h3>
-            <!-- add back btn -->
-            <!-- add post count -->
-
             <!-- display avatar -->
             {% if user.userprofile.avatar %}
             <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
@@ -30,7 +26,16 @@
                 <input type="submit" value="Upload Avatar">
             </form>
             {% endif %}
+            <h5><b>{{ user.username }}</b></h5>
+            <p>@{{ user.id }}</p>
+            {% if request.user.is_authenticated and request.user != user %}
+            <a href="{% url 'follow' user.id %}">Follow</a>
+            {% endif %}
             <p>{{user.userprofile.bio}} </p>
+            <p>Joined </p>
+            <p>{{ followers_num }} Following</p>
+            <!-- add back btn -->
+            <!-- add post count -->
         </div>
     </div>
 

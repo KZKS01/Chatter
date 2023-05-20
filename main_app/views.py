@@ -26,11 +26,28 @@ def home(request):
 def user_profile(request, user_id):
     user = get_object_or_404(User, id=user_id)
     user_profile = UserProfile.objects.get(user=user)
+    followers_num = user_profile.followers_num()
 
     return render(request, 'users/user_profile.html', {
         'user': user,
         'user_profile': user_profile,
+        'followers_num': followers_num,
 })
+
+# follwers
+@login_required
+def follow(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user_profile = get_object_or_404(UserProfile, user=user)
+    follower = request.user
+    
+    if follower in user_profile.followers.all():
+        user_profile.followers.remove(follower)
+    else:
+        user_profile.followers.add(follower)
+
+    return redirect('user_profile', user_id=user_id)
+
 
 class UserProfileEdit(LoginRequiredMixin, UpdateView):
     model = UserProfile
@@ -330,7 +347,7 @@ def update_like(request, post_id):
 
     try:
         like = Like.objects.get(user=user, post=post)
-        like.delete()
+        like.delete() # delete the obj from db
         post.decrement_like_num()
     except Like.DoesNotExist:
         Like.objects.create(user=user, post=post)
@@ -343,12 +360,3 @@ def update_like(request, post_id):
         return redirect('post_detail', post_id=post_id)
 
 
-# follwers
-@login_required
-def follow(request, user_id):
-    user = get_object_or_404(User, id=user_id)
-    user_profile = get_object_or_404(UserProfile, user=user)
-    follower = request.user
-    user_profile.followers.add(follower)
-    user_profile.save()
-    return redirect('user_profile', user_id=user_id)

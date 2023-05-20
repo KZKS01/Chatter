@@ -49,8 +49,8 @@ class UserProfile(models.Model):
    def __str__(self):
       return self.user.username
    
-   class Meta:
-        db_table = 'main_app_userprofile'
+   def followers_num(self):
+      return self.followers.count()
    
 class Comment(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE)
