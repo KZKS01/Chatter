@@ -11,6 +11,7 @@ import boto3
 import uuid
 from django.urls import reverse
 
+
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'k-chatter'
 
@@ -30,6 +31,16 @@ def user_profile(request, user_id):
         'user': user,
         'user_profile': user_profile,
 })
+
+class UserProfileEdit(LoginRequiredMixin, UpdateView):
+    model = UserProfile
+    fields = ('bio', )
+    template_name = 'users/edit_user_profile.html'
+
+    def get_success_url(self):
+        user_id = self.kwargs['pk']
+        return reverse('user_profile', kwargs={'user_id': user_id})
+
 
 # AWS - Avatar Upload
 @login_required
@@ -330,4 +341,14 @@ def update_like(request, post_id):
         return redirect(request.META['HTTP_REFERER'])
     else:
         return redirect('post_detail', post_id=post_id)
-        
+
+
+# follwers
+@login_required
+def follow(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user_profile = get_object_or_404(UserProfile, user=user)
+    follower = request.user
+    user_profile.followers.add(follower)
+    user_profile.save()
+    return redirect('user_profile', user_id=user_id)

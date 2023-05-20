@@ -8,30 +8,17 @@
 <main id="mainBase">
     <div class="card" id="postCard">
         <div class="card-content">
-            <h3>Edit {{ user.username }} profile</h3>
+            <h3>{{ user.username }} profile</h3>
+            <!-- add back btn -->
+            <!-- add post count -->
 
             <!-- display avatar -->
             {% if user.userprofile.avatar %}
             <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
-            {% if request.user.is_authenticated and request.user == user and user.userprofile.avatar != 'https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG'%}
-            <form method="POST" action="{% url 'delete_avatar' user.id %}">
-                {% csrf_token %}
-                <button type="submit" class="avatar_delete_btn">X</button>
-            </form>
             {% endif %}
-            {% else %}
-            <p>No avatar uploaded yet.</p>
+            {% if request.user.is_authenticated and request.user == user %}
+            <a href="{% url 'user_profile_edit' user.id %}">Edit Profile</a>
             {% endif %}
-
-            <!-- Upload avatar -->
-            {% if request.user.is_authenticated and request.user == user%}
-            <form action="{% url 'add_avatar' user.id %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="file" name="avatar-file">
-                <input type="submit" value="Upload Avatar">
-            </form>
-            {% endif %}
-            <br>
             <p>{{user.userprofile.bio}} </p>
         </div>
     </div>

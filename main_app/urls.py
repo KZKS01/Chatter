@@ -9,6 +9,8 @@ urlpatterns = [
     path('userprofile/<int:user_id>/add_avatar/', views.add_avatar, name='add_avatar'),
     path('userprofile/<int:user_id>/delete_avatar/', views.delete_avatar, name='delete_avatar'),
     path('userprofile/<int:user_id>/', views.user_profile, name='user_profile'),
+    path('userprofile/<int:pk>/edit/', views.UserProfileEdit.as_view(), name='user_profile_edit'),
+    path('user/<int:user_id>/follow/', views.follow, name='follow'),
     # posts
     path('chatter/compose/', views.PostCompose.as_view(), name='post_compose'),
     path('chatter/<int:post_id>/add_photo', views.add_photo, name='add_photo'),
