@@ -26,12 +26,14 @@ def home(request):
 def user_profile(request, user_id):
     user = get_object_or_404(User, id=user_id)
     user_profile = UserProfile.objects.get(user=user)
+    join_date = user.date_joined.strftime('%B %Y')
     followers_num = user_profile.followers_num()
 
     return render(request, 'users/user_profile.html', {
         'user': user,
         'user_profile': user_profile,
         'followers_num': followers_num,
+        'join_date': join_date,
 })
 
 # follwers

@@ -7,6 +7,7 @@
 {% block content %}
 <main id="mainBase">
     <div class="card" id="postCard">
+        <div id="grey-bg"></div>
         <div class="card-content">
             <!-- display avatar -->
             {% if user.userprofile.avatar %}
@@ -18,21 +19,28 @@
             </form>
             {% endif %}
             {% endif %}
-            <!-- Upload avatar -->
-            {% if request.user.is_authenticated and request.user == user%}
-            <form action="{% url 'add_avatar' user.id %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="file" name="avatar-file">
-                <input type="submit" value="Upload Avatar">
-            </form>
+            <div id="avatar-container">
+                <!-- Upload avatar -->
+                {% if request.user.is_authenticated and request.user == user%}
+                <form action="{% url 'add_avatar' user.id %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="avatar-file">
+                    <input type="submit" value="Upload Avatar">
+                </form>
+            </div>
             {% endif %}
             <h5><b>{{ user.username }}</b></h5>
-            <p>@{{ user.id }}</p>
+            <p id="userprofile-userid">@{{ user.id }}</p>
             {% if request.user.is_authenticated and request.user != user %}
-            <a href="{% url 'follow' user.id %}">Follow</a>
+            {% if request.user in user.userprofile.followers.all %}
+            <a id="following-btn" href="{% url 'follow' user.id %}">Following</a>
+            {% else %}
+            <a id="follow-btn" href="{% url 'follow' user.id %}">Follow</a>
             {% endif %}
+            {% endif %}
+
             <p>{{user.userprofile.bio}} </p>
-            <p>Joined </p>
+            <p>Joined {{join_date}}</p>
             <p>{{ followers_num }} Following</p>
             <!-- add back btn -->
             <!-- add post count -->
