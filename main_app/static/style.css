@@ -334,20 +334,29 @@ a.newPost:hover{
     color: rgb(134, 133, 133);
 }
 
+#post_card{
+    display: flex;
+}
+.avatar_profile_pg, .avatar_detail_pg, .avatar_home_pg{
+    flex-basis: 10%;
+    margin-top: -1.2rem
+}
+.postMinusAvatar{
+    flex-basis: 90%; 
+}
 
 
 /* home pg */
 .user_avatar {
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
 }
 
 .post_user_bar {
     position: relative;
     top: -20px;
-    margin-left: -0.3rem;
 }
 
 .post_bar {
@@ -365,9 +374,6 @@ a.newPost:hover{
     color: black;
 }
 
-.postContent {
-    margin-left: 50px;
-}
 
 .postContent .rounded {
     border-radius: 10px;
@@ -456,7 +462,6 @@ div#edit_form_input textarea {
 .postIcons {
     display: flex;
     flex-direction: row;
-    margin-left: 2rem;
 }
 
 .postIcons img:hover {
@@ -467,7 +472,6 @@ div#edit_form_input textarea {
 .postIcons img {
     width: 1.5rem;
     height: 1.5rem;
-    margin-left: 1.3rem;
 }
 
 #commentSection,
