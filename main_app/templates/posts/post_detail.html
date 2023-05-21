@@ -10,7 +10,9 @@
     <div class="card" id="postCard">
         <div class="card-content" id="post_card">
             <div class="avatar_detail_pg">
-                <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
+                <a href="{% url 'user_profile' post.user.id %}">
+                    <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
+                </a>
             </div>
             <div class="postMinusAvatar">
                 <p><span class="post_user_bar"><strong>{{ post.user.username }}</strong>

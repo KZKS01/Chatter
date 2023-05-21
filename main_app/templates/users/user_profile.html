@@ -38,12 +38,14 @@
         </div>
     </div>
     {% for post in posts %}
-    <a href="{% url 'post_detail' post.id %}" id="homeA">
-        <div class="card" id="postCard">
-            <div class="card-content" id="post_card">
-                <div class="avatar_profile_pg">
+    <div class="card" id="postCard">
+        <div class="card-content" id="post_card">
+            <div class="avatar_profile_pg">
+                <a href="{% url 'user_profile' user.id %}">
                     <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
-                </div>
+                </a>
+            </div>
+            <a href="{% url 'post_detail' post.id %}" id="homeA">
                 <div class="postMinusAvatar">
                     <p><span class="post_user_bar"><strong>{{ post.user.username }}</strong>
                             <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
@@ -67,17 +69,19 @@
                             <p>{{ post.comment_num }}</p>
                         </a>
                         <a id="repostSection" href="{% url 'repost' post.id %}">
-                            <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png" alt="repost icon">
+                            <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
+                                alt="repost icon">
                             <p>{{ post.repost_num }}</p>
                         </a>
                         <a href="{% url 'update_like' post.id %}" id="likeSection">
-                            <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png" alt="like icon">
+                            <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png"
+                                alt="like icon">
                             <p>{{ post.like_num }}</p>
                         </a>
                     </div>
                 </div>
-            </div>
         </div>
+    </div>
     </a>
     <!-- Dropdown Structure -->
     <ul id="dropdown{{ post.id }}" class="dropdown-content">
