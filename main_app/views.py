@@ -28,12 +28,14 @@ def user_profile(request, user_id):
     user_profile = UserProfile.objects.get(user=user)
     join_date = user.date_joined.strftime('%B %Y')
     followers_num = user_profile.followers_num()
+    # reposts = Post.objects.filter(reposts__user=user_profile.user)
 
     return render(request, 'users/user_profile.html', {
         'user': user,
         'user_profile': user_profile,
         'followers_num': followers_num,
         'join_date': join_date,
+        # 'reposts': reposts,
 })
 
 # follwers
@@ -214,6 +216,22 @@ def post_detail(request, post_id):
         'user_id': user_id,
         'comments': comments,
         })
+
+#reposts
+@login_required
+def repost(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+
+    if user in post.reposts.all():
+        post.reposts.remove(user)
+        post.decrement_repost_num()
+    else:
+        post.reposts.add(user)
+        post.increment_repost_num()
+
+    return redirect('post_detail', post_id=post_id)
+
 
 
 # search function

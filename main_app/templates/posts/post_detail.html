@@ -37,15 +37,14 @@
                         alt="comment icon">
                     <p>{{ post.comment_num }}</p>
                 </a>
-                <span id="repostSection">
-
+                <a id="repostSection" href="{% url 'repost' post.id %}">
                     <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png" alt="repost icon">
-
-                </span>
-                    <a href="{% url 'update_like' post.id %}" id="likeSection">
-                        <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png" alt="like icon">
-                        <p>{{ post.like_num }}</p>
-                    </a>
+                    <p>{{ post.repost_num }}</p>
+                </a>
+                <a href="{% url 'update_like' post.id %}" id="likeSection">
+                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png" alt="like icon">
+                    <p>{{ post.like_num }}</p>
+                </a>
             </div>
             {% for comment in comments %}
             <div class="card-action">

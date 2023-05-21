@@ -19,6 +19,7 @@ urlpatterns = [
     path('chatter/<int:post_id>/', views.post_detail, name='post_detail'),
     path('chatter/<int:pk>/edit/', views.PostEdit.as_view(), name='post_edit'),
     path('chatter/<int:pk>/delete/', views.PostDelete.as_view(), name='post_delete'),
+    # path('chatter/<int:post_id>/repost/', views.repost, name='repost'),
     # comments
     path('chatter/<int:post_id>/add_comment/', views.AddComment.as_view(), name='add_comment'),
     path('chatter/<int:post_id>/delete_comment/<int:pk>/', views.DeleteComment.as_view(), name='comment_delete'),

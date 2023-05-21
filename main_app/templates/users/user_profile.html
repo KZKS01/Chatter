@@ -19,6 +19,13 @@
             </form>
             {% endif %}
             {% endif %}
+            <!-- display avatar -->
+            {% if user.userprofile.avatar %}
+            <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
+            {% endif %}
+            {% if request.user.is_authenticated and request.user == user %}
+            <a href="{% url 'user_profile_edit' user_profile.id %}">Edit Profile</a>
+            {% endif %}
             <div id="avatar-container">
                 <!-- Upload avatar -->
                 {% if request.user.is_authenticated and request.user == user%}
@@ -49,11 +56,3 @@
 
 </main>
 {% endblock %}
-
-<!-- display avatar -->
-<!-- {% if user.userprofile.avatar %}
-<img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
-{% endif %}
-{% if request.user.is_authenticated and request.user == user %}
-<a href="{% url 'user_profile_edit' user.id %}">Edit Profile</a>
-{% endif %} -->

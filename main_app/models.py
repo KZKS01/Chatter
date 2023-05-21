@@ -11,6 +11,8 @@ class Post(models.Model):
    created_at = models.DateTimeField(auto_now_add=True)
    comment_num = models.IntegerField(default=0)
    like_num = models.IntegerField(default=0)
+   repost_num = models.IntegerField(default=0)
+   # reposts = models.ManyToManyField(User, related_name='reposts')
 
    def get_absolute_url(self):
       return reverse('posts_index')
@@ -32,6 +34,15 @@ class Post(models.Model):
    def decrement_like_num(self):
       self.like_num -= 1
       self.save(update_fields=['like_num'])
+
+   # reposts
+   def increment_repost_num(self):
+      self.repost_num += 1
+      self.save(update_fields=['repost_num'])
+
+   def decrement_repost_num(self):
+      self.repost_num -= 1
+      self.save(update_fields=['repost_num'])
    
 class Photo(models.Model):
    url = models.CharField(max_length=200)

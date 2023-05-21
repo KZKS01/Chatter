@@ -33,21 +33,20 @@
                             alt="comment icon">
                         <p>{{ post.comment_num }}</p>
                     </a>
-                    <span id="repostSection">
-                        <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
-                            alt="repost icon">
-                    </span>
-                    <a href="{% url 'update_like' post.id %}" id="likeSection">
-                        <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png" alt="like icon">
-                        <p>{{ post.like_num }}</p>
-                    </a>
-                </div>
+                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png" alt="repost icon">
+                    <p>{{ post.repost_num }}</p>
+                </a>
+                <a href="{% url 'update_like' post.id %}" id="likeSection">
+                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png" alt="like icon">
+                    <p>{{ post.like_num }}</p>
+                </a>
             </div>
         </div>
-    </a>
-    {% endfor %}
-    {% for post in posts %}
-    <!-- Dropdown Structure -->
+    </div>
+</a>
+{% endfor %}
+{% for post in posts %}
+<!-- Dropdown Structure -->
     <ul id="dropdown{{ post.id }}" class="dropdown-content">
         <li>
             <a class="black-text text-darken-2 edit_btn" href="{% url 'post_edit' post.id %}"><b>Edit</b></a>
@@ -64,3 +63,4 @@
     });
 </script>
 {% endblock %}
+<!-- <a id="repostSection" href="{% url 'repost' post.id %}"> -->
