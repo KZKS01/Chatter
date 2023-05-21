@@ -29,6 +29,9 @@ def user_profile(request, user_id):
     join_date = user.date_joined.strftime('%B %Y')
     followers_num = user_profile.followers_num()
     # reposts = Post.objects.filter(reposts__user=user_profile.user)
+    posts = Post.objects.filter(user=user)
+    username = user.username
+    user_id = user.id
 
     return render(request, 'users/user_profile.html', {
         'user': user,
@@ -36,6 +39,10 @@ def user_profile(request, user_id):
         'followers_num': followers_num,
         'join_date': join_date,
         # 'reposts': reposts,
+        'posts': posts,
+        'username' : username,
+        'user_id': user_id,
+        'user': user,
 })
 
 # follwers
