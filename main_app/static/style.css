@@ -385,11 +385,14 @@ a.newPost:hover{
 }
 
 .edit_btn,
-.delete_btn {
+.delete_btn, .follow_btn_home {
     border: none;
     background-color: transparent;
-    outline: none;
+    /* outline: none; */
 }
+/* .follow_btn_home b{
+    font-size: 10px;
+} */
 
 .dropdown-trigger {
     float: right;
@@ -405,6 +408,7 @@ a.newPost:hover{
 .dropdown-content ul {
     z-index: 9999;
     top: 0;
+    width: auto !important;
 }
 
 /* override Materializecss */

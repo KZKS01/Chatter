@@ -6,7 +6,7 @@ Chatter is a social media app that allows users to create, view, and edit posts 
 
 ## Screenshot:
 * Home page
-![home](https://github.com/KZKS01/Chatter/assets/109245976/f930be80-902c-4e4d-a8e5-9be7f815872e)
+![home](https://github.com/KZKS01/Chatter/assets/109245976/a822f613-5d92-4656-b0c4-4506f9f163c9)
 
 * Signin page
 ![signin](https://user-images.githubusercontent.com/109245976/235284164-27ed3971-097a-489a-aaf6-5f274be9adcb.PNG)
@@ -35,11 +35,11 @@ User Authentication: The app implements user authentication, requiring users to 
 ## Technologies Used:
 * Python
 * Django
+* JavaScript
+* AWS S3
 * HTML
 * CSS
 * Materialize CSS
-* JavaScript
-* AWS S3
 * Heroku
 <br><br>
 
