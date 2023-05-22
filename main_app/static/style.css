@@ -330,6 +330,10 @@ a.newPost:hover{
     margin-top: 2rem;
 }
 
+#repost_username_p_tag{
+    margin:0;
+}
+
 #userprofile-userid{
     color: rgb(134, 133, 133);
 }
@@ -389,6 +393,7 @@ a.newPost:hover{
 
 .dropdown-trigger {
     float: right;
+
 }
 
 .dropdown-content {
@@ -467,7 +472,7 @@ div#edit_form_input textarea {
     border-radius: 50%;
 }
 
-.postIcons img {
+.postIcons img, #repost_icon{
     width: 1.5rem;
     height: 1.5rem;
 }

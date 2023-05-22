@@ -12,7 +12,7 @@ class Post(models.Model):
    comment_num = models.IntegerField(default=0)
    like_num = models.IntegerField(default=0)
    repost_num = models.IntegerField(default=0)
-   # reposts = models.ManyToManyField(User, related_name='reposts')
+   repost = models.ManyToManyField(User, related_name='repost')
 
    def get_absolute_url(self):
       return reverse('posts_index')

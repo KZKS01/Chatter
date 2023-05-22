@@ -28,7 +28,7 @@ def user_profile(request, user_id):
     user_profile = UserProfile.objects.get(user=user)
     join_date = user.date_joined.strftime('%B %Y')
     followers_num = user_profile.followers_num()
-    # reposts = Post.objects.filter(reposts__user=user_profile.user)
+    repost = user.repost.all() # get all the posts that the user reposted
     posts = Post.objects.filter(user=user)
     username = user.username
     user_id = user.id
@@ -38,7 +38,7 @@ def user_profile(request, user_id):
         'user_profile': user_profile,
         'followers_num': followers_num,
         'join_date': join_date,
-        # 'reposts': reposts,
+        'repost': repost,
         'posts': posts,
         'username' : username,
         'user_id': user_id,
@@ -230,11 +230,11 @@ def repost(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     user = request.user
 
-    if user in post.reposts.all():
-        post.reposts.remove(user)
+    if user in post.repost.all():
+        post.repost.remove(user)
         post.decrement_repost_num()
     else:
-        post.reposts.add(user)
+        post.repost.add(user)
         post.increment_repost_num()
 
     return redirect('post_detail', post_id=post_id)

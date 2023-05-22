@@ -37,6 +37,57 @@
             <!-- add post count -->
         </div>
     </div>
+    <!-- reposts -->
+    {% for re in repost %}
+    <div class="card" id="postCard">
+        <p id="repost_username_p_tag"><img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png" alt="repost icon"
+                id="repost_icon">{{ user.username }} reposted </p>
+        <div class="card-content" id="post_card">
+            <div class="avatar_profile_pg">
+                <a href="{% url 'user_profile' user.id %}">
+                    <img class="user_avatar" src="{{ re.user.userprofile.avatar}}">
+                </a>
+            </div>
+            <a href="{% url 'post_detail' re.id %}" id="homeA">
+                <div class="postMinusAvatar">
+                    <p><span class="post_user_bar"><strong>{{ re.user.username }}</strong>
+                            <span class="post_bar">@{{re.user.id}} · {{ re.created_at }}</span>
+                            {% if user.is_authenticated and user == re.user %}
+                            <!-- Dropdown Trigger -->
+                            <span class="dropdown-trigger" data-target="dropdown{{ re.id }}"><b
+                                    class="black-text text-darken-2">⋯</b></span>
+                        </span></p>
+                    {% endif %}
+                    <div class="postContent">
+                        <p>{{ re.content }}</p><br>
+                        <!-- Display photos -->
+                        {% for photo in re.photo_set.all %}
+                        <img src="{{ photo.url }}" class="rounded">
+                        {% endfor %}
+                    </div>
+                    <div class="postIcons">
+                        <a href="{% url 'add_comment' re.id %}" id="commentSection">
+                            <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.png"
+                                alt="comment icon">
+                            <p>{{ re.comment_num }}</p>
+                        </a>
+                        <a id="repostSection" href="{% url 'repost' re.id %}">
+                            <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
+                                alt="repost icon">
+                            <p>{{ re.repost_num }}</p>
+                        </a>
+                        <a href="{% url 'update_like' re.id %}" id="likeSection">
+                            <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png"
+                                alt="like icon">
+                            <p>{{ re.like_num }}</p>
+                        </a>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </a>
+    {% endfor %}
+    <!-- user's own posts -->
     {% for post in posts %}
     <div class="card" id="postCard">
         <div class="card-content" id="post_card">
@@ -93,6 +144,7 @@
         </li>
     </ul>
     {% endfor %}
+
 </main>
 <script>
     $(document).ready(function () {
