@@ -19,6 +19,19 @@ Chatter is a social media app that allows users to create, view, and edit posts 
 
 <br><br>
 
+## Key Features
+User Profiles: Each user has a personalized profile where they can showcase their avatar, bio, and other relevant information. Users can edit their profiles to customize their online presence.
+
+Posts: Users can create posts containing text content, images, and other media. These posts are displayed in a feed format, allowing users to scroll through and interact with the content.
+
+Likes and Comments: Users can like and comment on posts to show their appreciation or share their thoughts. The number of likes and comments is displayed alongside each post.
+
+Reposts: Users can repost posts from other users, allowing content to be shared throughout the network. The app keeps track of the number of reposts for each post.
+
+Followers: Users can follow other users to stay updated on their posts and activities. The app displays the number of followers for each user, and users can choose to follow or unfollow others.
+
+User Authentication: The app implements user authentication, requiring users to sign up and log in to access the features. This ensures a secure and personalized experience for each user.
+
 ## Technologies Used:
 * Python
 * Django
