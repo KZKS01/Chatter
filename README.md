@@ -36,10 +36,7 @@ Click [here](https://chatter-k.herokuapp.com/) to see the deployed app
 
 ## Next Steps:
 * More features: 
-  * comment on other users' posts
   * react to a post using different emojis
-  * follow other users
-  * share someone's posts on my feed to my account
   * the ranking of hashtags
   * send messages to different users
 
