@@ -1,12 +1,12 @@
 # **Chatter**
 
 # Description: this is a CRUD app
-This is an app for users to create, view and edit their posts and share within the app community. The app also includes features such as searching for users and posts
+Chatter is a social media app that allows users to create, view, and edit posts within a vibrant community. With Chatter, users can easily share their thoughts, ideas, and experiences with others. The app offers features like search functionality to discover users and posts of interest. Chatter empowers users to connect, engage, and stay updated with the latest conversations happening within the app community.
 <br><br>
 
 ## Screenshot:
 * Home page
-![home](https://user-images.githubusercontent.com/109245976/235306776-168c157f-aa66-4a6c-905e-41570831b8eb.png)
+![home](https://github.com/KZKS01/Chatter/assets/109245976/f930be80-902c-4e4d-a8e5-9be7f815872e)
 
 * Signin page
 ![signin](https://user-images.githubusercontent.com/109245976/235284164-27ed3971-097a-489a-aaf6-5f274be9adcb.PNG)
@@ -15,7 +15,7 @@ This is an app for users to create, view and edit their posts and share within t
 ![edit](https://user-images.githubusercontent.com/109245976/235284712-11f05bef-a83e-42e1-a945-0c849d4515e9.png)
 
 * profile page
-![profile](https://user-images.githubusercontent.com/109245976/235306824-93fa5ff6-b22f-4c3c-9095-fcd876608e08.png)
+![profile](https://github.com/KZKS01/Chatter/assets/109245976/20909154-0459-4d10-b3b2-90f7a636027c)
 
 <br><br>
 
