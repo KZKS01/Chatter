@@ -463,6 +463,10 @@ div#edit_form_input textarea {
     display: inline-block;
 }
 
+/* post_form */
+.edit_header, .new_header{
+
+}
 
 
 /* post_detail pg */
