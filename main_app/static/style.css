@@ -388,11 +388,7 @@ a.newPost:hover{
 .delete_btn, .follow_btn_home {
     border: none;
     background-color: transparent;
-    /* outline: none; */
 }
-/* .follow_btn_home b{
-    font-size: 10px;
-} */
 
 .dropdown-trigger {
     float: right;
@@ -462,12 +458,6 @@ div#edit_form_input textarea {
     position: relative;
     display: inline-block;
 }
-
-/* post_form */
-.edit_header, .new_header{
-
-}
-
 
 /* post_detail pg */
 .postIcons {
