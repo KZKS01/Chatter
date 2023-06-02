@@ -1,43 +1,40 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {% if object %}
-        <title>Edit</title>
-    {% else %}
-        <title>Create A Post</title>
-    {% endif %}
+{% if object %}
+<title>Edit</title>
+{% else %}
+<title>Create A Post</title>
+{% endif %}
 {% endblock %}
 
 {% block content %}
 <main id="mainBase">
-    <div class="col card hoverable s10 m6 12">
+    <div class="col card hoverable" id="sForms">
         <div class="row">
             <div class="card-content">
-            <div class="col s12 m10">
                 {% if object %}
                 <h5 class="edit_header">Edit</h5>
                 {% else %}
                 <h5 class="new_header">New Post</h5>
                 {% endif %}
-            </div>
-        </div>
-    </div>
-        
-        <form method="POST" class="col s12">
-            {% csrf_token %}
-            <div class="card-content">
-                <div class="row">
-                    <div class="input-field col s12" id="edit_form_input">
-                        {% if object %}
-                            {{ form.content }}
-                        {% else %}
-                            <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10" cols="40"></textarea>
-                        {% endif %}
-                    </div>
-                    <div id="img_container">
-                        {% if post.photo_set and user == post.user %}
-                            <!-- Display photos -->
-                            {% for photo in post.photo_set.all %}
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 cl12" id="edit_form_input">
+                                {% if object %}
+                                {{ form.content }}
+                                {% else %}
+                                <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10"
+                                    cols="40"></textarea>
+                                {% endif %}
+                            </div>
+                            <div id="img_container">
+                                {% if post.photo_set and user == post.user %}
+                                <!-- Display photos -->
+                                {% for photo in post.photo_set.all %}
                                 <div id="img_warp">
                                     <img src="{{ photo.url }}" class="rounded responsive-img">
                                     <form method="POST" action="{% url 'delete_photo' post.id photo.id%}">
@@ -45,23 +42,25 @@
                                         <button type="submit" class="img_delete_btn">X</button>
                                     </form>
                                 </div>
-                            {% endfor %}
-                        {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <input type="submit" value="Share">
                     </div>
+                </form>
+                <!-- Upload photos -->
+                {% if user.is_authenticated and user == post.user %}
+                <div class="card-content">
+                    <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="photo-file">
+                        <input type="submit" value="Upload Photo">
+                    </form>
+                    {% endif %}
                 </div>
-                <input type="submit" value="Share">
             </div>
-        </form>
-        <!-- Upload photos -->
-        {% if user.is_authenticated and user == post.user %}
-        <div class="card-content">
-            <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="file" name="photo-file">
-                <input type="submit" value="Upload Photo">
-            </form>
-        {% endif %}
-    </div>
+        </div>
     </div>
 </main>
 {% endblock %}

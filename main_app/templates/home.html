@@ -4,7 +4,7 @@
 <main id="mainBase">
             <h5 class="header"><strong>Home</strong></h5>
     {% for post in posts %}
-    <div class="card" id="postCard">
+    <div class="card hoverable" id="postCard">
         <div class="card-content" id="post_card">
             <div class="avatar_profile_pg">
                 <a href="{% url 'user_profile' post.user.id %}">
