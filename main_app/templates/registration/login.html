@@ -6,10 +6,10 @@
 
 {% block content %}
 <div class="container">
-    <div class="col card hoverable s10 m6 l4 mx-auto center-align" id="sForms">
-        <div class="col card hoverable s10 m6 12">
+    <div class="col card hoverable s12 m3 l3 xl3" id="sForms">
+        <div id="card-content">
             <div id="card-content">
-                <h4><strong>Sign in to Chatter</strong></h4>
+                <h4 id="signInUp"><strong>Sign in to Chatter</strong></h4>
 
                 {% if error %}
                 <p>{{ error }}</p>
@@ -23,7 +23,6 @@
                 </ul>
                 {% endif %}
 
- 
                 <hr>
                 <form method="POST" class="col s12">
                     <div class="card-content">
@@ -40,14 +39,10 @@
                                 {{ form.password }}
                                 <br>
                                 <br>
-                            </div>
-                                <div class="d-grid gap-2 col-6 mx-auto">
                                 <input type="submit" value="Next" class="btn" id="login-btn">
                             </div>
                         </div>
                 </form>
             </div>
         </div>
-    </div>
-</div>
-{% endblock %}
+        {% endblock %}

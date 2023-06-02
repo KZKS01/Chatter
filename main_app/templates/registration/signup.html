@@ -6,50 +6,46 @@
 
 {% block content %}
 <div class="container">
-    <div class="col card hoverable s10 m6 l4 mx-auto center-align" id="sForms">
-        <div class="col card hoverable s10 m6 12">
+    <div class="col card hoverable s12 m3 l3 xl3" id="sForms">
             <div id="card-content">
-                <h4><strong>Sign Up</strong></h4>
+                <h4 id="signInUp"><strong>Sign Up</strong></h4>
 
                 {% if error %}
                 <p>{{ error }}</p>
                 {% endif %}
-                <form method="POST" class="col s12">
+                <form method="POST" class="col s12 m12 l12 cl12">
                     <div class="card-content">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="input-field col s12">
+                            <div class="input-field col s12 m12 l12 cl12">
                                 {{ form.username.label_tag }}
                                 {{ form.username }}
                                 <small id="bigger">{{ form.username.help_text }}</small>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12">
+                            <div class="input-field col s12 m12 l12 cl12">
                                 {{ form.email.label_tag }}
                                 {{ form.email }}
                                 <small id="bigger">{{ form.email.help_text }}</small>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12">
+                            <div class="input-field col s12 m12 l12 cl12">
                                 {{ form.password1.label_tag }}
                                 {{ form.password1 }}
                                 <small id="bigger">{{ form.password1.help_text }}</small>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12">
+                            <div class="input-field col s12 m12 l12 cl12">
                                 {{ form.password2.label_tag }}
                                 {{ form.password2 }}
                                 <small id="bigger">{{ form.password2.help_text }}</small>
                             </div>
+                            <input type="submit" value="Submit" class="btn" id="submit-btn">  
                         </div>
                     </div>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                    <input type="submit" value="Submit" class="btn" id="submit-btn">
-                </div>
-                    <br>
                 </form>
             </div>
         </div>

@@ -13,7 +13,7 @@
 
             <!-- display avatar -->
             {% if user.userprofile.avatar %}
-            <img src="{{ user.userprofile.avatar }}" class="rounded" id="edit_avatar_file">
+            <img src="{{ user.userprofile.avatar }}" class="rounded responsive-img" id="edit_avatar_file">
             {% if request.user.is_authenticated and request.user == user and user.userprofile.avatar != 'https://s3.us-east-2.amazonaws.com/k-chatter/713d6b.PNG'%}
             <form method="POST" action="{% url 'delete_avatar' user.id %}">
                 {% csrf_token %}

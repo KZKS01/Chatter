@@ -11,11 +11,11 @@
         <div class="card-content">
             <!-- display avatar -->
             {% if user.userprofile.avatar %}
-            <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
+            <img src="{{ user.userprofile.avatar }}" class="rounded responsive-img" id="avatar_file">
             {% endif %}
             <!-- display avatar -->
             {% if user.userprofile.avatar %}
-            <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
+            <img src="{{ user.userprofile.avatar }}" class="rounded responsive-img" id="avatar_file">
             {% endif %}
             {% if request.user.is_authenticated and request.user == user %}
             <a id="editProfileBtn" href="{% url 'user_profile_edit' user_profile.id %}"><b>Edit Profile</b></a>
@@ -45,7 +45,7 @@
         <div class="card-content" id="post_card">
             <div class="avatar_profile_pg">
                 <a href="{% url 'user_profile' user.id %}">
-                    <img class="user_avatar" src="{{ re.user.userprofile.avatar}}">
+                    <img class="user_avatar responsive-img" src="{{ re.user.userprofile.avatar}}">
                 </a>
             </div>
             <a href="{% url 'post_detail' re.id %}" id="homeA">
@@ -62,7 +62,7 @@
                         <p>{{ re.content }}</p><br>
                         <!-- Display photos -->
                         {% for photo in re.photo_set.all %}
-                        <img src="{{ photo.url }}" class="rounded">
+                        <img src="{{ photo.url }}" class="rounded responsive-img">
                         {% endfor %}
                     </div>
                     <div class="postIcons">
@@ -93,7 +93,7 @@
         <div class="card-content" id="post_card">
             <div class="avatar_profile_pg">
                 <a href="{% url 'user_profile' user.id %}">
-                    <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
+                    <img class="user_avatar responsive-img" src="{{ post.user.userprofile.avatar}}">
                 </a>
             </div>
             <a href="{% url 'post_detail' post.id %}" id="homeA">
