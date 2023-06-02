@@ -18,7 +18,7 @@
 
 <body>
     <div class="row">
-        <div class="col s12 m4 l4 xl4">
+        <div class="col s12 m3 l3 xl3">
             <div id="nav-left" class="sidenav sidenav-fixed left-align">
                 {% if user.is_authenticated %}
                 <li class="bold">
@@ -63,13 +63,13 @@
                 </ul>
             </div>
         </div>
-        <div id="middle" class="col s12 m4 l4 xl4">
+        <div id="middle" class="col s12 m6 l6 xl6">
             {% block content %}
             {% endblock %}
         </div>
 
         <!-- SEARCH -->
-        <div class="col s12 m4 l4 xl4">
+        <div class="col s12 m3 l3 xl3">
             <div id="nav-right" class="sidenav sidenav-fixed right-align">
                 <form method="GET" action="{% url 'search' %}" class="search-form">
                     <input type="text" class="black-text" placeholder="Search Chatter" name="searching" id="pill"
