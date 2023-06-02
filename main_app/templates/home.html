@@ -2,12 +2,7 @@
 
 {% block content %}
 <main id="mainBase">
-    <div class="row">
-        <div class="col s12 m10">
-            <h5 class="header"><strong>Home / Chatter </strong></h5>
-        </div>
-    </div>
-
+            <h5 class="header"><strong>Home</strong></h5>
     {% for post in posts %}
     <div class="card" id="postCard">
         <div class="card-content" id="post_card">
@@ -56,7 +51,7 @@
     {% endfor %}
     {% for post in posts %}
     <!-- Dropdown Structure -->
-    {% if user.is_authenticated and request.user == post.user %}
+    {% if request.user.is_authenticated and request.user == post.user %}
     <ul id="dropdown{{ post.id }}" class="dropdown-content">
         <li>
             <a class="black-text text-darken-2 edit_btn" href="{% url 'post_edit' post.id %}"><b>Edit</b></a>
@@ -65,7 +60,7 @@
             <a class="red-text text-darken-2 delete_btn" href="{% url 'post_delete' post.id %}"><b>Delete</b></a>
         </li>
     </ul>
-    {% elif user.is_authenticated %}
+    {% elif request.user.is_authenticated %}
     <ul id="dropdown{{ post.id }}" class="dropdown-content">
         {% if request.user in post.user.userprofile.followers.all %}
         <li>

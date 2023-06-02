@@ -2,12 +2,12 @@
 
 {% block title %}
 <br>
-<main id="mainBase">
 <title>Searched results</title>
 {% endblock %}i
 
 {% block content %}
 
+<main id="mainBase">
 {% if results %}
     {% for post in results %}
     <a href="{% url 'post_detail' post.id %}" id="homeA">

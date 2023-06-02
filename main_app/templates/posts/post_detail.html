@@ -49,18 +49,21 @@
             {% for comment in comments %}
             <div class="card-action">
                 <p>
-                    <a href="">
-                        <img class="user_avatar" src="{{ request.user.userprofile.avatar }}">
-                    </a>
-                    <span class="post_user_bar">
-                        <strong>{{ request.user.username }}</strong>
-                        <span class="post_bar">@{{ request.user.id }} · {{ comment.created_at }}</span>
-                        <p>{{ comment.content }}</p>
+                    <div class="avatar_detail_comment">
+                        <a href="{% url 'user_profile' comment.user.id %}">
+                            <img class="comment_user_avatar" src="{{ comment.user.userprofile.avatar}}">
+                        </a>
+                    </div>
+                    <div class="commentMinusAvatar">
+                    <span class="comment_user_bar">
+                        <p><span class="post_user_bar"><strong>{{ comment.user.username }}</strong>
+                        <span class="post_bar">@{{ comment.user.id }} · {{ comment.created_at }}</span>
+                        <p class="comment_content">{{ comment.content }}</p>
                     </span>
-                    {% if user.is_authenticated and user == comment.user %}
+                    {% if request.user.is_authenticated and request.user == comment.user %}
                     <!-- Dropdown Trigger -->
                     <span class="dropdown-trigger" data-target="dropdown_comment{{ comment.id }}">
-                        <b class="black-text text-darken-2" id="comment-dropdown">⋯</b>
+                        <b class="black-text text-darken-2" id="comment-dropdown">⋯</b></p>
                     </span>
                     {% endif %}
                 </p>
@@ -68,7 +71,7 @@
             <!-- Comment Dropdown Structure -->
             <ul id="dropdown_comment{{ comment.id }}" class="dropdown-content">
                 <li>
-                    <a class="red-text text-darken-2 delete_btn" href="{% url 'comment_delete' post.id comment.id %}">
+                    <a class="red-text text-darken-2 comment_delete_btn" href="{% url 'comment_delete' post.id comment.id %}">
                         <b>Delete</b>
                     </a>
                 </li>

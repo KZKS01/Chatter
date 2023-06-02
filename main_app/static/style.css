@@ -1,17 +1,10 @@
 /* base */
-#nav-mobile {
-    width: 500px;
-}
-
-#mainBase {
-    padding-left: 500px;
-    padding-right: 500px;
-}
-
 #mainBase h1 {
     margin-top: 0;
 }
-
+.header{
+    margin-left: 1.5rem;
+}
 .bold {
     display: flex;
     align-items: flex-end;
@@ -23,6 +16,7 @@
     font-weight: normal;
     border-radius: 50px;
     margin-right: 1rem;
+    text-align: center;
 }
 
 #home-icon, #profile-icon{
@@ -129,7 +123,7 @@ a.newPost:hover{
 }
 
 #pill {
-    border-block: 1px transparent;
+    border: 1px transparent;
     border-radius: 30px;
     background-color: rgb(243, 241, 241);
     padding-left: 10px;
@@ -142,20 +136,18 @@ a.newPost:hover{
 #nav-right {
     right: 0;
     left: auto;
-    padding-right: 200px;
-    width: 500px;
 }
 
+#middle{
+    padding: 0;
+    width: calc(40%); 
+    margin-left: calc(30%);
+}
 
-/* .postMinusAvatar{
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 2rem;
- } */
-
-
-
+#nav-left,
+#nav-right {
+    width: calc(30%);
+}
 /* login pg */
 #gBtn {
     text-align: center;
@@ -213,7 +205,6 @@ a.newPost:hover{
 .btn-light a {
     color: black;
 }
-
 
 
 /* user_profile */
@@ -489,8 +480,41 @@ div#edit_form_input textarea {
 }
 
 #comment-dropdown{
-    margin-top: 1rem;
     position: absolute;
+    top: 0;
+    right: 0;
+}
+.comment_user_bar {
+    position: relative;
+    top: -30px;
+}
+.comment_bar{
+    margin-left: 2rem;
+}
+.commentMinusAvatar{
+    flex-basis: 90%; 
+}
+.avatar_detail_comment{
+    flex-basis: 10%;
+}
+.commentMinusAvatar{
+    margin-left: 4rem;
+    margin-top: -0.8rem;
+}
+.comment_user_avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -0.5rem;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 0;
+}
+
+.dropdown-content li {
     top: 0;
     right: 0;
 }
