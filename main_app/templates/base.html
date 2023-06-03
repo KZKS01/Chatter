@@ -19,7 +19,7 @@
 <body>
     <div class="row">
         <div class="col s12 m3 l3 xl3">
-            <div id="nav-left" class="sidenav sidenav-fixed left-align">
+            <div id="nav-left" class="sidenav sidenav-fixed left-align hide-on-med-and-down">
                 {% if user.is_authenticated %}
                 <li class="bold">
                     <a id="navContent" href="{% url 'home' %}"><img id="home-icon"
@@ -70,7 +70,7 @@
 
         <!-- SEARCH -->
         <div class="col s12 m3 l3 xl3">
-            <div id="nav-right" class="sidenav sidenav-fixed right-align">
+            <div id="nav-right" class="sidenav sidenav-fixed right-align hide-on-med-and-down">
                 <form method="GET" action="{% url 'search' %}" class="search-form">
                     <input type="text" class="black-text" placeholder="Search Chatter" name="searching" id="pill"
                         autocomplete="off">
