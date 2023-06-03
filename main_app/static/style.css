@@ -1,4 +1,7 @@
 /* base */
+.base-row{
+    margin-left: calc(0.5rem + 0.5vw) !important;
+}
 #mainBase h1 {
     margin-top: 0;
 }
@@ -145,7 +148,6 @@ a.newPost:hover {
 
 #middle {
     padding: 0;
-    width: calc(50%);
 }
 
 #nav-left,
