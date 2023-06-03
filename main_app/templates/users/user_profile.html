@@ -11,11 +11,7 @@
         <div class="card-content">
             <!-- display avatar -->
             {% if user.userprofile.avatar %}
-            <img src="{{ user.userprofile.avatar }}" class="rounded responsive-img" id="avatar_file">
-            {% endif %}
-            <!-- display avatar -->
-            {% if user.userprofile.avatar %}
-            <img src="{{ user.userprofile.avatar }}" class="rounded responsive-img" id="avatar_file">
+            <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
             {% endif %}
             {% if request.user.is_authenticated and request.user == user %}
             <a id="editProfileBtn" href="{% url 'user_profile_edit' user_profile.id %}"><b>Edit Profile</b></a>
