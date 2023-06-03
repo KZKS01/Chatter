@@ -12,7 +12,7 @@
 <main id="mainBase">
     <div class="card hoverable" id="sForms">
         <div class="card-content">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="card-content">
                     <div class="row">
@@ -39,24 +39,19 @@
                             {% endif %}
                         </div>
                     </div>
-                    <input type="submit" value="Share" id="share-btn">
-                </form>
                     <!-- Upload photos -->
-                    {% if user.is_authenticated and user == post.user %}
-                        <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <!-- <div class="img-upload-block"> -->
-                            <!-- <div class="image-upload"> -->
-                                <!-- <label for="photo-file"> -->
-                                    <!-- <img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685744307/115696_photo_picture_image_photography_icon_g7opkb.png"
+                    <div class="img-upload-block">
+                        <!-- <div class="image-upload"> -->
+                        <!-- <label for="photo-file"> -->
+                        <!-- <img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685744307/115696_photo_picture_image_photography_icon_g7opkb.png"
                                         width="20" height="20" /> -->
-                                <!-- </label> -->
-                                <!-- </div> -->
-                            <input type="file" name="photo-file" id="photo-file">
-                            <input type="submit" value="Upload Photo" id="upload-btn">
-                        </form>
-                        {% endif %}
-                </div>
+                        <!-- </label> -->
+                        <input type="file" name="photo-file" id="photo-file">
+                        <!-- </div> -->
+                        <input type="submit" value="Upload Photo" id="upload-btn">
+                    </div>
+                    <input type="submit" value="Share" id="share-btn">
+            </form>
         </div>
     </div>
 </main>
