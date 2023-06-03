@@ -47,11 +47,12 @@ a.newPost:hover {
 }
 
 .user_avatar_nav {
-    width: 50px;
-    height: 50px;
+    width: calc(3.2rem + 0.5vw);
+    height: calc(3.2rem + 0.5vw);
     border-radius: 50%;
     margin-right: 10px;
-    margin-top: 0.8rem;
+    margin-top: calc(0.5rem + 0.5vw);
+    margin-bottom: calc(0.5rem + 0.5vw);
 }
 
 #username_id span {
