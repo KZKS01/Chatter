@@ -311,7 +311,6 @@ def delete_photo(request, post_id, photo_id):
     #     key = photo.url.split('/')[-1]
 
     key = photo.url.split('/')[-1]
-    print(f"Key: {key}")
 
     # delete img from AWS S3
     try:
@@ -323,6 +322,7 @@ def delete_photo(request, post_id, photo_id):
 
     # delete from my db
     photo.delete()
+    post.save()
 
     return redirect('post_detail', post_id=post_id)
 
