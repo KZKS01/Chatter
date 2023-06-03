@@ -450,7 +450,10 @@ input[type="file"]::file-selector-button, #upload-btn{
     font-size: calc(0.3rem + 0.5vw);
     padding: calc(0.3rem + 0.2vw) calc(0.5rem + 0.2vw);
 }
-
+input[type="file"]::file-selector-button:hover{
+    cursor: pointer;
+    background: #389af0 !important;
+}
 /* #photo-file {
     display: none;
     visibility: none;
