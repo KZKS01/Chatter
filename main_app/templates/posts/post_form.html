@@ -12,48 +12,44 @@
 <main id="mainBase">
     <div class="card hoverable" id="sForms">
         <div class="card-content">
-            {% if request.user.is_authenticated %}
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                <input type="hidden" name="post-id" value="{{ post.id }}">
                 <div class="card-content">
                     <div class="row">
-                        <div class="input-field col s12 m12 l12 cl12" id="edit_form_input">
+                        <div class="input-field col s12" id="edit_form_input">
                             {% if object %}
-                            {{ form.content }}
+                                {{ form.content }}
                             {% else %}
-                            <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10"
-                                cols="40"></textarea>
+                                <textarea name="{{ form.content.name }}" placeholder="What's happening?" rows="10" cols="40"></textarea>
                             {% endif %}
                         </div>
                         <div id="img_container">
                             {% if post.photo_set and user == post.user %}
-                            <!-- Display photos -->
-                            {% for photo in post.photo_set.all %}
-                            <div id="img_warp">
-                                <img src="{{ photo.url }}" class="rounded responsive-img">
-                                <form method="POST" action="{% url 'delete_photo' post.id photo.id%}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="img_delete_btn">X</button>
-                                </form>
-                            </div>
-                            {% endfor %}
+                                <!-- Display photos -->
+                                {% for photo in post.photo_set.all %}
+                                    <div id="img_warp">
+                                        <img src="{{ photo.url }}" class="rounded responsive-img">
+                                        <form method="POST" action="{% url 'delete_photo' post.id photo.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="img_delete_btn">X</button>
+                                        </form>
+                                    </div>
+                                {% endfor %}
                             {% endif %}
                         </div>
                     </div>
-                    <!-- Upload photos -->
                     <div class="img-upload-block">
-                        <!-- <div class="image-upload"> -->
-                        <!-- <label for="photo-file"> -->
-                        <!-- <img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685744307/115696_photo_picture_image_photography_icon_g7opkb.png"
-                                        width="20" height="20" /> -->
-                        <!-- </label> -->
                         <input type="file" name="photo-file" id="photo-file">
-                        <!-- </div> -->
-                        <input type="submit" value="Upload Photo" id="upload-btn">
+                        {% if object %}
+                            <input type="submit" value="Share" formaction="{% url 'add_photo' post.id %}">
+                        {% else %}
+                            <input type="submit" value="Share">
+                        {% endif %}
                     </div>
-                    <input type="submit" value="Share" id="share-btn">
+                </div>
             </form>
-            {% endif %}
+            
         </div>
     </div>
 </main>
