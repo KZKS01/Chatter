@@ -45,6 +45,7 @@ a.newPost {
     background: linear-gradient(to right, #08c8fb, #3aa4ff);
     color: white !important;
     width: 39%;
+    border: none;
 }
 
 a.newPost:hover {
@@ -319,10 +320,6 @@ a.newPost:hover {
     margin-left: -2rem;
 }
 
-#edit_bio input {
-    margin-left: 0.8rem;
-}
-
 #follow-btn,
 #following-btn {
     border-radius: 50px;
@@ -381,6 +378,19 @@ a.newPost:hover {
 }
 
 
+/* edit profile pg */
+#profile-save-btn{
+    border-radius: 50px;
+    background: linear-gradient(to right, #08c8fb, #3aa4ff);
+    color: white !important;
+    width: 10%;
+    border: none;
+    padding: calc(0.3rem + 0.2vw) calc(1rem + 0.2vw);
+}
+#profile-save-btn:hover{
+    background: #389af0 !important;
+    cursor: pointer;
+}
 /* home pg */
 .row .col{
     padding: 0 !important;
