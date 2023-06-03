@@ -218,11 +218,14 @@ def post_detail(request, post_id):
     user = request.user
     user_id = request.user.id
     comments = Comment.objects.filter(post=post_id)
+    photos = post.photo_set.all()
     return render(request, 'posts/post_detail.html', {
         'post': post,
         'user': user,
         'user_id': user_id,
         'comments': comments,
+        'post_id': post_id,
+        'photos': photos,
         })
 
 #reposts
