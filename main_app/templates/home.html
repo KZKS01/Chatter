@@ -4,8 +4,8 @@
 <main id="mainBase">
             <h5 class="header"><strong>Home</strong></h5>
     {% for post in posts %}
-    <div class="row">
-        <div class="card hoverable" id="postCard">
+    <div class="card hoverable" id="postCard">
+            <div class="row">
             <div class="card-content" id="post_card">
                 <div class="avatar_profile_pg">
                     <a href="{% url 'user_profile' post.user.id %}">
@@ -13,7 +13,7 @@
                     </a>
                 </div>
                 <a href="{% url 'post_detail' post.id %}" id="homeA">
-                <div class="postMinusAvatar col s12">
+                <div class="postMinusAvatar col">
                     <p><span class="post_user_bar"><strong>{{ post.user.username }}</strong>
                             <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
                             
@@ -21,14 +21,14 @@
                             <span class="dropdown-trigger" data-target="dropdown{{ post.id }}"><b
                                     class="black-text text-darken-2">⋯</b></span></p></span>
                     
-                    <div class="postContent col s12">
+                    <div class="postContent col">
                         <p>{{ post.content }}</p><br>
                         <!-- Display photos -->
                         {% for photo in post.photo_set.all %}
                         <img src="{{ photo.url }}" class="responsive-img rounded">
                         {% endfor %}
                     </div>
-                    <div class="postIcons col s12">
+                    <div class="postIcons col">
                         <div class="row">
                             <div class="col s4">
                         <a href="{% url 'add_comment' post.id %}" id="commentSection">
