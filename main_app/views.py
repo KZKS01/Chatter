@@ -23,6 +23,7 @@ def home(request):
         'user': user,
 })
 
+@login_required
 def user_profile(request, user_id):
     user = get_object_or_404(User, id=user_id)
     user_profile = UserProfile.objects.get(user=user)
