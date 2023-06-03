@@ -15,7 +15,7 @@ class Post(models.Model):
    repost = models.ManyToManyField(User, related_name='repost')
 
    def get_absolute_url(self):
-      return reverse('posts_index')
+      return reverse('post_detail', kwargs={'post_id': self.id})
 
    #comments
    def increment_comment_num(self):

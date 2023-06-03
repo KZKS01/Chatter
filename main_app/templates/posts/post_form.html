@@ -12,6 +12,7 @@
 <main id="mainBase">
     <div class="card hoverable" id="sForms">
         <div class="card-content">
+            {% if request.user.is_authenticated %}
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="card-content">
@@ -52,6 +53,7 @@
                     </div>
                     <input type="submit" value="Share" id="share-btn">
             </form>
+            {% endif %}
         </div>
     </div>
 </main>
