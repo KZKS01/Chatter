@@ -11,7 +11,7 @@
         <div class="card-content" id="post_card">
             <div class="avatar_detail_pg">
                 <a href="{% url 'user_profile' post.user.id %}">
-                    <img class="user_avatar responsive-img" src="{{ post.user.userprofile.avatar}}">
+                    <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
                 </a>
             </div>
             <div class="postMinusAvatar">
@@ -51,7 +51,7 @@
                 <p>
                     <div class="avatar_detail_comment">
                         <a href="{% url 'user_profile' comment.user.id %}">
-                            <img class="comment_user_avatar responsive-img" src="{{ comment.user.userprofile.avatar}}">
+                            <img class="comment_user_avatar" src="{{ comment.user.userprofile.avatar}}">
                         </a>
                     </div>
                     <div class="commentMinusAvatar">

@@ -2,6 +2,7 @@
 img.responsive-img {
     width: 80% !important;
     max-width: none !important;
+    height: auto !important;
 }
 .row{
     margin-bottom: 0 !important;
@@ -40,7 +41,7 @@ a.newPost {
     border-radius: 50px;
     background: linear-gradient(to right, #08c8fb, #3aa4ff);
     color: white !important;
-    width: 33%;
+    width: 39%;
 }
 
 a.newPost:hover {
@@ -111,11 +112,12 @@ a.newPost:hover {
     justify-content: center;
     flex-direction: row;
     margin-top: 5px;
-    padding-left: 35px;
+    padding-left: 0.5rem;
 }
 
 .search_btn {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     width: 3.5rem;
     height: 3rem;
     border-radius: 50%;
@@ -353,6 +355,7 @@ a.newPost:hover {
 
 #repost_username_p_tag {
     margin: 0;
+    margin-left: 1rem;
 }
 
 #userprofile-userid {

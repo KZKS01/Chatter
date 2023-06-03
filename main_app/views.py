@@ -295,7 +295,6 @@ def add_photo(request, post_id):# accepts an HTTP req obj and a cat_id integer p
     # redirect to the detail pg
     return redirect('post_detail', post_id=post_id)
 
-
 @login_required
 # # AWS - Post Photo DELETE
 def delete_photo(request, post_id, photo_id):
@@ -312,6 +311,7 @@ def delete_photo(request, post_id, photo_id):
     #     key = photo.url.split('/')[-1]
 
     key = photo.url.split('/')[-1]
+    print(f"Key: {key}")
 
     # delete img from AWS S3
     try:

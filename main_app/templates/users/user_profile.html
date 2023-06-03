@@ -43,7 +43,7 @@
             <div class="card-content" id="post_card">
                 <div class="avatar_profile_pg">
                     <a href="{% url 'user_profile' user.id %}">
-                        <img class="user_avatar responsive-img" src="{{ re.user.userprofile.avatar}}">
+                        <img class="user_avatar" src="{{ re.user.userprofile.avatar}}">
                     </a>
                 </div>
                 <a href="{% url 'post_detail' re.id %}" id="homeA">
@@ -65,21 +65,21 @@
                         </div>
                         <div class="postIcons col s12">
                             <div class="row">
-                                <div class="col s3">
+                                <div class="col s4">
                                     <a href="{% url 'add_comment' re.id %}" id="commentSection">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.png"
                                             alt="comment icon">
                                         <p>{{ re.comment_num }}</p>
                                     </a>
                                 </div>
-                                <div class="col s3">
+                                <div class="col s4">
                                     <a id="repostSection" href="{% url 'repost' re.id %}">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
                                             alt="repost icon">
                                         <p>{{ re.repost_num }}</p>
                                     </a>
                                 </div>
-                                <div class="col s3">
+                                <div class="col s4">
                                     <a href="{% url 'update_like' re.id %}" id="likeSection">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png"
                                             alt="like icon">
@@ -123,21 +123,21 @@
                         </div>
                         <div class="postIcons col s12">
                             <div class="row">
-                                <div class="col s3">
+                                <div class="col s4">
                                     <a href="{% url 'add_comment' post.id %}" id="commentSection">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.png"
                                             alt="comment icon">
                                         <p>{{ post.comment_num }}</p>
                                     </a>
                                 </div>
-                                <div class="col s3">
+                                <div class="col s4">
                                     <a id="repostSection" href="{% url 'repost' post.id %}">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
                                             alt="repost icon">
                                         <p>{{ post.repost_num }}</p>
                                     </a>
                                 </div>
-                                <div class="col s3">
+                                <div class="col s4">
                                     <a href="{% url 'update_like' post.id %}" id="likeSection">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png"
                                             alt="like icon">
