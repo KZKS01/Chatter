@@ -1,7 +1,10 @@
-/* base */
-.base-row{
-    margin-left: calc(0.5rem + 0.5vw) !important;
+/* global */
+img.responsive-img {
+    width: 80% !important;
+    max-width: none !important;
 }
+
+/* base */
 #mainBase h1 {
     margin-top: 0;
 }
@@ -50,8 +53,8 @@ a.newPost:hover {
 }
 
 .user_avatar_nav {
-    width: calc(3.2rem + 0.5vw);
-    height: calc(3.2rem + 0.5vw);
+    width: calc(3.2rem + 0.5vw) !important;
+    height: calc(3.2rem + 0.5vw)!important;
     border-radius: 50%;
     margin-right: 10px;
     margin-top: calc(0.5rem + 0.5vw);
@@ -337,6 +340,9 @@ a.newPost:hover {
     background-color: rgb(39, 39, 39);
 }
 
+.card .card-content {
+    padding: calc(2rem + 0.5vw) !important;
+}
 .card-content p {
     margin-top: 2rem;
 }
@@ -356,20 +362,23 @@ a.newPost:hover {
 .avatar_profile_pg,
 .avatar_detail_pg,
 .avatar_home_pg {
-    flex-basis: 10%;
+    flex-basis: 8%;
     margin-top: -1.2rem
 }
 
 .postMinusAvatar {
-    flex-basis: 90%;
+    flex-basis: 92%;
 }
 
 
 /* home pg */
+.row .col{
+    padding: 0 !important;
+}
 .user_avatar {
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 3.2rem !important;
+    height: 3.2rem !important; 
     margin-right: 10px;
 }
 
