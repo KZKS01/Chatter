@@ -324,7 +324,7 @@ def delete_photo(request, post_id, photo_id):
     photo.delete()
     post.save()
 
-    return redirect('post_detail', post_id=post_id)
+    return redirect('post_detail', post_id=post_id, photo_id=photo_id)
 
 
 # Comments

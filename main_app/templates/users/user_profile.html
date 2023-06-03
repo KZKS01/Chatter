@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<main id="mainBase row">
+<main id="mainBase" class="row">
     <div class="card" id="postCard">
         <div id="grey-bg"></div>
         <div class="card-content">
@@ -101,7 +101,7 @@
             <div class="card-content" id="post_card">
                 <div class="avatar_profile_pg">
                     <a href="{% url 'user_profile' user.id %}">
-                        <img class="user_avatar responsive-img" src="{{ post.user.userprofile.avatar}}">
+                        <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
                     </a>
                 </div>
                 <a href="{% url 'post_detail' post.id %}" id="homeA">

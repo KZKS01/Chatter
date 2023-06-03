@@ -31,7 +31,7 @@
                                 {% for photo in post.photo_set.all %}
                                 <div id="img_warp">
                                     <img src="{{ photo.url }}" class="rounded responsive-img">
-                                    <form method="POST" action="{% url 'delete_photo' post.id photo.id%}">
+                                    <form method="POST" action="{% url 'delete_photo' post.id photo.id %}">
                                         {% csrf_token %}
                                         <button type="submit" class="img_delete_btn">X</button>
                                     </form>
