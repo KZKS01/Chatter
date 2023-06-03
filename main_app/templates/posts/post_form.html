@@ -41,38 +41,27 @@
                     </div>
                     <!-- Upload photos -->
                     {% if user.is_authenticated and user == post.user %}
-                    <div class="card-content">
                         <form action="{% url 'add_photo' post.id %}" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <div class="img-upload-block">
-                            <div class="image-upload">
-                                <label for="photo-file">
-                                    <img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685744307/115696_photo_picture_image_photography_icon_g7opkb.png"
-                                        width="20" height="20" />
-                                </label>
+                            <!-- <div class="img-upload-block"> -->
+                            <!-- <div class="image-upload"> -->
+                                <!-- <label for="photo-file"> -->
+                                    <!-- <img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685744307/115696_photo_picture_image_photography_icon_g7opkb.png"
+                                        width="20" height="20" /> -->
+                                <!-- </label> -->
                                 <input type="file" name="photo-file" id="photo-file">
-                            </div>
+                            <!-- </div> -->
                             <input type="submit" value="Upload Photo" id="upload-btn">
                         </div>
                         </form>
                         {% endif %}
-                    </div>
                     <input type="submit" value="Share" id="share-btn">
                 </div>
             </form>
         </div>
     </div>
 </main>
-<script>
-    // Get the image element and file input element
-    const imageElement = document.querySelector('#sForms img');
-    const fileInput = document.querySelector('#sForms input[type="file"]');
-  
-    // Add click event listener to the image
-    imageElement.addEventListener('click', () => {
-      fileInput.click(); // Trigger click event on the file input
-    });
-  </script>
+
 {% endblock %}
 
 

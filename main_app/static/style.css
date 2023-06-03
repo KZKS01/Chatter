@@ -442,7 +442,7 @@ a.newPost:hover {
     font-size: calc(0.8rem + 0.5vw);
     padding: calc(0.3rem + 0.2vw) calc(1rem + 0.2vw);
 }
-#upload-btn{
+input[type="file"]::file-selector-button, #upload-btn{
     border-radius: 50px;
     background: linear-gradient(to right, #08c8fb, #3aa4ff);
     color: white !important;
@@ -450,31 +450,28 @@ a.newPost:hover {
     font-size: calc(0.3rem + 0.5vw);
     padding: calc(0.3rem + 0.2vw) calc(0.5rem + 0.2vw);
 }
-.img-upload-block{
-    display: flex;
-    flex-direction: row;
-}
-#photo-file {
+
+/* #photo-file {
     display: none;
     visibility: none;
-}
+} */
 
-.image-upload {
+/* .image-upload {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
     width: calc(2rem + 0.5vw);
     height: calc(2rem + 0.5vw);
-}
+} */
 
-.image-upload:hover {
+/* .image-upload:hover {
     background-color: lightblue;
-}
+} */
 
-.image-upload img:hover {
+/* .image-upload img:hover {
     cursor: pointer;
-}
+} */
 
 #upload-btn:hover,
 #share-btn:hover {
