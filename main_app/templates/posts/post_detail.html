@@ -7,107 +7,131 @@
 {% for post in posts %}
 {% block content %}
 <main id="mainBase">
-    <div class="card" id="postCard">
-        <div class="card-content" id="post_card">
-            <div class="avatar_detail_pg">
-                <a href="{% url 'user_profile' post.user.id %}">
-                    <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
-                </a>
-            </div>
-            <div class="postMinusAvatar">
-                <p><span class="post_user_bar"><strong>{{ post.user.username }}</strong>
-                        <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
-
-                        <!-- Dropdown Trigger -->
-                        <span class="dropdown-trigger" data-target="dropdown{{ post.id }}"><b
-                                class="black-text text-darken-2">⋯</b></span></p></span>
-
-            <div class="postContent">
-                <p>{{ post.content }}</p><br>
-                <!-- Display photos -->
-                {% for photo in post.photo_set.all %}
-                <img src="{{ photo.url }}" class="rounded responsive-img">
-                {% endfor %}
-            </div>
-            <div class="postIcons">
-                <a href="{% url 'add_comment' post.id %}" id="commentSection">
-                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.png"
-                        alt="comment icon">
-                    <p>{{ post.comment_num }}</p>
-                </a>
-                <a id="repostSection" href="{% url 'repost' post.id %}">
-                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
-                        alt="repost icon">
-                    <p>{{ post.repost_num }}</p>
-                </a>
-                <a href="{% url 'update_like' post.id %}" id="likeSection">
-                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png"
-                        alt="like icon">
-                    <p>{{ post.like_num }}</p>
-                </a>
-            </div>
-            {% for comment in comments %}
-            <div class="card-action">
-                <p>
-                    <div class="avatar_detail_comment">
-                        <a href="{% url 'user_profile' comment.user.id %}">
-                            <img class="comment_user_avatar" src="{{ comment.user.userprofile.avatar}}">
-                        </a>
-                    </div>
-                    <div class="commentMinusAvatar">
-                    <span class="comment_user_bar">
-                        <p><span class="post_user_bar"><strong>{{ comment.user.username }}</strong>
-                        <span class="post_bar">@{{ comment.user.id }} · {{ comment.created_at }}</span>
-                        <p class="comment_content">{{ comment.content }}</p>
-                    </span>
-                    {% if request.user.is_authenticated and request.user == comment.user %}
-                    <!-- Dropdown Trigger -->
-                    <span class="dropdown-trigger" data-target="dropdown_comment{{ comment.id }}">
-                        <b class="black-text text-darken-2" id="comment-dropdown">⋯</b></p>
-                    </span>
-                    {% endif %}
-                </p>
-            </div>
-            <!-- Comment Dropdown Structure -->
-            <ul id="dropdown_comment{{ comment.id }}" class="dropdown-content">
-                <li>
-                    <a class="red-text text-darken-2 comment_delete_btn" href="{% url 'comment_delete' post.id comment.id %}">
-                        <b>Delete</b>
+    <div class="card hoverable" id="postCard">
+        <div class="row">
+            <div class="card-content" id="post_card">
+                <div class="avatar_profile_pg">
+                    <a href="{% url 'user_profile' post.user.id %}">
+                        <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
                     </a>
-                </li>
-            </ul>
-            {% endfor %}
+                </div>
+                <div class="postMinusAvatar col s12">
+                    <p><span class="post_user_bar"><strong>{{ post.user.username }}</strong>
+                            <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
+
+                            <!-- Dropdown Trigger -->
+                            <span class="dropdown-trigger" data-target="dropdown{{ post.id }}"><b
+                                    class="black-text text-darken-2">⋯</b></span></p></span>
+
+                    <div class="postContent col s12">
+                        <p>{{ post.content }}</p><br>
+                        <!-- Display photos -->
+                        {% for photo in post.photo_set.all %}
+                        <img src="{{ photo.url }}" class="responsive-img rounded">
+                        {% endfor %}
+                    </div>
+                    <div class="postIcons col s12">
+                        <div class="row">
+                            <div class="col s4">
+                                <a href="{% url 'add_comment' post.id %}" id="commentSection">
+                                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.png"
+                                        alt="comment icon">
+                                    <p>{{ post.comment_num }}</p>
+                                </a>
+                            </div>
+                            <div class="col s4">
+                                <a id="repostSection" href="{% url 'repost' post.id %}">
+                                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
+                                        alt="repost icon">
+                                    <p>{{ post.repost_num }}</p>
+                                </a>
+                            </div>
+                            <div class="col s4">
+                                <a href="{% url 'update_like' post.id %}" id="likeSection">
+                                    <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png"
+                                        alt="like icon">
+                                    <p>{{ post.like_num }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- Post Dropdown Structure -->
-    {% if user.is_authenticated and user == post.user %}
-    <ul id="dropdown{{ post.id }}" class="dropdown-content">
-        <li>
-            <a class="black-text text-darken-2 edit_btn" href="{% url 'post_edit' post.id %}"><b>Edit</b></a>
-        </li>
-        <li>
-            <a class="red-text text-darken-2 delete_btn" href="{% url 'post_delete' post.id %}"><b>Delete</b></a>
-        </li>
-    </ul>
-    {% elif user.is_authenticated %}
-    <ul id="dropdown{{ post.id }}" class="dropdown-content">
-        {% if request.user in post.user.userprofile.followers.all %}
-        <li>
-            <a class="black-text text-darken-2 follow_btn_home" href="{% url 'follow' user.id %}"><b>unfollow {{ post.user.username }}</b></a>
-        </li>
-        {% else %}
-        <li>
-            <a class="black-text text-darken-2 follow_btn_home" href="{% url 'follow' user.id %}"><b>follow {{ post.user.username }}</b></a>
-        </li>
-        {% endif %}        
-    </ul>
-    {% endif %}
+        {% for comment in comments %}
+        <div class="card hoverable" id="postCard">
+            <div class="row">
+            <div class="card-content" id="post_card">
+                    <p>
+                        <div class="avatar_detail_comment col s12">
+                            <a href="{% url 'user_profile' comment.user.id %}">
+                                <img class="comment_user_avatar" src="{{ comment.user.userprofile.avatar}}">
+                            </a>
+                        </div>
+                        <div class="commentMinusAvatar col s12">
+                            <div class="comment_user_bar">
+                                <p><span class="post_user_bar"><strong>{{ comment.user.username }}</strong>
+                                        <span class="post_bar">@{{comment.user.id}} · {{ comment.created_at }}</span>
+
+                                        {% if request.user.is_authenticated%}
+                                        <!-- Dropdown Trigger -->
+                                        <span class="dropdown-trigger" data-target="dropdown_comment{{ comment.id }}"><b
+                                                class="black-text text-darken-2">⋯</b></span>
+                                    </span></p>
+                                {% endif %}
+
+                                <div class="postContent col s12">
+                                    <p>{{ comment.content }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Comment Dropdown Structure -->
+        <ul id="dropdown_comment{{ comment.id }}" class="dropdown-content">
+            <li>
+                <a class="red-text text-darken-2 comment_delete_btn"
+                    href="{% url 'comment_delete' post.id comment.id %}">
+                    <b>Delete</b>
+                </a>
+            </li>
+        </ul>
+        {% endfor %}
+        <!-- Post Dropdown Structure -->
+        {% if user.is_authenticated and user == post.user %}
+        <ul id="dropdown{{ post.id }}" class="dropdown-content">
+            <li>
+                <a class="black-text text-darken-2 edit_btn" href="{% url 'post_edit' post.id %}"><b>Edit</b></a>
+            </li>
+            <li>
+                <a class="red-text text-darken-2 delete_btn" href="{% url 'post_delete' post.id %}"><b>Delete</b></a>
+            </li>
+        </ul>
+        {% elif user.is_authenticated %}
+        <ul id="dropdown{{ post.id }}" class="dropdown-content">
+            {% if request.user in post.user.userprofile.followers.all %}
+            <li>
+                <a class="black-text text-darken-2 follow_btn_home" href="{% url 'follow' user.id %}"><b>unfollow
+                        {{ post.user.username }}</b></a>
+            </li>
+            {% else %}
+            <li>
+                <a class="black-text text-darken-2 follow_btn_home" href="{% url 'follow' user.id %}"><b>follow
+                        {{ post.user.username }}</b></a>
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
 
 </main>
 
 <script>
     $(document).ready(function () {
-        $(".dropdown-trigger").dropdown({ constrainWidth: false });
+        $(".dropdown-trigger").dropdown({
+            constrainWidth: false
+        });
     });
 </script>
 {% endblock %}
