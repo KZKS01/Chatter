@@ -716,6 +716,7 @@ div#edit_form_input textarea {
 .mobile-search-pg {
     margin-left: calc(0.3rem + 4vw);
     margin-top: calc(1rem + 1vh);
+    width: 125%;
 }
 
 .mobile-search-pg input {
