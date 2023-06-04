@@ -263,8 +263,8 @@ def search(request):
             return redirect('home')
 
         results = Post.objects.filter(
-            Q(user__username__icontains=searching) |
-            Q(content__icontains=searching)
+            Q(user__username__iexact=searching) |
+            Q(content__iexact=searching)
         )
 
     else:
