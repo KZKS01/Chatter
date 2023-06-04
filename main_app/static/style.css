@@ -718,6 +718,7 @@ div#edit_form_input textarea {
 }
 .mobile_search_btn p {
     padding-bottom: 10px;
+    text-align: center;
 }
 /* #mobile-home-icon, #mobile-profile-icon, #mobile-post-icon, #mobile-search-icon{
     margin-right: calc(0.5rem + 5vw);
