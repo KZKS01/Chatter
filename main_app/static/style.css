@@ -149,10 +149,11 @@ a.newPost:hover {
     padding-left: 0.5rem;
 }
 
-.search_btn img{
+.search_btn img {
     filter: invert(1);
 }
-.search_btn{
+
+.search_btn {
     background: linear-gradient(to right, #08c8fb, #3aa4ff);
     border-radius: 50%;
     border: none;
@@ -660,19 +661,19 @@ div#edit_form_input textarea {
     .trigger-detail-pg {
         margin-right: 1.5rem;
     }
-}
 
-@media (max-width: 540px) {
     .nav-mobile {
         display: block;
     }
+}
 
+@media (max-width: 540px) {
     .dropdown-trigger {
         margin-top: -1rem;
     }
 }
 
-@media (min-width: 540px) {
+@media (min-width: 992px) {
     .nav-mobile {
         display: none;
     }
@@ -723,7 +724,7 @@ div#edit_form_input textarea {
     width: 100%;
 }
 
-.mobile_search_btn{
+.mobile_search_btn {
     margin-left: calc(0.3rem + 2vw);
 }
 
