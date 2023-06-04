@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container login-page">
+        <a href="{% url 'home' %}" id="back-home"><img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685840607/134226_back_arrow_left_icon_zz9m30.png" alt="back home"></a>
     <div class="col card hoverable s12 m3 l3 xl3" id="sForms">
         <div id="card-content">
             <div id="card-content">
@@ -45,4 +46,5 @@
                 </form>
             </div>
         </div>
+        
         {% endblock %}

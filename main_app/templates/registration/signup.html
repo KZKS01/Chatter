@@ -5,48 +5,60 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container signup-page">
+    <a href="{% url 'home' %}" id="back-home"><img
+            src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685840607/134226_back_arrow_left_icon_zz9m30.png"
+            alt="back home"></a>
     <div class="col card hoverable s12 m3 l3 xl3" id="sForms">
-            <div id="card-content">
-                <h4 id="signInUp"><strong>Sign Up</strong></h4>
+        <div id="card-content">
+            <h4 id="signInUp"><strong>Sign Up</strong></h4>
 
-                {% if error %}
-                <p>{{ error }}</p>
-                {% endif %}
-                <form method="POST" class="col s12 m12 l12 cl12">
-                    <div class="card-content">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 cl12">
-                                {{ form.username.label_tag }}
-                                {{ form.username }}
-                                <small id="bigger">{{ form.username.help_text }}</small>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 cl12">
-                                {{ form.email.label_tag }}
-                                {{ form.email }}
-                                <small id="bigger">{{ form.email.help_text }}</small>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 cl12">
-                                {{ form.password1.label_tag }}
-                                {{ form.password1 }}
-                                <small id="bigger">{{ form.password1.help_text }}</small>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 cl12">
-                                {{ form.password2.label_tag }}
-                                {{ form.password2 }}
-                                <small id="bigger">{{ form.password2.help_text }}</small>
-                            </div>
-                            <input type="submit" value="Submit" class="btn" id="submit-btn">  
+            {% if error %}
+            <p>{{ error }}</p>
+            {% endif %}
+            <form method="POST" class="col s12 m12 l12 cl12">
+                <div class="card-content">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12 cl12">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                            <small id="bigger">{{ form.username.help_text }}</small>
                         </div>
                     </div>
-                </form>
-            </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12 cl12">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                            <small id="bigger">{{ form.email.help_text }}</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12 cl12">
+                            {{ form.password1.label_tag }}
+                            {{ form.password1 }}
+                            <small id="bigger">{{ form.password1.help_text }}</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12 cl12">
+                            {{ form.password2.label_tag }}
+                            {{ form.password2 }}
+                            <small id="bigger">{{ form.password2.help_text }}</small>
+                        </div>
+                        <input type="submit" value="Submit" class="btn" id="submit-btn">
+                    </div>
+                </div>
+            </form>
         </div>
-        {% endblock %}
+    </div>
+
+    {% if request.path == '/accounts/signup/' %}
+    <style>
+        .nav-mobile {
+            display: none;
+        }
+    </style>
+    {% endif %}
+    
+    {% endblock %}

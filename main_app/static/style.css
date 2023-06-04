@@ -693,6 +693,11 @@ div#edit_form_input textarea {
     font-size: 16px;
     padding: 0.3rem 1rem;
 } 
+
+.login-page .nav-mobile{
+    display: none;
+}
+
 /* #mobile-home-icon, #mobile-profile-icon, #mobile-post-icon, #mobile-search-icon{
     margin-right: calc(0.5rem + 5vw);
 } */
