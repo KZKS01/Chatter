@@ -4,35 +4,40 @@ img.responsive-img {
     max-width: none !important;
     height: auto !important;
 }
-.row{
+
+.row {
     margin-bottom: 0 !important;
 }
 
-.row .col{
-    padding:0 !important;
+.row .col {
+    padding: 0 !important;
 }
-.col .row{
+
+.col .row {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
-#back-home{
+
+#back-home {
     display: inline-block;
-    width: 2rem; /* Adjust the width and height to your desired size */
+    width: 2rem;
+    /* Adjust the width and height to your desired size */
     height: 2rem;
     border-radius: 50%;
-    padding: 1.5rem; 
+    padding: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
 }
-#back-home img{
+
+#back-home img {
     width: calc(1rem + 0.5vw);
     height: calc(1rem + 0.5vw);
 }
 
-#back-home:hover{
+#back-home:hover {
     background-color: rgb(233, 232, 232);
 }
 
@@ -86,8 +91,8 @@ a.newPost:hover {
 }
 
 .user_avatar_nav {
-    width: 3.2rem!important;
-    height: 3.2rem!important;
+    width: 3.2rem !important;
+    height: 3.2rem !important;
     border-radius: 50%;
     margin-right: 10px;
     margin-top: calc(0.5rem + 0.5vw);
@@ -144,22 +149,15 @@ a.newPost:hover {
     padding-left: 0.5rem;
 }
 
-.search_btn {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    width: 3.5rem;
-    height: 3rem;
+.search_btn img{
+    filter: invert(1);
+}
+.search_btn{
+    background: linear-gradient(to right, #08c8fb, #3aa4ff);
     border-radius: 50%;
     border: none;
-    background: linear-gradient(to right, #08c8fb, #3aa4ff);
-}
-
-.search_btn p {
-    margin-top: 0px;
-    padding-bottom: 10px;
-    font-size: 30px;
-    color: #fff;
-    text-align: center;
+    width: 3.5rem;
+    height: 3rem;
 }
 
 .search_btn:hover {
@@ -374,6 +372,7 @@ a.newPost:hover {
 .card .card-content {
     padding: calc(1.5rem + 0.5vw) !important;
 }
+
 .card-content p {
     margin-top: 2rem;
 }
@@ -406,7 +405,7 @@ a.newPost:hover {
 
 
 /* edit profile pg */
-#profile-save-btn{
+#profile-save-btn {
     border-radius: 50px;
     background: linear-gradient(to right, #08c8fb, #3aa4ff);
     color: white !important;
@@ -414,7 +413,8 @@ a.newPost:hover {
     border: none;
     padding: calc(0.3rem + 0.2vw) calc(1rem + 0.2vw);
 }
-#profile-save-btn:hover{
+
+#profile-save-btn:hover {
     background: #389af0 !important;
     cursor: pointer;
 }
@@ -426,7 +426,7 @@ a.newPost:hover {
 .user_avatar {
     border-radius: 50%;
     width: 3.2rem !important;
-    height: 3.2rem !important; 
+    height: 3.2rem !important;
     margin-right: 10px;
 }
 
@@ -501,7 +501,9 @@ a.newPost:hover {
     font-size: calc(0.8rem + 0.5vw);
     padding: calc(0.3rem + 0.2vw) calc(1rem + 0.2vw);
 }
-input[type="file"]::file-selector-button, #upload-btn{
+
+input[type="file"]::file-selector-button,
+#upload-btn {
     border-radius: 50px;
     background: linear-gradient(to right, #08c8fb, #3aa4ff);
     color: white !important;
@@ -510,7 +512,8 @@ input[type="file"]::file-selector-button, #upload-btn{
     padding: calc(0.3rem + 0.2vw) calc(0.5rem + 0.2vw);
     margin-bottom: calc(0.5rem + 0.5vw);
 }
-input[type="file"]::file-selector-button:hover{
+
+input[type="file"]::file-selector-button:hover {
     cursor: pointer;
     background: #389af0 !important;
 }
@@ -653,18 +656,22 @@ div#edit_form_input textarea {
     #mainBase {
         width: fit-content;
     }
-    .trigger-detail-pg{
+
+    .trigger-detail-pg {
         margin-right: 1.5rem;
     }
 }
-@media (max-width: 540px){
+
+@media (max-width: 540px) {
     .nav-mobile {
         display: block;
     }
-    .dropdown-trigger{
+
+    .dropdown-trigger {
         margin-top: -1rem;
     }
 }
+
 @media (min-width: 540px) {
     .nav-mobile {
         display: none;
@@ -673,7 +680,7 @@ div#edit_form_input textarea {
 
 /* MOBILE */
 /* nav */
-.mobile-nav-lists{
+.mobile-nav-lists {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -686,34 +693,37 @@ div#edit_form_input textarea {
     width: 100% !important;
     border-top: 1px solid rgb(197, 196, 196);
 }
-#mobile-home-icon, #mobile-profile-icon{
+
+#mobile-home-icon,
+#mobile-profile-icon {
     margin-top: -0.2rem;
 }
-#mobile-sign-in-btn, #mobile-sign-up-btn {
+
+#mobile-sign-in-btn,
+#mobile-sign-up-btn {
     border-radius: 50px;
     background: linear-gradient(to right, #08c8fb, #3aa4ff);
     color: white;
     font-size: 16px;
     padding: 0.3rem 1rem;
-} 
+}
 
-.login-page .nav-mobile{
+.login-page .nav-mobile {
     display: none;
 }
 
 /* seperate search form */
-.mobile-search-pg{
-        margin-left: calc(0.3rem + 4vw);
-        margin-top: calc(1rem + 1vh);
-        width: 125%;
-}
-.mobile-search-pg input{
+.mobile-search-pg {
+    margin-left: calc(0.3rem + 4vw);
+    margin-top: calc(1rem + 1vh);
     width: 100%;
 }
 
-.mobile_search_btn img {
-    filter: invert(1);
+.mobile-search-pg input {
+    width: 100%;
 }
+
+
 /* #mobile-home-icon, #mobile-profile-icon, #mobile-post-icon, #mobile-search-icon{
     margin-right: calc(0.5rem + 5vw);
 } */
