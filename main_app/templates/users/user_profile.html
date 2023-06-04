@@ -6,32 +6,32 @@
 
 {% block content %}
 <main id="mainBase" class="row">
-    <div class="card" id="postCard">
+    <div class="card hoverable" id="postCard">
         <div id="grey-bg"></div>
-        <div class="card-content">
-            <!-- display avatar -->
-            {% if user.userprofile.avatar %}
-            <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
-            {% endif %}
-            {% if request.user.is_authenticated and request.user == user %}
-            <a id="editProfileBtn" href="{% url 'user_profile_edit' user_profile.id %}"><b>Edit Profile</b></a>
-            {% endif %}
-            <h5><b>{{ user.username }}</b></h5>
-            <p id="userprofile-userid">@{{ user.id }}</p>
-            {% if request.user.is_authenticated and request.user != user %}
-            {% if request.user in user.userprofile.followers.all %}
-            <a id="following-btn" href="{% url 'follow' user.id %}">Following</a>
-            {% else %}
-            <a id="follow-btn" href="{% url 'follow' user.id %}">Follow</a>
-            {% endif %}
-            {% endif %}
+            <div class="card-content">
+                <!-- display avatar -->
+                {% if user.userprofile.avatar %}
+                <img src="{{ user.userprofile.avatar }}" class="rounded" id="avatar_file">
+                {% endif %}
+                {% if request.user.is_authenticated and request.user == user %}
+                <a id="editProfileBtn" href="{% url 'user_profile_edit' user_profile.id %}"><b>Edit Profile</b></a>
+                {% endif %}
+                <h5><b>{{ user.username }}</b></h5>
+                <p id="userprofile-userid">@{{ user.id }}</p>
+                {% if request.user.is_authenticated and request.user != user %}
+                {% if request.user in user.userprofile.followers.all %}
+                <a id="following-btn" href="{% url 'follow' user.id %}">Following</a>
+                {% else %}
+                <a id="follow-btn" href="{% url 'follow' user.id %}">Follow</a>
+                {% endif %}
+                {% endif %}
 
-            <p>{{user.userprofile.bio}} </p>
-            <p>Joined {{join_date}}</p>
-            <p>{{ followers_num }} Following</p>
-            <!-- add back btn -->
-            <!-- add post count -->
-        </div>
+                <p>{{user.userprofile.bio}} </p>
+                <p>Joined {{join_date}}</p>
+                <p>{{ followers_num }} Following</p>
+                <!-- add back btn -->
+                <!-- add post count -->
+            </div>
     </div>
     <!-- reposts -->
     {% for re in repost %}
@@ -96,11 +96,11 @@
     {% endfor %}
     <!-- user's own posts -->
     {% for post in posts %}
-    <div class="card" id="postCard">
+    <div class="card hoverable" id="postCard">
         <div class="row">
             <div class="card-content" id="post_card">
                 <div class="avatar_profile_pg">
-                    <a href="{% url 'user_profile' user.id %}">
+                    <a href="{% url 'user_profile' post.user.id %}">
                         <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
                     </a>
                 </div>
@@ -111,8 +111,7 @@
 
                                 <!-- Dropdown Trigger -->
                                 <span class="dropdown-trigger" data-target="dropdown{{ post.id }}"><b
-                                        class="black-text text-darken-2">⋯</b></span>
-                            </span></p>
+                                        class="black-text text-darken-2">⋯</b></span></p></span>
 
                         <div class="postContent col s12">
                             <p>{{ post.content }}</p><br>
@@ -149,8 +148,7 @@
                     </div>
             </div>
         </div>
-    </div>
-    </a>
+        </a>
     <!-- Dropdown Structure -->
     {% if request.user.is_authenticated and request.user == post.user %}
     <ul id="dropdown{{ post.id }}" class="dropdown-content">
