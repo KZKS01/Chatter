@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <!-- DESKTOP -->
     <div class="row">
         <div class="col s12 m3 l3 xl3">
             <div id="nav-left" class="sidenav sidenav-fixed left-align hide-on-med-and-down">
@@ -80,6 +81,38 @@
                 </form>
             </div>
         </div>
+
+<!-- MOBILE -->
+    <div class="nav-mobile row">
+    {% if user.is_authenticated %}
+    <ul class="col s12 mobile-nav-lists">
+        <li><a href="{% url 'home' %}"><img id="mobile-home-icon"
+            src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/home+icon.png" alt="home-icon"
+            width="30px" height="30px"></a></li>
+        <li><a href="{% url 'user_profile' request.user.id %}"><img id="mobile-profile-icon"
+            src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/profile+icon.png"
+            alt="pofile-icon" width="30px" height="30px"></a></li>
+        <li><a class="mobile-nav-newPost" href="{% url 'post_compose' %}"><img id="mobile-post-icon"
+            src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685852870/plus-square_ttcfnv.svg"
+            alt="post-icon" width="25px" height="25px"></a></li>
+        <li><a href="{% url 'search' %}"><img id="mobile-search-icon"
+            src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685853179/9004662_search_find_magnifier_zoom_icon_xbgfb2.png"
+            alt="search-icon" width="25px" height="25px">
+            </a>
+        </li>
+        <li><a href="{% url 'logout' %}"><img id="mobile-logout-icon"
+            src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685853028/7853741_logout_kashifarif_exit_out_close_icon_mpneid.png"
+            alt="logout-icon" width="25px" height="25px"></a></li>
+    </ul>
+    {% else %}
+    <!-- Navigation items for non-authenticated users -->
+    <ul class="col s12 mobile-nav-lists">
+        <li><a href="{% url 'signup' %}" id="mobile-sign-up-btn">Sign up</a></li>
+        <li><a href="{% url 'login' %}" id="mobile-sign-in-btn">Sign in</a></li>
+    </ul>
+    {% endif %}
+</div>
+
         <script>
             $(document).ready(function () {
                 $(".dropdown-trigger").dropdown({constrainWidth: false});
