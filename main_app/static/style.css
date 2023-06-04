@@ -15,6 +15,27 @@ img.responsive-img {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
+#back-home{
+    display: inline-block;
+    width: 2rem; /* Adjust the width and height to your desired size */
+    height: 2rem;
+    border-radius: 50%;
+    padding: 1.5rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#back-home img{
+    width: calc(1rem + 0.5vw);
+    height: calc(1rem + 0.5vw);
+}
+
+#back-home:hover{
+    background-color: rgb(233, 232, 232);
+}
+
 /* base */
 #mainBase h1 {
     margin-top: 0;

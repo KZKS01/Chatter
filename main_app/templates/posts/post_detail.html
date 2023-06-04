@@ -7,6 +7,7 @@
 {% for post in posts %}
 {% block content %}
 <main id="mainBase" class="row">
+    <a href="{% url 'home' %}" id="back-home"><img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685840607/134226_back_arrow_left_icon_zz9m30.png" alt="back home"></a>
     <div class="card hoverable" id="postCard">
         <div class="row">
             <div class="card-content" id="post_card">

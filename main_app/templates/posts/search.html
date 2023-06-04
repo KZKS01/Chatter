@@ -8,6 +8,7 @@
 {% block content %}
 
 <main id="mainBase">
+    <a href="{% url 'home' %}" id="back-home"><img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685840607/134226_back_arrow_left_icon_zz9m30.png" alt="back home"></a>
 {% if results %}
     {% for post in results %}
     <a href="{% url 'post_detail' post.id %}" id="homeA">
