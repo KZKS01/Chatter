@@ -21,7 +21,7 @@
 
                                 <!-- Dropdown Trigger -->
                                 <span class="dropdown-trigger" data-target="dropdown{{ post.id }}"><b
-                                        class="black-text text-darken-2">⋯</b></span></p></span>
+                                        class="black-text text-darken-2 trigger-detail-pg">⋯</b></span></p></span>
 
                         <div class="postContent col s12">
                             <p>{{ post.content }}</p><br>
@@ -76,7 +76,7 @@
                                         {% if request.user.is_authenticated%}
                                         <!-- Dropdown Trigger -->
                                         <span class="dropdown-trigger" data-target="dropdown_comment{{ comment.id }}"><b
-                                                class="black-text text-darken-2">⋯</b></span>
+                                                class="black-text text-darken-2 trigger-detail-pg">⋯</b></span>
                                     </span></p>
                                 {% endif %}
 
