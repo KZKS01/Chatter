@@ -716,13 +716,15 @@ div#edit_form_input textarea {
 .mobile-search-pg {
     margin-left: calc(0.3rem + 4vw);
     margin-top: calc(1rem + 1vh);
-    width: 100%;
 }
 
 .mobile-search-pg input {
     width: 100%;
 }
 
+.mobile_search_btn{
+    margin-left: calc(0.3rem + 2vw);
+}
 
 /* #mobile-home-icon, #mobile-profile-icon, #mobile-post-icon, #mobile-search-icon{
     margin-right: calc(0.5rem + 5vw);
