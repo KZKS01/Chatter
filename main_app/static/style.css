@@ -710,15 +710,9 @@ div#edit_form_input textarea {
 .mobile-search-pg input{
     width: 100%;
 }
-.mobile_search_btn {
-    margin-left: 0.3rem;
-    margin-right: 0.5rem;
-    height: 3.5rem;
-    text-align: center;
-}
-.mobile_search_btn p {
-    padding-bottom: 10px;
-    text-align: center;
+
+.mobile_search_btn img {
+    filter: invert(1);
 }
 /* #mobile-home-icon, #mobile-profile-icon, #mobile-post-icon, #mobile-search-icon{
     margin-right: calc(0.5rem + 5vw);
