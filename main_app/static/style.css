@@ -659,21 +659,17 @@ div#edit_form_input textarea {
     }
 }
 @media (max-width: 540px){
-    .sidenav {
-        display: none;
+    .nav-mobile {
+        display: block;
     }
+}
 @media (min-width: 540px) {
     .nav-mobile {
         display: none;
-        }
     }
 }
 
 /* MOBILE */
-.nav-mobile {
-    position: sticky;
-    z-index: 10000;
-}
 .mobile-nav-lists{
     display: flex;
     flex-direction: row;
@@ -685,10 +681,8 @@ div#edit_form_input textarea {
     background: white;
     padding: calc(0.5rem + 0.5vw) !important;
     width: 100% !important;
+    z-index: 10000;
 }
-/* #mobile-home-icon, #mobile-profile-icon, #mobile-post-icon, #mobile-search-icon{
-    margin-right: calc(0.5rem + 5vw);
-} */
 #mobile-home-icon, #mobile-profile-icon{
     margin-top: -0.2rem;
 }
@@ -698,7 +692,10 @@ div#edit_form_input textarea {
     color: white;
     font-size: 16px;
     padding: 0.3rem 1rem;
-}
-/* #mobile-sign-in-btn, #mobile-sign-up-btn {
+} 
+/* #mobile-home-icon, #mobile-profile-icon, #mobile-post-icon, #mobile-search-icon{
     margin-right: calc(0.5rem + 5vw);
 } */
+/* #mobile-sign-in-btn, #mobile-sign-up-btn {
+    margin-right: calc(0.5rem + 5vw);
+}
