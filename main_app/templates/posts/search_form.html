@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<br>
+<title>Search</title>
+{% endblock %}i
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<main id="mainBase">
+    <a href="{% url 'home' %}" id="back-home"><img src="https://res.cloudinary.com/dhjajmvyz/image/upload/v1685840607/134226_back_arrow_left_icon_zz9m30.png" alt="back home"></a>
+    <div class="col s12 m3 l3 xl3">
+            <form method="GET" action="{% url 'search' %}" class="mobile-search-pg">
+                <input type="text" class="black-text" placeholder="Search Chatter" name="searching" id="pill"
+                    autocomplete="off">
+                <button type="submit" class="search_btn">
+                    <p>→</p>
+                </button>
+            </form>
+    </div>
+</main>
+{% endif %}
+{% endblock %}

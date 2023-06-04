@@ -246,6 +246,13 @@ def repost(request, post_id):
 
 
 # search function
+@login_required
+def search_form(request):
+    user = request.user
+    return render(request, 'posts/search_form.html', {
+        'user': user,
+    })
+
 def search(request):
     user = request.user
 

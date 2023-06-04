@@ -672,6 +672,7 @@ div#edit_form_input textarea {
 }
 
 /* MOBILE */
+/* nav */
 .mobile-nav-lists{
     display: flex;
     flex-direction: row;
@@ -698,6 +699,19 @@ div#edit_form_input textarea {
 
 .login-page .nav-mobile{
     display: none;
+}
+
+/* seperate search form */
+.mobile-search-pg{
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin-left: calc(0.8rem + 4vw);
+        margin-top: calc(1rem + 1vh);
+        width: 125%;
+}
+.mobile-search-pg input{
+    width: 100%;
 }
 
 /* #mobile-home-icon, #mobile-profile-icon, #mobile-post-icon, #mobile-search-icon{
