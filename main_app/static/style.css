@@ -8,9 +8,9 @@ img.responsive-img {
     margin-bottom: 0 !important;
 }
 
-/* .row .col.s12{
-    width: auto !important;
-} */
+.row .col{
+    padding:0 !important;
+}
 .col .row{
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -210,7 +210,6 @@ a.newPost:hover {
 #sForms {
     width: 100%;
     margin: auto;
-    /* margin-top: 100px; */
 }
 
 #bigger {
@@ -372,9 +371,9 @@ a.newPost:hover {
     color: white;
 }
 
-/* .card .card-content {
-    padding: calc(2rem + 0.5vw) !important;
-} */
+.card .card-content {
+    padding: calc(1.5rem + 0.5vw) !important;
+}
 .card-content p {
     margin-top: 2rem;
 }
@@ -597,7 +596,7 @@ div#edit_form_input textarea {
     display: flex;
     flex-direction: row;
     margin-right: 20rem;
-    margin-left: 0.8rem;
+    /* margin-left: 0.8rem; */
 }
 
 #commentSection p,

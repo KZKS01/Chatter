@@ -11,12 +11,12 @@
     <div class="card hoverable" id="postCard">
         <div class="row">
             <div class="card-content" id="post_card">
-                <div class="avatar_profile_pg">
+                <div class="avatar_profile_pg col s2">
                     <a href="{% url 'user_profile' post.user.id %}">
                         <img class="user_avatar" src="{{ post.user.userprofile.avatar}}">
                     </a>
                 </div>
-                    <div class="postMinusAvatar col s12">
+                    <div class="postMinusAvatar col s10">
                         <p><span class="post_user_bar"><strong>{{ post.user.username }}</strong>
                                 <span class="post_bar">@{{post.user.id}} · {{ post.created_at }}</span>
 
@@ -24,30 +24,30 @@
                                 <span class="dropdown-trigger" data-target="dropdown{{ post.id }}"><b
                                         class="black-text text-darken-2 trigger-detail-pg">⋯</b></span></p></span>
 
-                        <div class="postContent col s12">
+                        <div class="postContent col s10">
                             <p>{{ post.content }}</p><br>
                             <!-- Display photos -->
                             {% for photo in post.photo_set.all %}
                             <img src="{{ photo.url }}" class="responsive-img rounded">
                             {% endfor %}
                         </div>
-                        <div class="postIcons col s12">
+                        <div class="postIcons col s9">
                             <div class="row">
-                                <div class="col s4">
+                                <div class="col s3">
                                     <a href="{% url 'add_comment' post.id %}" id="commentSection">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/comment+icon.png"
                                             alt="comment icon">
                                         <p>{{ post.comment_num }}</p>
                                     </a>
                                 </div>
-                                <div class="col s4">
+                                <div class="col s3">
                                     <a id="repostSection" href="{% url 'repost' post.id %}">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/retweet+icon.png"
                                             alt="repost icon">
                                         <p>{{ post.repost_num }}</p>
                                     </a>
                                 </div>
-                                <div class="col s4">
+                                <div class="col s3">
                                     <a href="{% url 'update_like' post.id %}" id="likeSection">
                                         <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.png"
                                             alt="like icon">
@@ -64,12 +64,12 @@
             <div class="row">
             <div class="card-content" id="post_card">
                     <p>
-                        <div class="avatar_detail_comment col s12">
+                        <div class="avatar_detail_comment col s2 m2">
                             <a href="{% url 'user_profile' comment.user.id %}">
                                 <img class="comment_user_avatar" src="{{ comment.user.userprofile.avatar}}">
                             </a>
                         </div>
-                        <div class="commentMinusAvatar col s12">
+                        <div class="commentMinusAvatar col s10">
                             <div class="comment_user_bar">
                                 <p><span class="post_user_bar"><strong>{{ comment.user.username }}</strong>
                                         <span class="post_bar">@{{comment.user.id}} · {{ comment.created_at }}</span>
@@ -81,7 +81,7 @@
                                     </span></p>
                                 {% endif %}
 
-                                <div class="postContent col s12">
+                                <div class="postContent col s10 m10">
                                     <p>{{ comment.content }}</p>
                                 </div>
                             </div>
