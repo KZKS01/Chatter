@@ -661,6 +661,9 @@ div#edit_form_input textarea {
     .nav-mobile {
         display: block;
     }
+    .dropdown-trigger{
+        margin-top: -1rem;
+    }
 }
 @media (min-width: 540px) {
     .nav-mobile {
