@@ -10,6 +10,7 @@ from django.db.models import Q # search fn: allows for complex queries using log
 import boto3
 import uuid
 from django.urls import reverse
+from django.http import JsonResponse
 
 
 S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
@@ -387,14 +388,19 @@ def update_like(request, post_id):
         like = Like.objects.get(user=user, post=post)
         like.delete() # delete the obj from db
         post.decrement_like_num()
+        liked = False
     except Like.DoesNotExist:
         Like.objects.create(user=user, post=post)
         post.increment_like_num()
+        liked = True
 
-    if 'HTTP_REFERER' in request.META:
-        # Redirect the user back to the current pg
-        return redirect(request.META['HTTP_REFERER'])
-    else:
-        return redirect('post_detail', post_id=post_id)
+    is_liked_by_user = post.like_set.filter(user=user).exists()
 
+    response_data = {
+        'is_liked_by_user': is_liked_by_user,
+        'like_num': post.like_num,
+        'post_id': post_id,
+    }
+
+    return JsonResponse(response_data)
 

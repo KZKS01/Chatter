@@ -583,7 +583,6 @@ div#edit_form_input textarea {
     display: flex;
     flex-direction: row;
 }
-
 .postIcons img:hover {
     background: rgb(230, 230, 230);
     border-radius: 50%;
