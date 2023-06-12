@@ -386,20 +386,20 @@ def update_like(request, post_id):
 
     try:
         like = Like.objects.get(user=user, post=post)
-        like.delete() # delete the obj from db
-        post.decrement_like_num()
-        liked = False
+        like.delete()  # delete the object from the database
+        post.like_icon_url = 'https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.svg'
+
     except Like.DoesNotExist:
-        Like.objects.create(user=user, post=post)
-        post.increment_like_num()
-        liked = True
+        like = Like.objects.create(user=user, post=post)
+        post.like_icon_url = 'https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/liked+icon.png'
 
-    is_liked_by_user = post.like_set.filter(user=user).exists()
-
+    post.save()
+    like_num = post.like_num
+    
     response_data = {
-        'is_liked_by_user': is_liked_by_user,
-        'like_num': post.like_num,
+        'like_count': like_num,
         'post_id': post_id,
+        'like_icon_url': post.like_icon_url,
     }
 
     return JsonResponse(response_data)

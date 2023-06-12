@@ -602,6 +602,9 @@ div#edit_form_input textarea {
     margin-right: 20rem;
     /* margin-left: 0.8rem; */
 }
+#like-icon:hover {
+    cursor: pointer;
+}
 
 #commentSection p,
 #repostSection p,

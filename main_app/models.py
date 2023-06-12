@@ -10,9 +10,10 @@ class Post(models.Model):
    content = models.TextField(max_length=300)
    created_at = models.DateTimeField(auto_now_add=True)
    comment_num = models.IntegerField(default=0)
-   like_num = models.IntegerField(default=0)
+   # like_num = models.IntegerField(default=0)
    repost_num = models.IntegerField(default=0)
    repost = models.ManyToManyField(User, related_name='repost')
+   like_icon_url = models.CharField(max_length=200, default='https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.svg')
 
    def get_absolute_url(self):
       return reverse('post_detail', kwargs={'post_id': self.id})
@@ -27,13 +28,17 @@ class Post(models.Model):
       self.save(update_fields=['comment_num'])
 
    # likes
-   def increment_like_num(self):
-      self.like_num += 1
-      self.save(update_fields=['like_num'])
+   @property
+   def like_num(self):
+      return self.like_set.count() if self.like_set.exists() else 0
+   # def increment_like_num(self):
+   #    self.like_num += 1
+   #    self.save(update_fields=['like_num'])
    
-   def decrement_like_num(self):
-      self.like_num -= 1
-      self.save(update_fields=['like_num'])
+   # def decrement_like_num(self):
+   #    self.like_num -= 1
+   #    self.save(update_fields=['like_num'])
+
 
    # reposts
    def increment_repost_num(self):
@@ -79,5 +84,3 @@ class Like(models.Model):
    def get_absolute_url(self):
       return reverse('post_detail', kwargs={'post_id': self.post_id})
    
-   class Meta:
-        unique_together = ('user', 'post')
