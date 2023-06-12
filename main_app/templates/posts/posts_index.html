@@ -51,8 +51,8 @@
                                 </div>
                                 <div class="col s4">
                                     <a href="{% url 'update_like' post.id %}" id="likeSection">
-                                        <img src="https://k-chatter.s3.us-east-2.amazonaws.com/App+pics/like+icon.svg"
-                                            alt="like icon">
+                                        <a href="#" id="likeSection" data-post-id="{{ post.id }}">
+                                            <img src="{{ post.like_icon_url }}" alt="like icon" id="like-icon">
                                         <p>{{ post.like_num }}</p>
                                     </a>
                                 </div>
@@ -75,7 +75,27 @@
 </main>
 <script>
   $(document).ready(function() {
-      $(".dropdown-trigger").dropdown();
+      $(".dropdown-trigger").dropdown({constrainWidth: false});
+
+      $(document).on('click', '#likeSection', function (e) {
+            e.preventDefault();
+
+            var likeSection = $(this);
+            var postID = likeSection.data('post-id');
+            var url = "/chatter/" + postID + "/update_like/";
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    likeSection.find('img').attr('src', data.like_icon_url);
+                    likeSection.find('p').text(data.like_count);
+                },
+                error: function (rs, e) {
+                    console.log(rs.responseText);
+                },
+            });
+        });
   });
 </script>
 {% endblock %}
