@@ -99,10 +99,13 @@ WSGI_APPLICATION = 'Chatter.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'KZKS01/chatter-k',
-        'USER': os.environ['USER'],
+        # 'NAME': 'KZKS01/chatter-k',
+        'NAME': 'postgres',
+        # 'USER': os.environ['USER'],
+        'USER': 'postgres',
         'PASSWORD': os.environ['PASSWORD'],
-        'HOST': 'db.bit.io',
+        # 'HOST': 'db.bit.io',
+        'HOST': 'db.wvxlipvzgfgidmaotzee.supabase.co',
         'PORT': '5432',
     }
 }
