@@ -100,7 +100,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': 'KZKS01/chatter-k',
-        'NAME': 'postgres',
+        'NAME': 'chatter-db',
         # 'USER': os.environ['USER'],
         'USER': 'postgres',
         'PASSWORD': os.environ['PASSWORD'],
