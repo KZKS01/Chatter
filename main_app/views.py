@@ -403,4 +403,3 @@ def update_like(request, post_id):
     }
 
     return JsonResponse(response_data)
-
